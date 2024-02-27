@@ -32,7 +32,10 @@
             >
           </li>
         </ul>
-        <ul class="navbar-nav" v-if="$store.state.user.is_login">
+        <ul
+          class="navbar-nav"
+          v-if="$store.state.user.is_login || !$store.state.user.show_content"
+        >
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -93,6 +96,9 @@ export default {
   setup() {
     const store = useStore();
     const route = useRoute();
+    const show_navbar = store.state.user.show_content;
+
+    // const jwt_token = localStorage.getItem("jwt_token");
     let route_name = computed(() => route.name);
     const logout = () => {
       store.dispatch("logout");
@@ -100,6 +106,7 @@ export default {
     return {
       route_name,
       logout,
+      show_navbar,
     };
   },
 };
