@@ -6,6 +6,7 @@ export default {
         photo: "",
         token: "",
         is_login: false,
+        show_content: false,
     },
     getters: {
     },
@@ -38,6 +39,7 @@ export default {
                 },
                 success(resp) {
                     if (resp.error_message === "success") {
+                        localStorage.setItem("jwt_token", resp.token)
                         context.commit("updateToken", resp.token);
                         data.success(resp);
                     } else {
@@ -72,6 +74,7 @@ export default {
             });
         },
         logout(context) {
+            localStorage.removeItem("jwt_token");
             context.commit("logout");
         },
     },
