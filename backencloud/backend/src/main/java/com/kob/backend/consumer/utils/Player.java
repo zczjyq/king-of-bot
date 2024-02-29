@@ -12,11 +12,13 @@ import java.util.List;
 @NoArgsConstructor
 public class Player {
     private Integer id;
+    private Integer botId;
+    private String botCode;
     private Integer sx;
     private Integer sy;
     private List<Integer> steps;
 
-    public boolean check_tail_increasin(int step) { //检查当前回合蛇的长度是否增加
+    public boolean check_tail_increasing(int step) { //检查当前回合蛇的长度是否增加
         if(step <= 10) return true;
         return step % 3 == 1;
     }
@@ -32,7 +34,7 @@ public class Player {
             x += dx[d];
             y += dy[d];
             res.add(new Cell(x, y));
-            if (!check_tail_increasin( ++ step)) {
+            if (!check_tail_increasing( ++ step)) {
                 res.remove(0);
             }
         }
