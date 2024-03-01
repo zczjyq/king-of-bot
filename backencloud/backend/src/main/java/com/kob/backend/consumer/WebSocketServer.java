@@ -30,7 +30,7 @@ public class WebSocketServer {
     private Session session = null;
     public Game game = null;
 
-    private static UserMapper userMapper;
+    public static UserMapper userMapper;
     public static RecordMapper recordMapper;
     public static BotMapper botMapper;
     public static RestTemplate restTemplate;
