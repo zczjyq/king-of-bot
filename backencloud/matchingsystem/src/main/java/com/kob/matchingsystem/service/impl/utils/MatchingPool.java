@@ -78,6 +78,12 @@ public class MatchingPool extends Thread{
             for (int j = i + 1; j < players.size(); j ++ ) {
                 if (used[j]) continue;
                 Player a = players.get(i), b = players.get(j);
+                // 防止自己匹配到自己
+                if (a.getUserId().equals(b.getUserId())){
+                    players.remove(i); // 将最早加入的自己删除
+                    i --;
+                    j --;
+                }
                 if (checkMatched(a, b)) {
                     used[i] = used[j] = true;
                     sendResult(a, b);
