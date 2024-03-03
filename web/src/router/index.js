@@ -8,6 +8,8 @@ import UserBotIndexView from '../views/user/bot/UserBotIndexView.vue'
 import UserAccountLoginView from '../views/user/account/UserAccountLoginView.vue'
 import UserAccountRegisterView from '../views/user/account/UserAccountRegisterView.vue'
 import store from '../store/index'
+import UserProfileView from '../views/user/profile/UserProfileView.vue';
+import test from '../views/test.vue';
 
 const routes = [
   {
@@ -78,6 +80,22 @@ const routes = [
     path: "/user/account/register/",
     name: "user_account_register",
     component: UserAccountRegisterView,
+    meta: {
+      requestAuth: false,
+    }
+  },
+  {
+    path: '/userprofile/:userId/',
+    name: 'userprofile',
+    component: UserProfileView,
+    meta: {
+      requestAuth: false,
+    }
+  },
+  {
+    path: '/test/',
+    name: 'test',
+    component: test,
     meta: {
       requestAuth: false,
     }

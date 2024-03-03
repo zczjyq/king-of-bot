@@ -1,12 +1,14 @@
 package com.kob.botrunningsystem.utils;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-public class Bot implements com.kob.botrunningsystem.utils.BotInterface {
+public class Bot implements java.util.function.Supplier<Integer> {
     static class Cell {
         public int x, y;
-
         public Cell(int x, int y) {
             this.x = x;
             this.y = y;
@@ -26,24 +28,23 @@ public class Bot implements com.kob.botrunningsystem.utils.BotInterface {
         int x = sx, y = sy;
         int step = 0;
         res.add(new Cell(x, y));
-        for (int i = 0; i < steps.length(); i++) {
+        for (int i = 0; i < steps.length(); i ++ ) {
             int d = steps.charAt(i) - '0';
             x += dx[d];
             y += dy[d];
             res.add(new Cell(x, y));
-            if (!check_tail_increasing(++step)) {
+            if (!check_tail_increasing( ++ step)) {
                 res.remove(0);
             }
         }
         return res;
     }
 
-    @Override
     public Integer nextMove(String input) {
         String[] strs = input.split("#");
         int[][] g = new int[15][16];
-        for (int i = 0, k = 0; i < 15; i++) {
-            for (int j = 0; j < 16; j++, k++) {
+        for (int i = 0, k = 0; i < 15; i ++ ) {
+            for (int j = 0; j < 16; j ++, k ++ ) {
                 if (strs[0].charAt(k) == '1') {
                     g[i][j] = 1;
                 }
@@ -56,11 +57,11 @@ public class Bot implements com.kob.botrunningsystem.utils.BotInterface {
         List<Cell> aCells = getCells(aSx, aSy, strs[3]);
         List<Cell> bCells = getCells(bSx, bSy, strs[6]);
 
-        for (Cell c : aCells) g[c.x][c.y] = 1;
-        for (Cell c : bCells) g[c.x][c.y] = 1;
+        for (Cell c: aCells) g[c.x][c.y] = 1;
+        for (Cell c: bCells) g[c.x][c.y] = 1;
 
         int[] dx = {-1, 0, 1, 0}, dy = {0, 1, 0, -1};
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i ++ ) {
             int x = aCells.get(aCells.size() - 1).x + dx[i];
             int y = aCells.get(aCells.size() - 1).y + dy[i];
             if (x >= 0 && x < 15 && y >= 0 && y < 16 && g[x][y] == 0) {
@@ -69,5 +70,16 @@ public class Bot implements com.kob.botrunningsystem.utils.BotInterface {
         }
 
         return 0;
+    }
+
+    @Override
+    public Integer get() {
+        File file = new File("input.txt");
+        try {
+            Scanner sc = new Scanner(file);
+            return nextMove(sc.next());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

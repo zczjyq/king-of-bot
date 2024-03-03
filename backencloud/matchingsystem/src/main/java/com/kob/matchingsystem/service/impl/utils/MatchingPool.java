@@ -11,11 +11,12 @@ import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Component
-public class MatchingPool extends Thread{
+public class MatchingPool extends Thread {
     private static List<Player> players = new ArrayList<>();
     private ReentrantLock lock = new ReentrantLock();
     private static RestTemplate restTemplate;
     private static final String startGameUrl = "http://127.0.0.1:3000/pk/start/game/";
+
     @Autowired
     public void setRestTemplate(RestTemplate restTemplate) {
         MatchingPool.restTemplate = restTemplate;
@@ -24,8 +25,8 @@ public class MatchingPool extends Thread{
     public void addPlayer(Integer userId, Integer rating, Integer botId) {
         lock.lock();
         try {
-            players.add(new Player(userId, rating,botId, 0));
-        }finally {
+            players.add(new Player(userId, rating, botId, 0));
+        } finally {
             lock.unlock();
         }
     }
@@ -34,7 +35,7 @@ public class MatchingPool extends Thread{
         lock.lock();
         try {
             List<Player> newPlayer = new ArrayList<>();
-            for (Player player:players) {
+            for (Player player : players) {
                 if (!player.getUserId().equals(userId)) {
                     newPlayer.add(player);
                 }
@@ -46,10 +47,10 @@ public class MatchingPool extends Thread{
     }
 
     /*
-    匹配函数
-    */
+     * 匹配函数
+     */
     private void inceaseWaitingTime() { // 将所有玩家的等待时间加1
-        for (Player player: players) {
+        for (Player player : players) {
             player.setWaitingTime(player.getWaitingTime() + 1);
         }
     }
@@ -73,16 +74,18 @@ public class MatchingPool extends Thread{
     private void matchPlayers() { // 尝试匹配所有玩家
         System.out.println("match players: " + players.toString());
         boolean[] used = new boolean[players.size()];
-        for (int i = 0; i < players.size(); i  ++ ) {
-            if (used[i]) continue;
-            for (int j = i + 1; j < players.size(); j ++ ) {
-                if (used[j]) continue;
+        for (int i = 0; i < players.size(); i++) {
+            if (used[i])
+                continue;
+            for (int j = i + 1; j < players.size(); j++) {
+                if (used[j])
+                    continue;
                 Player a = players.get(i), b = players.get(j);
                 // 防止自己匹配到自己
-                if (a.getUserId().equals(b.getUserId())){
+                if (a.getUserId().equals(b.getUserId())) {
                     players.remove(i); // 将最早加入的自己删除
-                    i --;
-                    j --;
+                    i--;
+                    j--;
                 }
                 if (checkMatched(a, b)) {
                     used[i] = used[j] = true;
@@ -93,7 +96,7 @@ public class MatchingPool extends Thread{
         }
 
         List<Player> newPlayer = new ArrayList<>();
-        for (int i = 0; i < players.size(); i ++ ) {
+        for (int i = 0; i < players.size(); i++) {
             if (!used[i]) {
                 newPlayer.add(players.get(i));
             }
