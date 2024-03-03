@@ -31,6 +31,13 @@
               >排行榜</router-link
             >
           </li>
+          <li class="nav-item">
+            <router-link
+              :class="route_name == 'test' ? 'nav-link active' : 'nav-link'"
+              :to="{ name: 'test' }"
+              >test</router-link
+            >
+          </li>
         </ul>
         <ul
           class="navbar-nav"
@@ -48,6 +55,16 @@
               {{ $store.state.user.username }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <router-link
+                  class="dropdown-item"
+                  :to="{
+                    name: 'userprofile',
+                    params: { userId: 1 },
+                  }"
+                  >个人中心</router-link
+                >
+              </li>
               <li>
                 <router-link
                   class="dropdown-item"

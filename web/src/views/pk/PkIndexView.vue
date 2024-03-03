@@ -2,6 +2,24 @@
   <PlayGround v-if="$store.state.pk.status === 1" />
   <MatchGround v-if="$store.state.pk.status === 0"> </MatchGround>
   <ResultBoard v-if="$store.state.pk.loser != 'none'" />
+  <div
+    class="user-color"
+    v-if="
+      $store.state.pk.status === 1 &&
+      parseInt($store.state.user.id) === parseInt($store.state.pk.a_id)
+    "
+  >
+    左下角
+  </div>
+  <div
+    class="user-color"
+    v-if="
+      $store.state.pk.status === 1 &&
+      parseInt($store.state.user.id) === parseInt($store.state.pk.b_id)
+    "
+  >
+    右上角
+  </div>
 </template>
 
 <script>
@@ -19,7 +37,7 @@ export default {
   },
   setup() {
     const store = useStore();
-    const socketUrl = `ws://localhost:3000/websocket/${store.state.user.token}`;
+    const socketUrl = `wss://app6142.acapp.acwing.com.cn/websocket/${store.state.user.token}`;
 
     store.commit("updateLoser", "none");
     store.commit("updateIsRecord", false);
@@ -31,10 +49,12 @@ export default {
         photo:
           "https://cdn.acwing.com/media/article/image/2022/08/09/1_1db2488f17-anonymous.png",
       });
+      console.log("socketUrl" + socketUrl);
+
       socket = new WebSocket(socketUrl);
 
       socket.onopen = () => {
-        console.log("WebS ocket连接已打开");
+        console.log("WebSocket连接已打开");
         store.commit("updateSocket", socket);
       };
       socket.onmessage = (msg) => {
@@ -80,4 +100,10 @@ export default {
 </script>
 
 <style scoped>
+div.user-color {
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
+}
 </style>

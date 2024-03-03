@@ -7,19 +7,30 @@ export default {
         token: "",
         is_login: false,
         show_content: false,
+        followerCount: "",
     },
     getters: {
     },
     mutations: {
+        // 更新关注者数量
+        updatefollowerCount(state, followerCount) {
+            state.followerCount = followerCount;
+        },
+
+        // 更新用户信息
         updateUser(state, user) {
             state.id = user.id;
             state.username = user.username;
             state.photo = user.photo;
             state.is_login = user.is_login;
         },
+
+        // 更新用户令牌
         updateToken(state, token) {
             state.token = token;
         },
+
+        // 登出用户
         logout(state) {
             state.id = "";
             state.username = "";
@@ -31,7 +42,7 @@ export default {
     actions: {
         login(context, data) {
             $.ajax({
-                url: "http://localhost:3000/user/account/token/",
+                url: "https://app6142.acapp.acwing.com.cn/api/user/account/token/",
                 type: "post",
                 data: {
                     username: data.username,
@@ -51,7 +62,7 @@ export default {
         },
         getinfo(context, data) {
             $.ajax({
-                url: "http://localhost:3000/user/account/info/",
+                url: "https://app6142.acapp.acwing.com.cn/api/user/account/info/",
                 type: "get",
                 headers: {
                     Authorization:

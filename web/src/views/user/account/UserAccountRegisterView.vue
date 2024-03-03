@@ -61,7 +61,7 @@ export default {
     const register = () => {
       error_message.value = "";
       $.ajax({
-        url: "http://localhost:3000/user/account/register/",
+        url: "https://app6142.acapp.acwing.com.cn/api/user/account/register/",
         type: "post",
         data: {
           username: username.value,

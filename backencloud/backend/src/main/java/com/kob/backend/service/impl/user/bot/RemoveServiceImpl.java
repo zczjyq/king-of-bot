@@ -27,10 +27,10 @@ public class RemoveServiceImpl implements RemoveService {
 
         // 从认证信息中获取当前登录用户的详细信息
         UserDetailsImpl loginUser = (UserDetailsImpl) authentication.getPrincipal();
-        User user  = loginUser.getUser();
+        User user = loginUser.getUser();
 
         int bot_id = Integer.parseInt(data.get("bot_id"));
-        Bot bot  = botMapper.selectById(bot_id);
+        Bot bot = botMapper.selectById(bot_id);
         Map<String, String> map = new HashMap<>();
 
         if (bot == null) {
