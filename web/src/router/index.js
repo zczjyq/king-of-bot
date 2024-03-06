@@ -12,6 +12,7 @@ import UserProfileView from '../views/user/profile/UserProfileView.vue';
 import test from '../views/test.vue';
 
 const routes = [
+  // PK界面
   {
     path: '/',
     name: 'home',
@@ -20,6 +21,8 @@ const routes = [
       requestAuth: true,
     }
   },
+
+  // 
   {
     path: "/pk/",
     name: "pk_index",
@@ -28,6 +31,7 @@ const routes = [
       requestAuth: true,
     }
   },
+
   {
     path: "/record/",
     name: "record_index",
@@ -44,6 +48,8 @@ const routes = [
       requestAuth: true,
     }
   },
+
+  // 排行榜界面
   {
     path: "/ranklist/",
     name: "ranklist_index",
@@ -60,6 +66,8 @@ const routes = [
       requestAuth: true,
     }
   },
+
+  // 404界面
   {
     path: "/404/",
     name: "not_found_index",
@@ -68,6 +76,8 @@ const routes = [
       requestAuth: false,
     }
   },
+
+  // 登录界面 
   {
     path: "/user/account/login/",
     name: "user_account_login",
@@ -76,6 +86,8 @@ const routes = [
       requestAuth: false,
     }
   },
+
+  // 注册界面 
   {
     path: "/user/account/register/",
     name: "user_account_register",
@@ -84,14 +96,18 @@ const routes = [
       requestAuth: false,
     }
   },
+
+  // 个人中心
   {
     path: '/userprofile/:userId/',
     name: 'userprofile',
     component: UserProfileView,
     meta: {
-      requestAuth: false,
+      requestAuth: true,
     }
   },
+
+  // 测试界面
   {
     path: '/test/',
     name: 'test',

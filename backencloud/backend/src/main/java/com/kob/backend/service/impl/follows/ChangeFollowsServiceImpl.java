@@ -5,7 +5,6 @@ import com.kob.backend.mapper.FollowsMapper;
 import com.kob.backend.pojo.Follows;
 import com.kob.backend.service.follows.ChangeFollowsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -49,7 +48,7 @@ public class ChangeFollowsServiceImpl implements ChangeFollowsService {
             Follows follows = new Follows(null, follower, following, new Date(), new Date(), status);
             followsMapper.insert(follows);
 
-            map.put("error_message", "成功关注");
+            map.put("error_message", "success");
             return map;
         } else {
             // 如果在数据库里面，并且状态需要更新则更新状态
@@ -59,7 +58,7 @@ public class ChangeFollowsServiceImpl implements ChangeFollowsService {
                 updateWrapper.eq("id", id);
                 followsMapper.updateById(follows);
 
-                map.put("error_message", "成功修改");
+                map.put("error_message", "success");
                 return map;
             }
         }

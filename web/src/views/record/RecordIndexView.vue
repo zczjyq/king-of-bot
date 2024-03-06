@@ -15,12 +15,20 @@
           <td>
             <img :src="record.a_photo" alt="" class="record-user-photo" />
             &nbsp;
-            <span class="record-user-username">{{ record.a_username }}</span>
+            <span
+              class="record-user-username"
+              @click="getId(record.a_username)"
+              >{{ record.a_username }}</span
+            >
           </td>
           <td>
             <img :src="record.b_photo" alt="" class="record-user-photo" />
             &nbsp;
-            <span class="record-user-username">{{ record.b_username }}</span>
+            <span
+              class="record-user-username"
+              @click="getId(record.b_username)"
+              >{{ record.b_username }}</span
+            >
           </td>
           <td>{{ record.result }}</td>
           <td class="word">{{ record.record.createtime }}</td>
@@ -76,11 +84,41 @@ export default {
     let current_page = 1;
     let total_records = 0;
     let pages = ref([]);
+    let id = ref(0);
+
+    // 根据username 去 router页面
+    const getId = (username) => {
+      console.log(username);
+      console.log(store.state.user.token);
+      $.ajax({
+        url: "http://localhost:3000/api/user/getid/",
+        type: "post",
+        data: {
+          username: username,
+        },
+
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+        success(resp) {
+          id.value = resp.id;
+          console.log(id.value);
+
+          // 在 AJAX 请求成功后执行后续代码
+          router.push({
+            params: { userId: id.value },
+            name: "userprofile",
+          });
+        },
+        error(resp) {
+          console.log(resp);
+        },
+      });
+    };
 
     const click_page = (page) => {
       if (page === -2) page = current_page - 1;
       else if (page === -1) page = current_page + 1;
-      console.log("total_records" + total_records);
       let max_pages = parseInt(Math.ceil(total_records / 10));
       if (page >= 1 && max_pages >= page) {
         pull_page(page);
@@ -88,8 +126,6 @@ export default {
     };
 
     const update_pages = () => {
-      console.log("total_records" + total_records);
-
       let max_pages = parseInt(Math.ceil(total_records / 10));
       let new_pages = [];
       for (let i = current_page - 2; i <= current_page + 2; i++) {
@@ -115,7 +151,6 @@ export default {
           Authorization: "Bearer " + store.state.user.token,
         },
         success(resp) {
-          console.log(resp);
           records.value = resp.records;
           total_records = resp.records_count;
           if (total_records % 10 !== 0) {
@@ -124,7 +159,6 @@ export default {
           for (let i = 0; i < total_records; i++) {
             store.state.record.id = i;
           }
-          console.log("接收到的total_records.value" + total_records);
           update_pages();
         },
       });
@@ -181,6 +215,7 @@ export default {
       open_record_content,
       pages,
       click_page,
+      getId,
     };
   },
 };

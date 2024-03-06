@@ -4,24 +4,42 @@
       <div class="row">
         <div class="col-3">
           <!-- :src="user.photo" -->
-          <img class="img-fluid" alt="" />
+          <img class="img-fluid" alt="" :src="photo" />
         </div>
         <div class="col-9">
-          <div class="username">{{ $store.state.user.username }}</div>
+          <div class="username">{{ username }}</div>
           <div class="fans">
-            {{ "粉丝数:" + $store.state.user.followerCount }}
+            {{ "粉丝数:" + followerCount }}
           </div>
+          <div class="rating">
+            {{ "天梯分:" + rating }}
+          </div>
+
           <!-- @click="follow"
-            v-if="!user.is_followed" -->
-          <button
-            type="button"
-            @click="follow"
-            class="btn btn-secondary btn-sm"
-          >
-            +关注
-          </button>
-          <!-- @click="unfollow"
+            v-if="!user.is_followed" 
+          
+          -->
+          <!-- <div>{{ status }}</div> -->
+          <div v-if="status !== 'self'">
+            <button
+              v-if="status === 'unfollow'"
+              type="button"
+              @click="follow"
+              class="btn btn-secondary btn-sm"
+            >
+              +关注
+            </button>
+            <button
+              v-if="status === 'follow'"
+              type="button"
+              @click="unfollow"
+              class="btn btn-secondary btn-sm"
+            >
+              取消关注
+            </button>
+            <!-- @click="unfollow"
             v-if="user.is_followed" -->
+          </div>
         </div>
       </div>
     </div>
@@ -32,6 +50,7 @@
 import { useRoute } from "vue-router";
 import $ from "jquery";
 import { useStore } from "vuex";
+import { ref } from "vue";
 
 export default {
   name: "UserProfileInfo",
@@ -39,74 +58,128 @@ export default {
     const route = useRoute();
     const userId = route.params.userId;
     const store = useStore();
-    console.log(userId);
 
+    // 关注状态
+    let status = ref("self");
+
+    // 用户信息
+    let username = ref("");
+    let followerCount = ref(0);
+    let photo = ref("");
+    let rating = ref("");
+
+    // 获取个人信息
     $.ajax({
-      url: "http://localhost:3000/api/follows/get/",
+      url: "http://localhost:3000/api/user/getInfo/",
       data: {
-        follower: store.state.user.id,
-        following: userId,
+        id: userId,
       },
-      type: "get",
+      type: "post",
 
       headers: {
         Authorization: "Bearer " + store.state.user.token,
       },
       success(resp) {
-        console.log(resp);
+        username.value = resp.username;
+        photo.value = resp.photo;
+        rating.value = resp.rating;
+        followerCount.value = resp.follows;
       },
     });
+
+    // 获取粉丝数量
+    // $.ajax({
+    //   url: "http://localhost:3000/api/follows/get/",
+    //   data: {
+    //     follower: store.state.user.id,
+    //     following: userId,
+    //   },
+    //   type: "get",
+
+    //   headers: {
+    //     Authorization: "Bearer " + store.state.user.token,
+    //   },
+    //   success(resp) {
+    //     status.value = resp.error_message;
+    //   },
+    // });
     const follow = () => {
-      console.log("follow");
+      $.ajax({
+        url: "http://localhost:3000/api/follows/change/",
+        data: {
+          follower: store.state.user.id,
+          following: userId,
+          status: "follow",
+        },
+        type: "get",
+
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+        success(resp) {
+          if (resp.error_message === "success") {
+            status.value = "follow";
+            // 更新粉丝数量
+            $.ajax({
+              url: "http://localhost:3000/api/follows/add/",
+              data: {
+                user_id: userId,
+                change: 1,
+              },
+              type: "get",
+
+              headers: {
+                Authorization: "Bearer " + store.state.user.token,
+              },
+              success() {
+                followerCount.value += 1;
+              },
+            });
+          }
+        },
+      });
     };
-    return { follow };
+
+    const unfollow = () => {
+      $.ajax({
+        url: "http://localhost:3000/api/follows/change/",
+        data: {
+          follower: store.state.user.id,
+          following: userId,
+          status: "unfollow",
+        },
+        type: "get",
+
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+        success(resp) {
+          if (resp.error_message === "success") {
+            status.value = "unfollow";
+            // 更新粉丝数量
+            $.ajax({
+              url: "http://localhost:3000/api/follows/add/",
+              data: {
+                user_id: userId,
+                change: -1,
+              },
+              type: "get",
+
+              headers: {
+                Authorization: "Bearer " + store.state.user.token,
+              },
+              success() {
+                followerCount.value -= 1;
+              },
+            });
+          }
+        },
+        error() {},
+      });
+    };
+
+    return { follow, unfollow, status, followerCount, username, photo, rating };
   },
-  //   props: {
-  //     user: {
-  //       type: Object,
-  //       required: true,
-  //     },
-  //   },
-
-  //   setup(props, context) {
-  //     const store = useStore();
-  //     const follow = () => {
-  //       $.ajax({
-  //         url: "https://app165.acapp.acwing.com.cn/myspace/follow/",
-  //         type: "POST",
-  //         headers: {
-  //           Authorization: "Bearer " + store.state.user.access,
-  //         },
-  //         data: {
-  //           target_id: props.user.id,
-  //         },
-  //         success(resp) {
-  //           if (resp.result === "success") {
-  //             context.emit("follow");
-  //           }
-  //         },
-  //       });
-  //     };
-
-  //     const unfollow = () => {
-  //       $.ajax({
-  //         url: "https://app165.acapp.acwing.com.cn/myspace/follow/",
-  //         type: "POST",
-  //         headers: {
-  //           Authorization: "Bearer " + store.state.user.access,
-  //         },
-  //         data: {
-  //           target_id: props.user.id,
-  //         },
-  //         success(resp) {
-  //           if (resp.result === "success") {
-  //             context.emit("unfollow");
-  //           }
-  //         },
-  //       });
-  //     };
-  //     return { follow, unfollow, props };
-  //   },
 };
 </script>
 
@@ -118,6 +191,9 @@ img {
   font-weight: bold;
 }
 .fans {
+  font-size: 12px;
+}
+.rating {
   font-size: 12px;
 }
 </style>

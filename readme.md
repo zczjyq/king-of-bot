@@ -22,3 +22,4 @@
 
 <div> <span style="color: lightblue;font-size:large">"创建对战列表与排行榜页面":</span> <span>实现了对局记录的重播，对战列表以及排行榜页面</span><br/><span><span style="font-size:large">--时间: </span>2024 3/2 00:03</span>   4779</div>
 
+<div> <span style="color: lightblue;font-size:large">"创建个人中心":</span> <span>实现了个人中心，实现了关注系统</span><br/><span><span style="font-size:large">--时间: </span>2024 3/2 00:03</span>   4779</div>

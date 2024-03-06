@@ -14,7 +14,7 @@
   </ContentField>
 </template>
       
-      <script>
+<script>
 import ContentField from "@/components/ContentField";
 import UserProfileInfo from "@/components/personal_center/UserProfileInfo";
 import UserProfilePosts from "@/components/personal_center/UserProfilePosts";

@@ -60,7 +60,7 @@
                   class="dropdown-item"
                   :to="{
                     name: 'userprofile',
-                    params: { userId: 1 },
+                    params: { userId: parseInt($store.state.user.id) },
                   }"
                   >个人中心</router-link
                 >
