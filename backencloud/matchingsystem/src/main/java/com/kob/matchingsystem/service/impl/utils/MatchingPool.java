@@ -84,8 +84,7 @@ public class MatchingPool extends Thread {
                 // 防止自己匹配到自己
                 if (a.getUserId().equals(b.getUserId())) {
                     players.remove(i); // 将最早加入的自己删除
-                    i--;
-                    j--;
+                    break;
                 }
                 if (checkMatched(a, b)) {
                     used[i] = used[j] = true;

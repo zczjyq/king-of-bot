@@ -8,9 +8,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user in users" :key="user.id">
+        <tr v-for="user in users" :key="user.id" @click="getId(user.username)">
           <td>
-            <img :src="user.a_photo" alt="" class="record-user-photo" />
+            <img :src="user.photo" alt="" class="record-user-photo" />
             &nbsp;
             <span class="record-user-username">{{ user.username }}</span>
           </td>
@@ -48,6 +48,7 @@ import ContentField from "../../components/ContentField.vue";
 import { useStore } from "vuex";
 import { ref } from "vue";
 import $ from "jquery";
+import router from "@/router/index";
 
 export default {
   components: {
@@ -55,10 +56,39 @@ export default {
   },
   setup() {
     const store = useStore();
+    let id = ref(0);
     let users = ref([]);
     let current_page = 1;
     let total_users = 0;
     let pages = ref([]);
+
+    const getId = (username) => {
+      console.log(username);
+      console.log(store.state.user.token);
+      $.ajax({
+        url: "http://localhost:3000/api/user/getid/",
+        type: "post",
+        data: {
+          username: username,
+        },
+
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+        success(resp) {
+          id.value = resp.id;
+
+          // 在 AJAX 请求成功后执行后续代码
+          router.push({
+            params: { userId: id.value },
+            name: "userprofile",
+          });
+        },
+        error(resp) {
+          console.log(resp);
+        },
+      });
+    };
 
     const click_page = (page) => {
       if (page === -2) page = current_page - 1;
@@ -95,16 +125,9 @@ export default {
           Authorization: "Bearer " + store.state.user.token,
         },
         success(resp) {
-          console.log(resp);
           users.value = resp.users;
           total_users = resp.users_count;
-          // if (total_users % 10 !== 0) {
-          //   total_users = (parseInt(total_users / 10) + 1) * 10;
-          // }
-          // for (let i = 0; i < total_users; i++) {
-          //   store.state.record.id = i;
-          // }
-          console.log(total_users);
+
           update_pages();
         },
       });
@@ -115,6 +138,8 @@ export default {
       users,
       pages,
       click_page,
+      getId,
+      id,
     };
   },
 };
