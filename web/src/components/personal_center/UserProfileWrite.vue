@@ -29,7 +29,7 @@ export default {
 
     const post_a_post = () => {
       $.ajax({
-        url: "https://app165.acapp.acwing.com.cn/myspace/post/",
+        url: "https://app165.acapp.racwing.com.cn/myspace/post/",
         type: "POST",
         data: {
           content: content.value,

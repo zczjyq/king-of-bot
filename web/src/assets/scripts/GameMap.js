@@ -27,8 +27,6 @@ export class GameMap extends AcGameObjects {
 
     create_walls() {
         const g = this.store.state.pk.gamemap;
-        console.log("GameMap.js: ");
-        console.log(this.store.state.pk.gamemap);
 
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.cols; j++) {
@@ -144,7 +142,7 @@ export class GameMap extends AcGameObjects {
         }
         this.render();
     }
-
+    // 绘制地图
     render() {
         const color_even = "#AAD751", color_odd = "#A2D149";
         for (let r = 0; r < this.rows; r++) {

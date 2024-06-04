@@ -4,7 +4,7 @@ import { Cell } from "./Cell";
 export class Snake extends AcGameObjects {
     constructor(info, gamemap) {
         super();
-
+        this.check_whoai = false;
         this.id = info.id;
         this.color = info.color;
         this.gamemap = gamemap;
@@ -45,6 +45,10 @@ export class Snake extends AcGameObjects {
 
     set_direction(d) {
         this.direction = d;
+    }
+
+    set_whoai(check) {
+        this.check_whoai = check;
     }
 
     check_tail_increasing() { // 检查是否增加蛇的长度
@@ -112,14 +116,31 @@ export class Snake extends AcGameObjects {
 
     render() {
         // console.log(this.id);
+        console.log(this.check_whoai);
         const L = this.gamemap.L;
         const ctx = this.gamemap.ctx;
 
+        if (this.check_whoai) {
+            const lastCell = this.cells[0]; // 获取最后一个元素的坐标
+            ctx.fillStyle = "black"; // 设置文字颜色为黑色
+            ctx.font = "bold 12px Arial"; // 设置文字样式
+            ctx.fillText("我", lastCell.x * L, (lastCell.y - 0.5) * L); // 在坐标上方写文字“我”
+        } else {
+            const lastCell = this.cells[0]; // 获取最后一个元素的坐标
+            ctx.fillStyle = "black"; // 设置文字颜色为黑色
+            ctx.font = "bold 12px Arial"; // 设置文字样式
+            ctx.fillText("对手", lastCell.x * L, (lastCell.y - 0.5) * L); // 在坐标上方写文字“我”
+        }
+        
         ctx.fillStyle = this.color;
         // 如果死了就将颜色变成白色
         if (this.status === "die") {
             this.color = "white";
         }
+
+
+
+
         for (const cell of this.cells) {
             ctx.beginPath();
             ctx.arc(cell.x * L, cell.y * L, L / 2 * 0.8, 0, Math.PI * 2)

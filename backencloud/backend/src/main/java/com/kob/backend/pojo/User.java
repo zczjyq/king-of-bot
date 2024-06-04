@@ -17,4 +17,5 @@ public class User {
     private String photo;
     private Integer rating;
     private Integer follows;
+    private String posts;
 }
