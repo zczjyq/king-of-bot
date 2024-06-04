@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GetRankListServiceImpl implements GetRankListService {
+public class AddRankListServiceImpl implements GetRankListService {
 
     @Autowired
     private UserMapper userMapper;

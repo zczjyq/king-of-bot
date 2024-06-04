@@ -32,12 +32,12 @@ export default {
     //   },
     // });
     $.ajax({
-      url: "http://localhost:3000/api/follows/get/",
+      url: "http://localhost:3000/api/user/posts/add/",
       data: {
-        follower: 1,
-        following: 2,
+        id: 1,
+        post: "hello",
       },
-      type: "get",
+      type: "post",
 
       headers: {
         Authorization: "Bearer " + store.state.user.token,

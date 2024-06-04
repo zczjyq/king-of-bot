@@ -36,6 +36,7 @@ export default {
     ResultBoard,
   },
   setup() {
+
     const store = useStore();
     const socketUrl = `wss://app6142.acapp.acwing.com.cn/websocket/${store.state.user.token}`;
 
@@ -67,15 +68,23 @@ export default {
             username: data.opponent_username,
             photo: data.opponent_photo,
           });
+          
           store.commit("updateGame", data.game);
           setTimeout(() => {
             store.commit("updateStatus", 1);
           }, 200);
+          const game = store.state.pk.gameObject;
+          const [snake0, snake1] = game.snakes;
+          console.log(store.state.user.id, " + a_id: " + store.state.pk.a_id , " + b_id", store.state.pk.b_id, " + status", parseInt(store.state.user.id) === parseInt(store.state.pk.a_id));
+          snake0.set_whoai(parseInt(store.state.user.id) === parseInt(store.state.pk.a_id));
+          snake1.set_whoai(parseInt(store.state.user.id) === parseInt(store.state.pk.b_id));
         } else if (data.event === "move") {
           const game = store.state.pk.gameObject;
           const [snake0, snake1] = game.snakes;
           snake0.set_direction(data.a_direction);
+          
           snake1.set_direction(data.b_direction);
+          
         } else if (data.event === "result") {
           const game = store.state.pk.gameObject;
           const [snake0, snake1] = game.snakes;

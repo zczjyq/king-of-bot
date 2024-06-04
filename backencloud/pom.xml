@@ -11,6 +11,10 @@
         <module>matchingsystem</module>
         <module>backend</module>
         <module>botrunningsystem</module>
+        <module>test</module>
+        <module>FirstApp</module>
+        <module>test1</module>
+        <module>joptionpane</module>
     </modules>
     <packaging>pom</packaging>
 
