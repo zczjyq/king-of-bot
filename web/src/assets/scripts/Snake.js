@@ -5,6 +5,9 @@ export class Snake extends AcGameObjects {
     constructor(info, gamemap) {
         super();
         this.check_whoai = false;
+        this.a_id;
+        this.b_id;
+        this.myid;
         this.id = info.id;
         this.color = info.color;
         this.gamemap = gamemap;
@@ -49,6 +52,12 @@ export class Snake extends AcGameObjects {
 
     set_whoai(check) {
         this.check_whoai = check;
+    }
+
+    set_id(a_id, b_id, myid) {
+        this.a_id = a_id;
+        this.b_id = b_id;
+        this.myid = myid;
     }
 
     check_tail_increasing() { // 检查是否增加蛇的长度
@@ -115,30 +124,19 @@ export class Snake extends AcGameObjects {
     }
 
     render() {
-        // console.log(this.id);
-        console.log(this.check_whoai);
+        console.log(this.a_id, this.b_id, this.myid);
+        // console.log(this.check_whoai);
         const L = this.gamemap.L;
         const ctx = this.gamemap.ctx;
+        // console.log(this.check_whoai, this);
 
-        if (this.check_whoai) {
-            const lastCell = this.cells[0]; // 获取最后一个元素的坐标
-            ctx.fillStyle = "black"; // 设置文字颜色为黑色
-            ctx.font = "bold 12px Arial"; // 设置文字样式
-            ctx.fillText("我", lastCell.x * L, (lastCell.y - 0.5) * L); // 在坐标上方写文字“我”
-        } else {
-            const lastCell = this.cells[0]; // 获取最后一个元素的坐标
-            ctx.fillStyle = "black"; // 设置文字颜色为黑色
-            ctx.font = "bold 12px Arial"; // 设置文字样式
-            ctx.fillText("对手", lastCell.x * L, (lastCell.y - 0.5) * L); // 在坐标上方写文字“我”
-        }
+
         
         ctx.fillStyle = this.color;
         // 如果死了就将颜色变成白色
         if (this.status === "die") {
             this.color = "white";
         }
-
-
 
 
         for (const cell of this.cells) {
@@ -166,6 +164,18 @@ export class Snake extends AcGameObjects {
             ctx.beginPath();
             ctx.arc(eye_x, eye_y, L * 0.05, 0, Math.PI * 2);
             ctx.fill();
+        }
+
+        if (this.check_whoai) {
+            const lastCell = this.cells[0]; // 获取最后一个元素的坐标
+            ctx.fillStyle = "black"; // 设置文字颜色为黑色
+            ctx.font = "bold 12px Arial"; // 设置文字样式
+            ctx.fillText("我", lastCell.x * L, (lastCell.y) * L); // 在坐标上方写文字“我”
+        } else {
+            const lastCell = this.cells[0]; // 获取最后一个元素的坐标
+            ctx.fillStyle = "black"; // 设置文字颜色为黑色
+            ctx.font = "bold 12px Arial"; // 设置文字样式
+            ctx.fillText("对手", lastCell.x * L, (lastCell.y) * L); // 在坐标上方写文字“我”
         }
     }
 }

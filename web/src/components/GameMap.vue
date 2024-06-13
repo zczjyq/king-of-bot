@@ -20,6 +20,10 @@ export default {
         "updateGameObject",
         new GameMap(canvas.value.getContext("2d"), parent.value, store)
       );
+      const game = store.state.pk.gameObject;
+      const [snake0, snake1] = game.snakes;
+      snake0.set_whoai(parseInt(store.state.user.id) === parseInt(store.state.pk.a_id));
+      snake1.set_whoai(parseInt(store.state.user.id) === parseInt(store.state.pk.b_id));
     });
     return {
       parent,
