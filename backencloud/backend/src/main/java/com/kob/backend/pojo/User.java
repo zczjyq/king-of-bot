@@ -18,4 +18,5 @@ public class User {
     private Integer rating;
     private Integer follows;
     private String posts;
+    private String signature;
 }

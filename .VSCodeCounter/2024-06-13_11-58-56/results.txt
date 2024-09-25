@@ -1,0 +1,400 @@
+Date : 2024-06-13 11:58:56
+Directory : e:\spring
+Total : 217 files,  19864 codes, 541 comments, 1292 blanks, all 21697 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          2 |     11,922 |          0 |          2 |     11,924 |
+| Java               |        159 |      5,034 |        186 |      1,005 |      6,225 |
+| Vue                |         21 |      1,779 |        241 |        132 |      2,152 |
+| JavaScript         |         17 |        679 |        101 |        104 |        884 |
+| XML                |          6 |        354 |          9 |         32 |        395 |
+| Markdown           |          2 |         34 |          0 |         15 |         49 |
+| HTML               |          4 |         33 |          1 |          1 |         35 |
+| JSON with Comments |          1 |         19 |          0 |          1 |         20 |
+| Java Properties    |          3 |          7 |          0 |          0 |          7 |
+| CSS                |          2 |          3 |          3 |          0 |          6 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                  | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                     |        217 |     19,864 |        541 |      1,292 |     21,697 |
+| . (Files)                                                                                                             |          1 |         15 |          0 |          9 |         24 |
+| backencloud                                                                                                           |        170 |      5,411 |        195 |      1,037 |      6,643 |
+| backencloud (Files)                                                                                                   |          1 |         60 |          1 |          6 |         67 |
+| backencloud\backend                                                                                                   |         81 |      2,175 |         44 |        488 |      2,707 |
+| backencloud\backend (Files)                                                                                           |          1 |        117 |          3 |          4 |        124 |
+| backencloud\backend\src                                                                                               |         80 |      2,058 |         41 |        484 |      2,583 |
+| backencloud\backend\src\main                                                                                          |         80 |      2,058 |         41 |        484 |      2,583 |
+| backencloud\backend\src\main\java                                                                                     |         77 |      2,037 |         41 |        484 |      2,562 |
+| backencloud\backend\src\main\java\com                                                                                 |         77 |      2,037 |         41 |        484 |      2,562 |
+| backencloud\backend\src\main\java\com\kob                                                                             |         77 |      2,037 |         41 |        484 |      2,562 |
+| backencloud\backend\src\main\java\com\kob\backend                                                                     |         77 |      2,037 |         41 |        484 |      2,562 |
+| backencloud\backend\src\main\java\com\kob\backend (Files)                                                             |          1 |          9 |          0 |          5 |         14 |
+| backencloud\backend\src\main\java\com\kob\backend\config                                                              |          6 |        165 |          0 |         39 |        204 |
+| backencloud\backend\src\main\java\com\kob\backend\config (Files)                                                      |          5 |        117 |          0 |         27 |        144 |
+| backencloud\backend\src\main\java\com\kob\backend\config\filter                                                       |          1 |         48 |          0 |         12 |         60 |
+| backencloud\backend\src\main\java\com\kob\backend\consumer                                                            |          5 |        530 |         22 |         83 |        635 |
+| backencloud\backend\src\main\java\com\kob\backend\consumer (Files)                                                    |          1 |        159 |         22 |         20 |        201 |
+| backencloud\backend\src\main\java\com\kob\backend\consumer\utils                                                      |          4 |        371 |          0 |         63 |        434 |
+| backencloud\backend\src\main\java\com\kob\backend\controller                                                          |         20 |        352 |          2 |        103 |        457 |
+| backencloud\backend\src\main\java\com\kob\backend\controller (Files)                                                  |          1 |         33 |          2 |          8 |         43 |
+| backencloud\backend\src\main\java\com\kob\backend\controller\follows                                                  |          3 |         48 |          0 |         18 |         66 |
+| backencloud\backend\src\main\java\com\kob\backend\controller\pk                                                       |          4 |         67 |          0 |         18 |         85 |
+| backencloud\backend\src\main\java\com\kob\backend\controller\post                                                     |          1 |         17 |          0 |          5 |         22 |
+| backencloud\backend\src\main\java\com\kob\backend\controller\ranklist                                                 |          1 |         19 |          0 |          5 |         24 |
+| backencloud\backend\src\main\java\com\kob\backend\controller\record                                                   |          1 |         19 |          0 |          5 |         24 |
+| backencloud\backend\src\main\java\com\kob\backend\controller\user                                                     |          9 |        149 |          0 |         44 |        193 |
+| backencloud\backend\src\main\java\com\kob\backend\controller\user (Files)                                             |          2 |         32 |          0 |         10 |         42 |
+| backencloud\backend\src\main\java\com\kob\backend\controller\user\account                                             |          3 |         52 |          0 |         14 |         66 |
+| backencloud\backend\src\main\java\com\kob\backend\controller\user\bot                                                 |          4 |         65 |          0 |         20 |         85 |
+| backencloud\backend\src\main\java\com\kob\backend\mapper                                                              |          4 |         28 |          0 |         12 |         40 |
+| backencloud\backend\src\main\java\com\kob\backend\pojo                                                                |          4 |         91 |          0 |         14 |        105 |
+| backencloud\backend\src\main\java\com\kob\backend\service                                                             |         36 |        809 |         17 |        219 |      1,045 |
+| backencloud\backend\src\main\java\com\kob\backend\service\follows                                                     |          3 |         15 |          0 |          9 |         24 |
+| backencloud\backend\src\main\java\com\kob\backend\service\impl                                                        |         19 |        724 |         17 |        168 |        909 |
+| backencloud\backend\src\main\java\com\kob\backend\service\impl (Files)                                                |          1 |         25 |          0 |          4 |         29 |
+| backencloud\backend\src\main\java\com\kob\backend\service\impl\follows                                                |          3 |        132 |          7 |         29 |        168 |
+| backencloud\backend\src\main\java\com\kob\backend\service\impl\pk                                                     |          2 |         36 |          0 |          6 |         42 |
+| backencloud\backend\src\main\java\com\kob\backend\service\impl\post                                                   |          1 |         30 |          0 |          5 |         35 |
+| backencloud\backend\src\main\java\com\kob\backend\service\impl\ranklist                                               |          1 |         30 |          0 |          7 |         37 |
+| backencloud\backend\src\main\java\com\kob\backend\service\impl\record                                                 |          1 |         48 |          0 |          8 |         56 |
+| backencloud\backend\src\main\java\com\kob\backend\service\impl\user                                                   |          9 |        381 |         10 |         98 |        489 |
+| backencloud\backend\src\main\java\com\kob\backend\service\impl\user (Files)                                           |          2 |         57 |          0 |         14 |         71 |
+| backencloud\backend\src\main\java\com\kob\backend\service\impl\user\account                                           |          3 |        119 |          2 |         31 |        152 |
+| backencloud\backend\src\main\java\com\kob\backend\service\impl\user\bot                                               |          4 |        205 |          8 |         53 |        266 |
+| backencloud\backend\src\main\java\com\kob\backend\service\impl\utils                                                  |          1 |         42 |          0 |         11 |         53 |
+| backencloud\backend\src\main\java\com\kob\backend\service\pk                                                          |          2 |          8 |          0 |          4 |         12 |
+| backencloud\backend\src\main\java\com\kob\backend\service\post                                                        |          1 |          5 |          0 |          3 |          8 |
+| backencloud\backend\src\main\java\com\kob\backend\service\ranklist                                                    |          1 |          5 |          0 |          3 |          8 |
+| backencloud\backend\src\main\java\com\kob\backend\service\record                                                      |          1 |          5 |          0 |          3 |          8 |
+| backencloud\backend\src\main\java\com\kob\backend\service\user                                                        |          9 |         47 |          0 |         29 |         76 |
+| backencloud\backend\src\main\java\com\kob\backend\service\user (Files)                                                |          2 |         10 |          0 |          6 |         16 |
+| backencloud\backend\src\main\java\com\kob\backend\service\user\account                                                |          3 |         15 |          0 |         10 |         25 |
+| backencloud\backend\src\main\java\com\kob\backend\service\user\bot                                                    |          4 |         22 |          0 |         13 |         35 |
+| backencloud\backend\src\main\java\com\kob\backend\utils                                                               |          1 |         53 |          0 |          9 |         62 |
+| backencloud\backend\src\main\resources                                                                                |          3 |         21 |          0 |          0 |         21 |
+| backencloud\backend\src\main\resources (Files)                                                                        |          1 |          5 |          0 |          0 |          5 |
+| backencloud\backend\src\main\resources\static                                                                         |          1 |          6 |          0 |          0 |          6 |
+| backencloud\backend\src\main\resources\templates                                                                      |          1 |         10 |          0 |          0 |         10 |
+| backencloud\backend\src\main\resources\templates\pk                                                                   |          1 |         10 |          0 |          0 |         10 |
+| backencloud\botrunningsystem                                                                                          |         13 |        337 |         16 |         68 |        421 |
+| backencloud\botrunningsystem (Files)                                                                                  |          1 |         64 |          3 |          9 |         76 |
+| backencloud\botrunningsystem\src                                                                                      |         12 |        273 |         13 |         59 |        345 |
+| backencloud\botrunningsystem\src\main                                                                                 |         12 |        273 |         13 |         59 |        345 |
+| backencloud\botrunningsystem\src\main\java                                                                            |         11 |        272 |         13 |         59 |        344 |
+| backencloud\botrunningsystem\src\main\java\com                                                                        |         11 |        272 |         13 |         59 |        344 |
+| backencloud\botrunningsystem\src\main\java\com\kob                                                                    |         11 |        272 |         13 |         59 |        344 |
+| backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem                                                   |         11 |        272 |         13 |         59 |        344 |
+| backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem (Files)                                           |          1 |         11 |          0 |          2 |         13 |
+| backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\config                                            |          2 |         32 |          0 |          6 |         38 |
+| backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\controller                                        |          1 |         21 |          0 |          5 |         26 |
+| backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\service                                           |          5 |        131 |         13 |         31 |        175 |
+| backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\service (Files)                                   |          1 |          4 |          0 |          2 |          6 |
+| backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\service\impl                                      |          4 |        127 |         13 |         29 |        169 |
+| backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\service\impl (Files)                              |          1 |         14 |          0 |          3 |         17 |
+| backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\service\impl\utils                                |          3 |        113 |         13 |         26 |        152 |
+| backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\utils                                             |          2 |         77 |          0 |         15 |         92 |
+| backencloud\botrunningsystem\src\main\resources                                                                       |          1 |          1 |          0 |          0 |          1 |
+| backencloud\joptionpane                                                                                               |         63 |      2,537 |        128 |        425 |      3,090 |
+| backencloud\joptionpane (Files)                                                                                       |          1 |         36 |          0 |          3 |         39 |
+| backencloud\joptionpane\src                                                                                           |         62 |      2,501 |        128 |        422 |      3,051 |
+| backencloud\joptionpane\src\main                                                                                      |         62 |      2,501 |        128 |        422 |      3,051 |
+| backencloud\joptionpane\src\main\java                                                                                 |         62 |      2,501 |        128 |        422 |      3,051 |
+| backencloud\joptionpane\src\main\java (Files)                                                                         |          6 |        223 |          0 |         31 |        254 |
+| backencloud\joptionpane\src\main\java\PTAJAVA2                                                                        |          4 |        310 |          0 |         56 |        366 |
+| backencloud\joptionpane\src\main\java\PTAJAVA3                                                                        |          7 |        364 |          0 |         63 |        427 |
+| backencloud\joptionpane\src\main\java\PTAJAVA4                                                                        |          6 |        295 |          0 |         44 |        339 |
+| backencloud\joptionpane\src\main\java\PTAJAVA5                                                                        |          8 |        217 |        122 |         34 |        373 |
+| backencloud\joptionpane\src\main\java\PTAJAVA6                                                                        |          5 |        362 |          0 |         47 |        409 |
+| backencloud\joptionpane\src\main\java\实验10                                                                            |          3 |         79 |          0 |          9 |         88 |
+| backencloud\joptionpane\src\main\java\实验2                                                                             |          8 |        151 |          0 |         32 |        183 |
+| backencloud\joptionpane\src\main\java\实验2\one                                                                         |          4 |         57 |          0 |         10 |         67 |
+| backencloud\joptionpane\src\main\java\实验2\three                                                                       |          2 |         66 |          0 |         14 |         80 |
+| backencloud\joptionpane\src\main\java\实验2\two                                                                         |          2 |         28 |          0 |          8 |         36 |
+| backencloud\joptionpane\src\main\java\实验4                                                                             |          4 |        186 |          6 |         22 |        214 |
+| backencloud\joptionpane\src\main\java\实验5                                                                             |          3 |         66 |          0 |         22 |         88 |
+| backencloud\joptionpane\src\main\java\实验三                                                                             |          8 |        248 |          0 |         62 |        310 |
+| backencloud\matchingsystem                                                                                            |         10 |        278 |          6 |         46 |        330 |
+| backencloud\matchingsystem (Files)                                                                                    |          1 |         59 |          2 |          7 |         68 |
+| backencloud\matchingsystem\src                                                                                        |          9 |        219 |          4 |         39 |        262 |
+| backencloud\matchingsystem\src\main                                                                                   |          9 |        219 |          4 |         39 |        262 |
+| backencloud\matchingsystem\src\main\java                                                                              |          8 |        218 |          4 |         39 |        261 |
+| backencloud\matchingsystem\src\main\java\com                                                                          |          8 |        218 |          4 |         39 |        261 |
+| backencloud\matchingsystem\src\main\java\com\kob                                                                      |          8 |        218 |          4 |         39 |        261 |
+| backencloud\matchingsystem\src\main\java\com\kob\matchingsystem                                                       |          8 |        218 |          4 |         39 |        261 |
+| backencloud\matchingsystem\src\main\java\com\kob\matchingsystem (Files)                                               |          1 |         11 |          0 |          2 |         13 |
+| backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\config                                                |          2 |         33 |          0 |          6 |         39 |
+| backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\controller                                            |          1 |         27 |          0 |          6 |         33 |
+| backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\service                                               |          4 |        147 |          4 |         25 |        176 |
+| backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\service (Files)                                       |          1 |          5 |          0 |          2 |          7 |
+| backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\service\impl                                          |          3 |        142 |          4 |         23 |        169 |
+| backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\service\impl (Files)                                  |          1 |         20 |          0 |          5 |         25 |
+| backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\service\impl\utils                                    |          2 |        122 |          4 |         18 |        144 |
+| backencloud\matchingsystem\src\main\resources                                                                         |          1 |          1 |          0 |          0 |          1 |
+| backencloud\test                                                                                                      |          2 |         24 |          0 |          4 |         28 |
+| backencloud\test (Files)                                                                                              |          1 |         18 |          0 |          3 |         21 |
+| backencloud\test\src                                                                                                  |          1 |          6 |          0 |          1 |          7 |
+| backencloud\test\src\main                                                                                             |          1 |          6 |          0 |          1 |          7 |
+| backencloud\test\src\main\java                                                                                        |          1 |          6 |          0 |          1 |          7 |
+| backencloud\test\src\main\java\com                                                                                    |          1 |          6 |          0 |          1 |          7 |
+| backencloud\test\src\main\java\com\kob                                                                                |          1 |          6 |          0 |          1 |          7 |
+| backencloud\test\src\main\java\com\kob\botrunningsystem                                                               |          1 |          6 |          0 |          1 |          7 |
+| web                                                                                                                   |         46 |     14,438 |        346 |        246 |     15,030 |
+| web (Files)                                                                                                           |          6 |     11,969 |          0 |         11 |     11,980 |
+| web\public                                                                                                            |          1 |         16 |          1 |          1 |         18 |
+| web\springboot                                                                                                        |          5 |         17 |         79 |          0 |         96 |
+| web\springboot (Files)                                                                                                |          1 |          1 |          0 |          0 |          1 |
+| web\springboot\css                                                                                                    |          2 |          3 |          3 |          0 |          6 |
+| web\springboot\js                                                                                                     |          2 |         13 |         76 |          0 |         89 |
+| web\src                                                                                                               |         34 |      2,436 |        266 |        234 |      2,936 |
+| web\src (Files)                                                                                                       |          2 |         26 |          1 |          6 |         33 |
+| web\src\assets                                                                                                        |          6 |        344 |         13 |         75 |        432 |
+| web\src\assets (Files)                                                                                                |          1 |          4 |          2 |          3 |          9 |
+| web\src\assets\scripts                                                                                                |          5 |        340 |         11 |         72 |        423 |
+| web\src\components                                                                                                    |          9 |        662 |         41 |         54 |        757 |
+| web\src\components (Files)                                                                                            |          6 |        388 |         13 |         27 |        428 |
+| web\src\components\personal_center                                                                                    |          3 |        274 |         28 |         27 |        329 |
+| web\src\router                                                                                                        |          1 |        118 |          8 |         12 |        138 |
+| web\src\store                                                                                                         |          4 |        185 |          4 |         11 |        200 |
+| web\src\views                                                                                                         |         12 |      1,101 |        199 |         76 |      1,376 |
+| web\src\views (Files)                                                                                                 |          1 |         33 |         18 |          7 |         58 |
+| web\src\views\error                                                                                                   |          1 |         13 |          0 |          2 |         15 |
+| web\src\views\pk                                                                                                      |          1 |         98 |          6 |          9 |        113 |
+| web\src\views\ranklist                                                                                                |          1 |        118 |        166 |         10 |        294 |
+| web\src\views\record                                                                                                  |          2 |        232 |          2 |         18 |        252 |
+| web\src\views\test                                                                                                    |          2 |         15 |          0 |          3 |         18 |
+| web\src\views\test\star                                                                                               |          2 |         15 |          0 |          3 |         18 |
+| web\src\views\user                                                                                                    |          4 |        592 |          7 |         27 |        626 |
+| web\src\views\user\account                                                                                            |          2 |        195 |          2 |          9 |        206 |
+| web\src\views\user\bot                                                                                                |          1 |        362 |          3 |         14 |        379 |
+| web\src\views\user\profile                                                                                            |          1 |         35 |          2 |          4 |         41 |
++-----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                                              | language           | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| e:\spring\backencloud\backend\pom.xml                                                                                 | XML                |        117 |          3 |          4 |        124 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\BackendApplication.java                                   | Java               |          9 |          0 |          5 |         14 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\config\CorsConfig.java                                    | Java               |         33 |          0 |         10 |         43 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\config\MybatisConfig.java                                 | Java               |         15 |          0 |          2 |         17 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\config\RestTemplateConfig.java                            | Java               |         12 |          0 |          3 |         15 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\config\SecurityConfig.java                                | Java               |         46 |          0 |          7 |         53 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\config\WebSocketConfig.java                               | Java               |         11 |          0 |          5 |         16 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\config\filter\JwtAuthenticationTokenFilter.java           | Java               |         48 |          0 |         12 |         60 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\consumer\WebSocketServer.java                             | Java               |        159 |         22 |         20 |        201 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\consumer\utils\Cell.java                                  | Java               |         10 |          0 |          3 |         13 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\consumer\utils\Game.java                                  | Java               |        302 |          0 |         49 |        351 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\consumer\utils\JwtAuthentication.java                     | Java               |         15 |          0 |          3 |         18 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\consumer\utils\Player.java                                | Java               |         44 |          0 |          8 |         52 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\follows\AddFollowsCountController.java         | Java               |         16 |          0 |          6 |         22 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\follows\ChangeFollowsController.java           | Java               |         16 |          0 |          5 |         21 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\follows\GetFollowsController.java              | Java               |         16 |          0 |          7 |         23 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\pk\BotInfoController.java                      | Java               |         16 |          0 |          5 |         21 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\pk\IndexController.java                        | Java               |         11 |          0 |          3 |         14 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\pk\ReceiveBotMoveController.java               | Java               |         19 |          0 |          5 |         24 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\pk\StartGameController.java                    | Java               |         21 |          0 |          5 |         26 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\post\AddPostController.java                    | Java               |         17 |          0 |          5 |         22 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\ranklist\GetRankListController.java            | Java               |         19 |          0 |          5 |         24 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\record\GetRecordListController.java            | Java               |         19 |          0 |          5 |         24 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\test.java                                      | Java               |         33 |          2 |          8 |         43 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\user\GetIdController.java                      | Java               |         16 |          0 |          5 |         21 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\user\GetUserInfoController.java                | Java               |         16 |          0 |          5 |         21 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\user\account\InfoController.java               | Java               |         15 |          0 |          5 |         20 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\user\account\LoginController.java              | Java               |         18 |          0 |          4 |         22 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\user\account\RegisterController.java           | Java               |         19 |          0 |          5 |         24 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\user\bot\AddController.java                    | Java               |         16 |          0 |          5 |         21 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\user\bot\GetListController.java                | Java               |         17 |          0 |          5 |         22 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\user\bot\RemoveController.java                 | Java               |         16 |          0 |          5 |         21 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\controller\user\bot\UpdateController.java                 | Java               |         16 |          0 |          5 |         21 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\mapper\BotMapper.java                                     | Java               |          7 |          0 |          3 |         10 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\mapper\FollowsMapper.java                                 | Java               |          7 |          0 |          3 |         10 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\mapper\RecordMapper.java                                  | Java               |          7 |          0 |          3 |         10 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\mapper\UserMapper.java                                    | Java               |          7 |          0 |          3 |         10 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\pojo\Bot.java                                             | Java               |         23 |          0 |          4 |         27 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\pojo\Follows.java                                         | Java               |         22 |          0 |          4 |         26 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\pojo\Record.java                                          | Java               |         27 |          0 |          3 |         30 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\pojo\User.java                                            | Java               |         19 |          0 |          3 |         22 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\follows\AddFollowsCountService.java               | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\follows\ChangeFollowsService.java                 | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\follows\GetFollowsService.java                    | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\UserDetailsServiceImpl.java                  | Java               |         25 |          0 |          4 |         29 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\follows\AddFollowsCountServiceImpl.java      | Java               |         24 |          0 |          8 |         32 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\follows\ChangeFollowsServiceImpl.java        | Java               |         57 |          2 |         10 |         69 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\follows\GetFollowsServiceImpl.java           | Java               |         51 |          5 |         11 |         67 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\pk\ReceiveBotMoveServiceImpl.java            | Java               |         23 |          0 |          3 |         26 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\pk\StartGameServiceImpl.java                 | Java               |         13 |          0 |          3 |         16 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\post\AddPostServiceImpl.java                 | Java               |         30 |          0 |          5 |         35 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\ranklist\AddRankListServiceImpl.java         | Java               |         30 |          0 |          7 |         37 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\record\GetRecordListServiceImpl.java         | Java               |         48 |          0 |          8 |         56 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\user\GetIdServiceImpl.java                   | Java               |         29 |          0 |          6 |         35 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\user\GetUserInfoServiceImpl.java             | Java               |         28 |          0 |          8 |         36 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\user\account\InfoServiceImpl.java            | Java               |         25 |          2 |          7 |         34 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\user\account\LoginServiceImpl.java           | Java               |         30 |          0 |         10 |         40 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\user\account\RegisterServiceImpl.java        | Java               |         64 |          0 |         14 |         78 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\user\bot\AddServoceImpl.java                 | Java               |         64 |          2 |         18 |         84 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\user\bot\GetLisServiceImpl.java              | Java               |         29 |          2 |          8 |         39 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\user\bot\RemoveServiceImpl.java              | Java               |         38 |          2 |         10 |         50 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\user\bot\UpdateServiceImpl.java              | Java               |         74 |          2 |         17 |         93 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\impl\utils\UserDetailsImpl.java                   | Java               |         42 |          0 |         11 |         53 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\pk\ReceiveBotMoveService.java                     | Java               |          4 |          0 |          2 |          6 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\pk\StartGameService.java                          | Java               |          4 |          0 |          2 |          6 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\post\AddPostService.java                          | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\ranklist\GetRankListService.java                  | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\record\GetRecordListService.java                  | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\user\GetIdService.java                            | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\user\GetUserInfoService.java                      | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\user\account\InfoService.java                     | Java               |          5 |          0 |          4 |          9 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\user\account\LoginService.java                    | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\user\account\RegisterService.java                 | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\user\bot\AddService.java                          | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\user\bot\GetListService.java                      | Java               |          7 |          0 |          4 |         11 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\user\bot\RemoveService.java                       | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\service\user\bot\UpdateService.java                       | Java               |          5 |          0 |          3 |          8 |
+| e:\spring\backencloud\backend\src\main\java\com\kob\backend\utils\JwtUtil.java                                        | Java               |         53 |          0 |          9 |         62 |
+| e:\spring\backencloud\backend\src\main\resources\application.properties                                               | Java Properties    |          5 |          0 |          0 |          5 |
+| e:\spring\backencloud\backend\src\main\resources\static\index.html                                                    | HTML               |          6 |          0 |          0 |          6 |
+| e:\spring\backencloud\backend\src\main\resources\templates\pk\index.html                                              | HTML               |         10 |          0 |          0 |         10 |
+| e:\spring\backencloud\botrunningsystem\pom.xml                                                                        | XML                |         64 |          3 |          9 |         76 |
+| e:\spring\backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\BotRunningSystemApplication.java        | Java               |         11 |          0 |          2 |         13 |
+| e:\spring\backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\config\RestTemplateConfig.java          | Java               |         11 |          0 |          3 |         14 |
+| e:\spring\backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\config\SecurityConfig.java              | Java               |         21 |          0 |          3 |         24 |
+| e:\spring\backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\controller\BotRunningController.java    | Java               |         21 |          0 |          5 |         26 |
+| e:\spring\backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\service\BotRunningService.java          | Java               |          4 |          0 |          2 |          6 |
+| e:\spring\backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\service\impl\BotRunningServiceImpl.java | Java               |         14 |          0 |          3 |         17 |
+| e:\spring\backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\service\impl\utils\Bot.java             | Java               |         12 |          0 |          3 |         15 |
+| e:\spring\backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\service\impl\utils\BotPool.java         | Java               |         43 |         13 |          9 |         65 |
+| e:\spring\backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\service\impl\utils\Consumer.java        | Java               |         58 |          0 |         14 |         72 |
+| e:\spring\backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\utils\Bot.java                          | Java               |         73 |          0 |         13 |         86 |
+| e:\spring\backencloud\botrunningsystem\src\main\java\com\kob\botrunningsystem\utils\BotInterface.java                 | Java               |          4 |          0 |          2 |          6 |
+| e:\spring\backencloud\botrunningsystem\src\main\resources\application.properties                                      | Java Properties    |          1 |          0 |          0 |          1 |
+| e:\spring\backencloud\joptionpane\pom.xml                                                                             | XML                |         36 |          0 |          3 |         39 |
+| e:\spring\backencloud\joptionpane\src\main\java\FirstApp.java                                                         | Java               |          5 |          0 |          0 |          5 |
+| e:\spring\backencloud\joptionpane\src\main\java\JOp.java                                                              | Java               |          8 |          0 |          1 |          9 |
+| e:\spring\backencloud\joptionpane\src\main\java\Main.java                                                             | Java               |         77 |          0 |          8 |         85 |
+| e:\spring\backencloud\joptionpane\src\main\java\Main6.java                                                            | Java               |        105 |          0 |         20 |        125 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA2\Main.java                                                    | Java               |         41 |          0 |          5 |         46 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA2\Main2.java                                                   | Java               |         84 |          0 |         18 |        102 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA2\Main4.java                                                   | Java               |         20 |          0 |          6 |         26 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA2\Main5.java                                                   | Java               |        165 |          0 |         27 |        192 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA3\Main.java                                                    | Java               |         54 |          0 |          9 |         63 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA3\Main1.java                                                   | Java               |         10 |          0 |          3 |         13 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA3\Main4.java                                                   | Java               |         61 |          0 |         14 |         75 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA3\Main6.java                                                   | Java               |         26 |          0 |          5 |         31 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA3\Main7.java                                                   | Java               |         48 |          0 |          3 |         51 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA3\Main8.java                                                   | Java               |         22 |          0 |          7 |         29 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA3\Main9.java                                                   | Java               |        143 |          0 |         22 |        165 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA4\Main1.java                                                   | Java               |         86 |          0 |         14 |        100 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA4\Main2.java                                                   | Java               |         24 |          0 |          3 |         27 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA4\Main3.java                                                   | Java               |         33 |          0 |          3 |         36 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA4\Main4.java                                                   | Java               |         79 |          0 |         16 |         95 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA4\Main7.java                                                   | Java               |         21 |          0 |          4 |         25 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA4\Main8.java                                                   | Java               |         52 |          0 |          4 |         56 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA5\Main1.java                                                   | Java               |          0 |        121 |          0 |        121 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA5\Main2.java                                                   | Java               |         18 |          0 |          3 |         21 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA5\Main3.java                                                   | Java               |         20 |          0 |          3 |         23 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA5\Main4.java                                                   | Java               |         49 |          0 |          2 |         51 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA5\Main5.java                                                   | Java               |         38 |          0 |          8 |         46 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA5\Main6.java                                                   | Java               |         48 |          0 |         12 |         60 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA5\Main7.java                                                   | Java               |         25 |          1 |          3 |         29 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA5\Main8.java                                                   | Java               |         19 |          0 |          3 |         22 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA6\Main.java                                                    | Java               |        140 |          0 |         16 |        156 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA6\Main2.java                                                   | Java               |         76 |          0 |         12 |         88 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA6\Main3.java                                                   | Java               |         81 |          0 |         10 |         91 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA6\Main4.java                                                   | Java               |         16 |          0 |          3 |         19 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA6\Main6.java                                                   | Java               |         49 |          0 |          6 |         55 |
+| e:\spring\backencloud\joptionpane\src\main\java\cin.java                                                              | Java               |         10 |          0 |          1 |         11 |
+| e:\spring\backencloud\joptionpane\src\main\java\primes.java                                                           | Java               |         18 |          0 |          1 |         19 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验10\AnalysisResult.java                                              | Java               |         28 |          0 |          3 |         31 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验10\Fenxi.java                                                       | Java               |         15 |          0 |          2 |         17 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验10\PassWord.java                                                    | Java               |         36 |          0 |          4 |         40 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验2\one\Asterisk.java                                                 | Java               |         12 |          0 |          2 |         14 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验2\one\Fibonacciseries.java                                          | Java               |         13 |          0 |          3 |         16 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验2\one\Fibonacciseries1.java                                         | Java               |         15 |          0 |          3 |         18 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验2\one\Narcissistic.java                                             | Java               |         17 |          0 |          2 |         19 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验2\three\Tank.java                                                   | Java               |         43 |          0 |         11 |         54 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验2\three\TrankTest.java                                              | Java               |         23 |          0 |          3 |         26 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验2\two\Dog.java                                                      | Java               |         21 |          0 |          5 |         26 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验2\two\MyDog.java                                                    | Java               |          7 |          0 |          3 |         10 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验4\MainClass.java                                                    | Java               |         52 |          3 |          4 |         59 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验4\MainClass1.java                                                   | Java               |         37 |          2 |          2 |         41 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验4\MainClass2.java                                                   | Java               |         41 |          0 |         10 |         51 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验4\WeatherForecast.java                                              | Java               |         56 |          1 |          6 |         63 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验5\ColoredStar.java                                                  | Java               |         32 |          0 |         13 |         45 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验5\RandomConcentricCircles.java                                      | Java               |         28 |          0 |          7 |         35 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验5\circul.java                                                       | Java               |          6 |          0 |          2 |          8 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验三\Address.java                                                      | Java               |         21 |          0 |          7 |         28 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验三\Complex.java                                                      | Java               |         49 |          0 |         10 |         59 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验三\Equation.java                                                     | Java               |         40 |          0 |         11 |         51 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验三\Main1.java                                                        | Java               |         10 |          0 |          3 |         13 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验三\Main2.java                                                        | Java               |          8 |          0 |          2 |         10 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验三\Person.java                                                       | Java               |         36 |          0 |         10 |         46 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验三\Student.java                                                      | Java               |         62 |          0 |         16 |         78 |
+| e:\spring\backencloud\joptionpane\src\main\java\实验三\StudentTest.java                                                  | Java               |         22 |          0 |          3 |         25 |
+| e:\spring\backencloud\matchingsystem\pom.xml                                                                          | XML                |         59 |          2 |          7 |         68 |
+| e:\spring\backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\MatchingSystemApplication.java              | Java               |         11 |          0 |          2 |         13 |
+| e:\spring\backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\config\RestTemplateConfig.java              | Java               |         12 |          0 |          3 |         15 |
+| e:\spring\backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\config\SecurityConfig.java                  | Java               |         21 |          0 |          3 |         24 |
+| e:\spring\backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\controller\MatchingController.java          | Java               |         27 |          0 |          6 |         33 |
+| e:\spring\backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\service\MatchingService.java                | Java               |          5 |          0 |          2 |          7 |
+| e:\spring\backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\service\impl\MatchingServiceImpl.java       | Java               |         20 |          0 |          5 |         25 |
+| e:\spring\backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\service\impl\utils\MatchingPool.java        | Java               |        108 |          4 |         14 |        126 |
+| e:\spring\backencloud\matchingsystem\src\main\java\com\kob\matchingsystem\service\impl\utils\Player.java              | Java               |         14 |          0 |          4 |         18 |
+| e:\spring\backencloud\matchingsystem\src\main\resources\application.properties                                        | Java Properties    |          1 |          0 |          0 |          1 |
+| e:\spring\backencloud\pom.xml                                                                                         | XML                |         60 |          1 |          6 |         67 |
+| e:\spring\backencloud\test\pom.xml                                                                                    | XML                |         18 |          0 |          3 |         21 |
+| e:\spring\backencloud\test\src\main\java\com\kob\botrunningsystem\Main.java                                           | Java               |          6 |          0 |          1 |          7 |
+| e:\spring\readme.md                                                                                                   | Markdown           |         15 |          0 |          9 |         24 |
+| e:\spring\web\README.md                                                                                               | Markdown           |         19 |          0 |          6 |         25 |
+| e:\spring\web\babel.config.js                                                                                         | JavaScript         |          5 |          0 |          1 |          6 |
+| e:\spring\web\jsconfig.json                                                                                           | JSON with Comments |         19 |          0 |          1 |         20 |
+| e:\spring\web\package-lock.json                                                                                       | JSON               |     11,870 |          0 |          1 |     11,871 |
+| e:\spring\web\package.json                                                                                            | JSON               |         52 |          0 |          1 |         53 |
+| e:\spring\web\public\index.html                                                                                       | HTML               |         16 |          1 |          1 |         18 |
+| e:\spring\web\springboot\css\app.66357021.css                                                                         | CSS                |          1 |          0 |          0 |          1 |
+| e:\spring\web\springboot\css\chunk-vendors.8a42e1de.css                                                               | CSS                |          2 |          3 |          0 |          5 |
+| e:\spring\web\springboot\index.html                                                                                   | HTML               |          1 |          0 |          0 |          1 |
+| e:\spring\web\springboot\js\app.0935f41d.js                                                                           | JavaScript         |          1 |          1 |          0 |          2 |
+| e:\spring\web\springboot\js\chunk-vendors.9cae9523.js                                                                 | JavaScript         |         12 |         75 |          0 |         87 |
+| e:\spring\web\src\App.vue                                                                                             | Vue                |         21 |          1 |          4 |         26 |
+| e:\spring\web\src\assets\global.js                                                                                    | JavaScript         |          4 |          2 |          3 |          9 |
+| e:\spring\web\src\assets\scripts\AcGameObject.js                                                                      | JavaScript         |         39 |          0 |         11 |         50 |
+| e:\spring\web\src\assets\scripts\Cell.js                                                                              | JavaScript         |          8 |          0 |          0 |          8 |
+| e:\spring\web\src\assets\scripts\GameMap.js                                                                           | JavaScript         |        133 |          3 |         23 |        159 |
+| e:\spring\web\src\assets\scripts\Snake.js                                                                             | JavaScript         |        141 |          8 |         32 |        181 |
+| e:\spring\web\src\assets\scripts\Wall.js                                                                              | JavaScript         |         19 |          0 |          6 |         25 |
+| e:\spring\web\src\components\ContentField.vue                                                                         | Vue                |         14 |          0 |          2 |         16 |
+| e:\spring\web\src\components\GameMap.vue                                                                              | Vue                |         40 |          0 |          4 |         44 |
+| e:\spring\web\src\components\MatchGround.vue                                                                          | Vue                |        128 |          3 |         11 |        142 |
+| e:\spring\web\src\components\NavBar.vue                                                                               | Vue                |        121 |          8 |          4 |        133 |
+| e:\spring\web\src\components\PlayGround.vue                                                                           | Vue                |         18 |          1 |          2 |         21 |
+| e:\spring\web\src\components\ResultBoard.vue                                                                          | Vue                |         67 |          1 |          4 |         72 |
+| e:\spring\web\src\components\personal_center\UserProfileInfo.vue                                                      | Vue                |        155 |         28 |         16 |        199 |
+| e:\spring\web\src\components\personal_center\UserProfilePosts.vue                                                     | Vue                |         67 |          0 |          5 |         72 |
+| e:\spring\web\src\components\personal_center\UserProfileWrite.vue                                                     | Vue                |         52 |          0 |          6 |         58 |
+| e:\spring\web\src\main.js                                                                                             | JavaScript         |          5 |          0 |          2 |          7 |
+| e:\spring\web\src\router\index.js                                                                                     | JavaScript         |        118 |          8 |         12 |        138 |
+| e:\spring\web\src\store\index.js                                                                                      | JavaScript         |         19 |          0 |          2 |         21 |
+| e:\spring\web\src\store\pk.js                                                                                         | JavaScript         |         54 |          0 |          5 |         59 |
+| e:\spring\web\src\store\record.js                                                                                     | JavaScript         |         26 |          0 |          0 |         26 |
+| e:\spring\web\src\store\user.js                                                                                       | JavaScript         |         86 |          4 |          4 |         94 |
+| e:\spring\web\src\views\error\NotFound.vue                                                                            | Vue                |         13 |          0 |          2 |         15 |
+| e:\spring\web\src\views\pk\PkIndexView.vue                                                                            | Vue                |         98 |          6 |          9 |        113 |
+| e:\spring\web\src\views\ranklist\RanklistIndexView.vue                                                                | Vue                |        118 |        166 |         10 |        294 |
+| e:\spring\web\src\views\record\RecordContentView.vue                                                                  | Vue                |         14 |          0 |          3 |         17 |
+| e:\spring\web\src\views\record\RecordIndexView.vue                                                                    | Vue                |        218 |          2 |         15 |        235 |
+| e:\spring\web\src\views\test.vue                                                                                      | Vue                |         33 |         18 |          7 |         58 |
+| e:\spring\web\src\views\test\star\index.js                                                                            | JavaScript         |          5 |          0 |          2 |          7 |
+| e:\spring\web\src\views\test\star\star.vue                                                                            | Vue                |         10 |          0 |          1 |         11 |
+| e:\spring\web\src\views\user\account\UserAccountLoginView.vue                                                         | Vue                |         98 |          0 |          6 |        104 |
+| e:\spring\web\src\views\user\account\UserAccountRegisterView.vue                                                      | Vue                |         97 |          2 |          3 |        102 |
+| e:\spring\web\src\views\user\bot\UserBotIndexView.vue                                                                 | Vue                |        362 |          3 |         14 |        379 |
+| e:\spring\web\src\views\user\profile\UserProfileView.vue                                                              | Vue                |         35 |          2 |          4 |         41 |
+| e:\spring\web\vue.config.js                                                                                           | JavaScript         |          4 |          0 |          1 |          5 |
+| Total                                                                                                                 |                    |     19,864 |        541 |      1,292 |     21,697 |
++-----------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

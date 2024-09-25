@@ -1,3 +1,4 @@
+package PTAJAVA5;
 import java.util.*;
 class Rect{
     double l,h,z;

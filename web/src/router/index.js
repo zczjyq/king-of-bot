@@ -10,6 +10,7 @@ import UserAccountRegisterView from '../views/user/account/UserAccountRegisterVi
 import store from '../store/index'
 import UserProfileView from '../views/user/profile/UserProfileView.vue';
 import test from '../views/test.vue';
+import showImage from '../views/showImage.vue'
 
 const routes = [
   // PK界面
@@ -116,6 +117,16 @@ const routes = [
       requestAuth: false,
     }
   },
+
+    // MYSQL课设演示
+    {
+      path: '/showImage/',
+      name: 'showImage',
+      component: showImage,
+      meta: {
+        requestAuth: false,
+      }
+    },
   {
     path: "/:catchAll(.*)*",
     redirect: "/404/"
