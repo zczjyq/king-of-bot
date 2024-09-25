@@ -91,7 +91,7 @@ export default {
       console.log(username);
       console.log(store.state.user.token);
       $.ajax({
-        url: "http://localhost:3000/api/user/getid/",
+        url: URL + "/api/user/getid/",
         type: "post",
         data: {
           username: username,

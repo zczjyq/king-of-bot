@@ -51,6 +51,7 @@ import { useRoute } from "vue-router";
 import $ from "jquery";
 import { useStore } from "vuex";
 import { ref } from "vue";
+import URL from "@/store/constants.js"
 
 export default {
   name: "UserProfileInfo",
@@ -67,10 +68,12 @@ export default {
     let followerCount = ref(0);
     let photo = ref("");
     let rating = ref("");
+    console.log(URL);
 
     // 获取个人信息
     $.ajax({
-      url: "http://localhost:3000/api/user/getInfo/",
+      
+      url: URL + "/api/user/getInfo/",
       data: {
         id: userId,
       },
@@ -105,7 +108,7 @@ export default {
     // });
     const follow = () => {
       $.ajax({
-        url: "http://localhost:3000/api/follows/change/",
+        url: URL + "/api/follows/change/",
         data: {
           follower: store.state.user.id,
           following: userId,
@@ -121,7 +124,7 @@ export default {
             status.value = "follow";
             // 更新粉丝数量
             $.ajax({
-              url: "http://localhost:3000/api/follows/add/",
+              url: URL + "/api/follows/add/",
               data: {
                 user_id: userId,
                 change: 1,
@@ -142,7 +145,7 @@ export default {
 
     const unfollow = () => {
       $.ajax({
-        url: "http://localhost:3000/api/follows/change/",
+        url: "/api/follows/change/",
         data: {
           follower: store.state.user.id,
           following: userId,

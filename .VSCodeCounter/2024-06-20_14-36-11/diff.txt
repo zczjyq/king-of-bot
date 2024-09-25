@@ -1,0 +1,51 @@
+Date : 2024-06-20 14:36:11
+Directory : e:\spring
+Total : 10 files,  657 codes, 1 comments, 28 blanks, all 686 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Markdown   |          4 |        420 |          0 |         26 |        446 |
+| CSV        |          2 |        221 |          0 |          0 |        221 |
+| JavaScript |          1 |          9 |          1 |          1 |         11 |
+| Vue        |          1 |          5 |          0 |          1 |          6 |
+| JSON       |          1 |          1 |          0 |          0 |          1 |
+| Java       |          1 |          1 |          0 |          0 |          1 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                   |         10 |        657 |          1 |         28 |        686 |
+| .VSCodeCounter                                                      |          7 |        642 |          0 |         26 |        668 |
+| .VSCodeCounter\2024-06-13_11-58-56                                  |          7 |        642 |          0 |         26 |        668 |
+| backencloud                                                         |          1 |          1 |          0 |          0 |          1 |
+| backencloud\joptionpane                                             |          1 |          1 |          0 |          0 |          1 |
+| backencloud\joptionpane\src                                         |          1 |          1 |          0 |          0 |          1 |
+| backencloud\joptionpane\src\main                                    |          1 |          1 |          0 |          0 |          1 |
+| backencloud\joptionpane\src\main\java                               |          1 |          1 |          0 |          0 |          1 |
+| backencloud\joptionpane\src\main\java\PTAJAVA5                      |          1 |          1 |          0 |          0 |          1 |
+| web                                                                 |          2 |         14 |          1 |          2 |         17 |
+| web\src                                                             |          2 |         14 |          1 |          2 |         17 |
+| web\src\router                                                      |          1 |          9 |          1 |          1 |         11 |
+| web\src\views                                                       |          1 |          5 |          0 |          1 |          6 |
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                            | language   | code       | comment    | blank      | total      |
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| e:\spring\.VSCodeCounter\2024-06-13_11-58-56\details.md             | Markdown   |        226 |          0 |          6 |        232 |
+| e:\spring\.VSCodeCounter\2024-06-13_11-58-56\diff-details.md        | Markdown   |          9 |          0 |          6 |         15 |
+| e:\spring\.VSCodeCounter\2024-06-13_11-58-56\diff.csv               | CSV        |          2 |          0 |          0 |          2 |
+| e:\spring\.VSCodeCounter\2024-06-13_11-58-56\diff.md                | Markdown   |         12 |          0 |          7 |         19 |
+| e:\spring\.VSCodeCounter\2024-06-13_11-58-56\results.csv            | CSV        |        219 |          0 |          0 |        219 |
+| e:\spring\.VSCodeCounter\2024-06-13_11-58-56\results.json           | JSON       |          1 |          0 |          0 |          1 |
+| e:\spring\.VSCodeCounter\2024-06-13_11-58-56\results.md             | Markdown   |        173 |          0 |          7 |        180 |
+| e:\spring\backencloud\joptionpane\src\main\java\PTAJAVA5\Main4.java | Java       |          1 |          0 |          0 |          1 |
+| e:\spring\web\src\router\index.js                                   | JavaScript |          9 |          1 |          1 |         11 |
+| e:\spring\web\src\views\showImage.vue.vue                           | Vue        |          5 |          0 |          1 |          6 |
+| Total                                                               |            |        657 |          1 |         28 |        686 |
++---------------------------------------------------------------------+------------+------------+------------+------------+------------+

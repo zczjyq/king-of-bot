@@ -1,11 +1,26 @@
 <template>
-  <ContentField> </ContentField>
+  <ContentField>
+    <button
+      type="button"
+      hover-class="button-hover"
+      class="btn btn-secondary btn-sm"
+      @click="testAddSignature"
+    >测试增加签名</button>
+
+    <button
+      type="button"
+      hover-class="button-hover"
+      class="btn btn-secondary btn-sm"
+      @click="testgetSignature"
+    >测试查询签名</button>
+    </ContentField>
 </template>
       
       <script>
 import ContentField from "../components/ContentField";
 import $ from "jquery";
 import { useStore } from "vuex";
+import URL from "@/store/constants.js"
 
 export default {
   name: "UserProfileView",
@@ -15,27 +30,11 @@ export default {
 
   setup() {
     const store = useStore();
-    // $.ajax({
-    //   url: "http://localhost:3000/api/follows/change/",
-    //   data: {
-    //     follower: 1,
-    //     following: 2,
-    //     status: "unfollow",
-    //   },
-    //   type: "get",
-
-    //   headers: {
-    //     Authorization: "Bearer " + store.state.user.token,
-    //   },
-    //   success(resp) {
-    //     console.log(resp);
-    //   },
-    // });
-    $.ajax({
-      url: "http://localhost:3000/api/user/posts/add/",
+    const testAddSignature = () => {
+      $.ajax({
+      url: URL + "/api/user/signature/update/",
       data: {
-        id: 1,
-        post: "hello",
+        signature: "test",
       },
       type: "post",
 
@@ -46,11 +45,26 @@ export default {
         console.log(resp);
       },
     });
-  },
+    }
+    const testgetSignature = () => {
+      $.ajax({
+      url: URL + "/api/user/signature/get/",
+      type: "get",
 
-  //   return {
-  //     ContentFiled
-  //   }
+      headers: {
+        Authorization: "Bearer " + store.state.user.token,
+      },
+      success(resp) {
+        console.log(resp);
+      },
+    });
+    }
+
+    return {
+      testAddSignature,
+      testgetSignature
+    }
+  },
 };
 </script>
       
