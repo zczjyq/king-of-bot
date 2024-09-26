@@ -47,6 +47,7 @@ import { ref } from "vue";
 // import { useStore } from "vuex";
 import $ from "jquery";
 import router from "@/router/index";
+import { URL } from "@/store/constants.js";
 
 export default {
   components: {
@@ -61,7 +62,7 @@ export default {
     const register = () => {
       error_message.value = "";
       $.ajax({
-        url: "https://app6142.acapp.acwing.com.cn/api/user/account/register/",
+        url: URL + "/api/user/account/register/",
         type: "post",
         data: {
           username: username.value,

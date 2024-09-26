@@ -249,6 +249,7 @@ import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-chrome";
 import "ace-builds/src-noconflict/ext-language_tools";
+import URL from "@/store/constants.js"
 
 export default {
   components: {
@@ -274,7 +275,7 @@ export default {
 
     const refresh_bots = () => {
       $.ajax({
-        url: "https://app6142.acapp.acwing.com.cn/api/user/bot/getlist/",
+        url: URL + "/api/user/bot/getlist/",
         type: "get",
         headers: {
           Authorization: "Bearer " + store.state.user.token,
@@ -290,7 +291,7 @@ export default {
     const add_bot = () => {
       botadd.error_message = "";
       $.ajax({
-        url: "https://app6142.acapp.acwing.com.cn/api/user/bot/add/",
+        url: URL + "/api/user/bot/add/",
         type: "post",
         data: {
           title: botadd.title,
@@ -317,7 +318,7 @@ export default {
     const remove_bot = (bot) => {
       botadd.error_message = "";
       $.ajax({
-        url: "https://app6142.acapp.acwing.com.cn/api/user/bot/remove/",
+        url: URL + "/api/user/bot/remove/",
         type: "post",
         data: {
           bot_id: bot.id,
@@ -338,7 +339,7 @@ export default {
 
     const update_bot = (bot) => {
       $.ajax({
-        url: "https://app6142.acapp.acwing.com.cn/api/user/bot/update/",
+        url: URL + "/api/user/bot/update/",
         type: "post",
         data: {
           bot_id: bot.id,
