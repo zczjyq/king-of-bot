@@ -73,6 +73,7 @@ import { useStore } from "vuex";
 import { ref } from "vue";
 import $ from "jquery";
 import router from "../../router/index";
+import URL from "@/store/constants.js"
 
 export default {
   components: {
@@ -142,7 +143,7 @@ export default {
     const pull_page = (page) => {
       current_page = page;
       $.ajax({
-        url: "https://app6142.acapp.acwing.com.cn/api/record/getlist/",
+        url: URL + "/api/record/getlist/",
         data: {
           page,
         },

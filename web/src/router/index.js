@@ -11,6 +11,8 @@ import store from '../store/index'
 import UserProfileView from '../views/user/profile/UserProfileView.vue';
 import test from '../views/test.vue';
 import showImage from '../views/showImage.vue'
+import UserReviseView from '../views/user/revise/UserReviseView.vue'
+import UserCenterView from '@/views/user/center/UserCenterView.vue';
 
 const routes = [
   // PK界面
@@ -98,7 +100,7 @@ const routes = [
     }
   },
 
-  // 个人中心
+  // 发帖
   {
     path: '/userprofile/:userId/',
     name: 'userprofile',
@@ -107,7 +109,22 @@ const routes = [
       requestAuth: true,
     }
   },
-
+  {
+    path: '/usercenter/:userId/',
+    name: 'usercenter',
+    component: UserCenterView,
+    meta: {
+      requestAuth: true,
+    }
+  },
+  {
+    path: '/userrevise/:userId/',
+    name: 'userrevise',
+    component: UserReviseView,
+    meta: {
+      requestAuth: true,
+    }
+  },
   // 测试界面
   {
     path: '/test/',

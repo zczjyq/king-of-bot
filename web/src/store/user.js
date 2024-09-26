@@ -1,4 +1,6 @@
 import $ from 'jquery';
+import URL from "@/store/constants.js"
+
 export default {
     state: {
         id: "",
@@ -8,6 +10,7 @@ export default {
         is_login: false,
         show_content: false,
         followerCount: "",
+        signature: "",
     },
     getters: {
     },
@@ -23,6 +26,11 @@ export default {
             state.username = user.username;
             state.photo = user.photo;
             state.is_login = user.is_login;
+            state.signature = user.signature;
+        },
+
+        updateSignature(state, signature) {
+            state.signature = signature;
         },
 
         // 更新用户令牌
@@ -42,7 +50,7 @@ export default {
     actions: {
         login(context, data) {
             $.ajax({
-                url: "https://app6142.acapp.acwing.com.cn/api/user/account/token/",
+                url: URL + "/api/user/account/token/",
                 type: "post",
                 data: {
                     username: data.username,
@@ -60,9 +68,26 @@ export default {
 
             });
         },
-        getinfo(context, data) {
+        getSignature(context) {
             $.ajax({
-                url: "https://app6142.acapp.acwing.com.cn/api/user/account/info/",
+                url: URL + "/api/user/signature/get/",
+                type: "get",
+                headers: {
+                    Authorization:
+                        "Bearer " + context.state.token,
+                },
+                success(resp) {
+                    console.log(resp.error_message);
+                    context.commit("updateSignature", resp.error_message);
+                }
+
+            })
+        },
+        getinfo(context, data) {
+
+
+            $.ajax({
+                url: URL + "/api/user/account/info/",
                 type: "get",
                 headers: {
                     Authorization:

@@ -62,7 +62,27 @@
                     name: 'userprofile',
                     params: { userId: parseInt($store.state.user.id) },
                   }"
+                  >发帖</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  class="dropdown-item"
+                  :to="{
+                    name: 'usercenter',
+                    params: { userId: parseInt($store.state.user.id) },
+                  }"
                   >个人中心</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  class="dropdown-item"
+                  :to="{
+                    name: 'userrevise',
+                    params: { userId: parseInt($store.state.user.id) },
+                  }"
+                  >用户设置</router-link
                 >
               </li>
               <li>
