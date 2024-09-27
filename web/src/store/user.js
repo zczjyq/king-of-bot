@@ -11,6 +11,7 @@ export default {
         show_content: false,
         followerCount: "",
         signature: "",
+        rating: "",
     },
     getters: {
     },
@@ -27,6 +28,7 @@ export default {
             state.photo = user.photo;
             state.is_login = user.is_login;
             state.signature = user.signature;
+            state.rating = user.rating;
         },
 
         updateSignature(state, signature) {
