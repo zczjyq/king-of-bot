@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Service
 public class RegisterServiceImpl implements RegisterService {
@@ -68,7 +67,9 @@ public class RegisterServiceImpl implements RegisterService {
 
         String encodedPassword = passwordEncoder.encode(password);
         String photo = "https://www.acwing.com/user/profile/index/";
-        User user = new User(null, username, encodedPassword, photo, 1500, 0, "0", "");
+
+        List<Map<Date, Integer>> ratingList = new ArrayList<>();
+        User user = new User(null, username, encodedPassword, photo, 1500, 0, "0", "", new Date(), "", ratingList);
         userMapper.insert(user);
 
         map.put("error_message", "success");
