@@ -125,6 +125,11 @@ const routes = [
       requestAuth: true,
     }
   },
+  {
+    path: '/feedback/',
+    name: 'feedback',
+    component: () => import('@/views/feedback/feedBackView.vue'),
+  },
   // 测试界面
   {
     path: '/test/',
@@ -134,6 +139,7 @@ const routes = [
       requestAuth: false,
     }
   },
+  
 
     // MYSQL课设演示
     {

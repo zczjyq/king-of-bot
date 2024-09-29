@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div id="app">
     <!-- <MouseTrail /> -->
     <Particles
@@ -9,6 +9,7 @@
     />
     <NavBar></NavBar>
     <router-view></router-view>
+    <button class="feedback-button" @click="goToFeedback">问题反馈</button>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import NavBar from "@/components/NavBar.vue";
 import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
+import { useRouter } from "vue-router";
 // import MouseTrail from './components/MouseTrail.vue';
 // 粒子库初始化
 const particlesInit = async (engine) => {
@@ -26,6 +28,12 @@ const particlesInit = async (engine) => {
 
 const particlesLoaded = (container) => {
   console.log(container);
+};
+
+const router = useRouter(); // 使用 useRouter 获取路由实例
+
+const goToFeedback = () => {
+  router.push("/feedback"); // 使用 router.push 进行导航
 };
 
 // 粒子库 options 配置
@@ -58,14 +66,13 @@ const options = {
     },
     // 定义交互模式的具体配置
     modes: {
-      
       // 气泡模式，当鼠标接近时粒子会变大
-    bubble: {
-      distance: 250,   // 水波纹效果的影响范围，点击处250px范围内的粒子会受影响
-      size: 10,        // 点击时粒子扩散后的最大尺寸
-      duration: 2,     // 水波纹效果持续2秒
-      opacity: 0.8,    // 水波纹效果下粒子的透明度变化
-    },
+      bubble: {
+        distance: 250, // 水波纹效果的影响范围，点击处250px范围内的粒子会受影响
+        size: 10, // 点击时粒子扩散后的最大尺寸
+        duration: 2, // 水波纹效果持续2秒
+        opacity: 0.8, // 水波纹效果下粒子的透明度变化
+      },
       // 点击时新增粒子的数量
       push: {
         quantity: 2, // 每次点击增加5个粒子
@@ -144,7 +151,6 @@ const options = {
   // 启用高分辨率显示支持
   detectRetina: true,
 };
-
 </script>
 <style>
 /* 设置背景为渐变 */
@@ -176,5 +182,22 @@ NavBar,
 router-view {
   position: relative;
   z-index: 10; /* 让内容覆盖在粒子效果上 */
+}
+
+.feedback-button {
+  position: fixed; /* 固定位置 */
+  bottom: 20px; /* 距离底部20px */
+  right: 20px; /* 距离右边20px */
+  padding: 10px 15px; /* 按钮内边距 */
+  background-color: #007bff; /* 按钮背景色 */
+  color: white; /* 按钮文字颜色 */
+  border: none; /* 去掉边框 */
+  border-radius: 5px; /* 圆角 */
+  cursor: pointer; /* 鼠标悬停时显示手型 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+}
+
+.feedback-button:hover {
+  background-color: #0056b3; /* 悬停时的背景色 */
 }
 </style>
