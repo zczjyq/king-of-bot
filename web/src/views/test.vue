@@ -55,6 +55,15 @@
     >
       测试获取其他用户信息
     </button>
+    <br />
+    <button
+      type="button"
+      hover-class="button-hover"
+      class="btn btn-secondary btn-sm"
+      @click="testSendMail"
+    >
+      发送邮件
+    </button>
   </ContentField>
 </template>
       
@@ -130,12 +139,32 @@ export default {
           console.log(resp);
         },
       });
+    };
+    const testSendMail = () => {
+      $.ajax({
+        url: URL + "/api/feedback/",
+        type: "get",
+        data: {
+          username: "123",
+          email: "123@qq.com",
+          content: "123",
+          description: "123",
+        },
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+
+        success(resp) {
+          console.log(resp);
+        },
+      });
     }
     return {
       testAddSignature,
       testgetSignature,
       testGetRaking,
       testGetOtherUser,
+      testSendMail,
       signature,
     };
   },
