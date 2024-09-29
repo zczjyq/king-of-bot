@@ -22,6 +22,7 @@ import TaskCenter from "@/components/userRevise/TaskCenter.vue";
 import MessageCenter from "@/components/userRevise/MessageCenter.vue";
 import MyOrder from "@/components/userRevise/MyOrder.vue";
 import RechargeCenter from "@/components/userRevise/RechargeCenter.vue";
+import PasswordRevise from "@/components/userRevise/PasswordRevise.vue";
 
 export default {
   name: "UserReviseView",
@@ -34,6 +35,7 @@ export default {
     MessageCenter,
     MyOrder,
     RechargeCenter,
+    PasswordRevise,
   },
   data() {
     return {
@@ -49,6 +51,7 @@ export default {
         "MessageCenter",
         "MyOrder",
         "RechargeCenter",
+        "PasswordRevise",
       ];
       this.currentComponent = components[index]; // 根据选中的索引更新当前组件
     },

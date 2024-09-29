@@ -47,7 +47,7 @@ import { ref } from "vue";
 // import { useStore } from "vuex";
 import $ from "jquery";
 import router from "@/router/index";
-import { URL } from "@/store/constants.js";
+import URL from "@/store/constants.js";
 
 export default {
   components: {
@@ -59,6 +59,8 @@ export default {
     let password = ref("");
     let comfirmedPassword = ref("");
     let error_message = ref("");
+    console.log(URL);
+    
     const register = () => {
       error_message.value = "";
       $.ajax({

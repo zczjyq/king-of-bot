@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- <MouseTrail /> -->
     <Particles
       id="tsparticles"
       :particlesInit="particlesInit"
@@ -16,7 +17,7 @@ import NavBar from "@/components/NavBar.vue";
 import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
-
+// import MouseTrail from './components/MouseTrail.vue';
 // 粒子库初始化
 const particlesInit = async (engine) => {
   //await loadFull(engine);
@@ -143,8 +144,8 @@ const options = {
   // 启用高分辨率显示支持
   detectRetina: true,
 };
-</script>
 
+</script>
 <style>
 /* 设置背景为渐变 */
 /* 设置从上到下的渐变背景 */
