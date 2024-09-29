@@ -13,6 +13,7 @@
       <h5 class="username">{{ user.username }}</h5>
       <!-- 签名 -->
       <p class="signature">{{ user.signature }}</p>
+      <div class="userId">UID: {{ String(user.id).padStart(6, "0") }}</div>
     </div>
     <ul
       class="list-group list-group-flush"
@@ -24,18 +25,18 @@
           <div>积分</div>
         </div>
         <div class="col" style="color: rgb(40, 199, 111)">
-          <div class="number_bold">{{ ranking }}</div>
+          <div class="number_bold">{{ user.ranking }}</div>
           <div>排名</div>
         </div>
         <div class="col" style="color: rgb(256, 159, 67)">
-          <div class="number_bold">{{ follows }}</div>
+          <div class="number_bold">{{ user.follows }}</div>
           <div>粉丝数</div>
         </div>
       </div>
     </ul>
   </div>
   <div class="card" style="width: 1000px; margin: 40px auto 40px">
-    <ul class="nav nav-tabs" style="font-size: large;">
+    <ul class="nav nav-tabs nav-fill">
       <li class="nav-item">
         <a
           class="nav-link"
@@ -91,20 +92,28 @@
               "
             >
               <div style="text-align: left">
-                排&emsp;&emsp;名:&ensp; {{ ranking }}
+                排&emsp;&emsp;名:&ensp; {{ user.ranking }}
               </div>
               <div style="text-align: left">
                 积&emsp;&emsp;分:&ensp; {{ user.rating }}
               </div>
+              <div style="text-align: left">
+                粉丝数&emsp;:&ensp; {{ user.follows }}
+              </div>
               <div style="text-align: left">所属战队:&ensp;暂无</div>
-              <div style="text-align: left">注册时间:&ensp; data</div>
+              <div style="text-align: left">
+                注册时间:&ensp; {{ user.registerTime }}
+              </div>
             </div>
           </div>
-          <div class="col-2">123</div>
+          <div class="col-2"></div>
+          <!-- 绘制雷达图 -->
+          <div class="col-4">
+            <canvas id="radarChart" width="300" height="300"></canvas>
+          </div>
         </div>
-
-        <h3>个人消息</h3>
-        <p>这里是个人消息的内容。</p>
+        <!-- 绘制折线图 -->
+        <LineChart />
       </div>
 
       <!-- 个人投稿内容 -->
@@ -172,12 +181,25 @@ import { useStore } from "vuex";
 import { ref } from "vue";
 import $ from "jquery";
 import URL from "@/store/constants.js";
-
+import LineChart from "@/components/userInfo/LineChart.vue"; // 引入 LineChart 组件
+import { useRoute } from "vue-router";
+import {
+  Chart,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  // Legend,/
+  RadarController,
+} from "chart.js";
 export default {
   name: "UserProfileView",
   components: {
     // ContentField,
+    LineChart,
   },
+
   data() {
     return {
       activeTab: "personalMessages", // 默认激活个人消息
@@ -186,41 +208,89 @@ export default {
   setup() {
     const store = useStore();
     const posts = reactive({});
-    let ranking = ref(0);
-    let follows = ref(0);
+    let user = ref({});
+
+    // 绘制折线图
+    const labels = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"];
+    const data = [1500, 1600, 1580, 1650, 1700]; // 天梯分数据
+
+    const route = useRoute();
+    const userId = route.params.userId; // 获取传递的用户ID
 
     onMounted(() => {
-      store.dispatch("getSignature");
-      // 获得用户排名
-      console.log("开始获取排名");
-
       $.ajax({
-        url: URL + "/api/user/ranking/get/",
+        url: URL + "/api/otheruserinfo/",
         type: "get",
-
+        data: {
+          id: userId,
+        },
         headers: {
           Authorization: "Bearer " + store.state.user.token,
         },
         success(resp) {
-          ranking.value = resp;
+          user.value = resp;
           console.log(resp);
+          const date = new Date(user.value.registerTime);
+          const year = date.getFullYear();
+          const month = String(date.getMonth() + 1).padStart(2, "0"); // 月份从0开始
+          const day = String(date.getDate()).padStart(2, "0");
+          user.value.registerTime = `${year}-${month}-${day}`; // 格式化为"YYYY-MM"
         },
       });
 
-      $.ajax({
-        url: URL + "/api/user/follow/get/",
-        type: "get",
+      // 雷达图
+      // 手动注册雷达图相关的组件
+      Chart.register(
+        RadialLinearScale,
+        PointElement,
+        LineElement,
+        Filler,
+        Tooltip,
+        // Legend,
+        RadarController
+      );
+
+      const ctx = document.getElementById("radarChart").getContext("2d");
+      new Chart(ctx, {
+        type: "radar",
         data: {
-          username: store.state.user.username,
+          labels: ["Strength", "Speed", "POWE", "TEST", "ID"],
+          datasets: [
+            {
+              label: "Player Stats",
+              data: [65, 59, 90, 81, 56],
+              backgroundColor: "rgba(54, 162, 235, 0.2)",
+              borderColor: "rgba(54, 162, 235, 1)",
+              borderWidth: 1,
+            },
+          ],
         },
-        success(resp) {
-          follows.value = resp;
+        options: {
+          maintainAspectRatio: false, // 禁用保持宽高比
+          aspectRatio: 2, // 设置宽高比，值越大图表越宽
+          scales: {
+            r: {
+              angleLines: {
+                display: false,
+              },
+              suggestedMin: 0,
+              suggestedMax: 100,
+            },
+          },
+          animation: {
+            duration: 1000, // 动画持续时间
+            easing: "easeInOutBounce", // 动画的效果
+          },
         },
       });
     });
-    let user = ref(store.state.user);
 
-    return { posts, user, ranking, follows };
+    return {
+      labels,
+      data,
+      user,
+      posts,
+    };
   },
 };
 </script>
@@ -255,5 +325,23 @@ export default {
   font-weight: bold;
   font-size: 20px;
   /* margin-top: 10px; */
+}
+.nav-pills .nav-link {
+  background-color: #f8f9fa; /* 默认背景色 */
+  color: #495057; /* 默认文本颜色 */
+  font-size: 16px; /* 修改字体大小 */
+  padding: 10px 20px; /* 调整内边距 */
+  border-radius: 5px; /* 圆角效果 */
+}
+
+.nav-pills .nav-link.active {
+  background-color: #007bff; /* 选中状态背景色 */
+  color: #ffffff; /* 选中状态文本颜色 */
+}
+
+.userId {
+  color: gray;
+  font-size: 10px;
+  /* text-align: center; */
 }
 </style>
