@@ -1,33 +1,34 @@
 <template>
   <ContentField>
-    <h2 style="text-align: center; margin-bottom: 20px;">个人排名表</h2> <!-- 添加标题 -->
-    <table class="table table-striped table-hover" style="text-align: center">
+    <h2 style="text-align: center; margin-bottom: 20px">个人排名表</h2>
+    <!-- 添加标题 -->
+    <table class="table table-striped table-hover" style="text-align: left">
       <thead>
         <tr>
-          <th style="width: 5%">排名</th>
-          <th style="width: 7%">玩家</th>
-          <th style="width: 20%">签名</th>
-          
+          <th style="width: 8%">排名</th>
+
+          <th style="width: 16%">玩家</th>
+          <th style="width: 23%">签名</th>
+
           <th style="width: 20%">天梯分</th>
           <th style="width: 20%">最后一次游玩时间</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(user, index) in users" :key="user.id">
-          <td>{{ index + 1 + (current_page - 1) * 10}}</td> <!-- 这里添加排名 -->
-          
-          <td>
-            <img :src="user.a_photo" alt="" class="record-user-photo" />
-            &nbsp;
-            <span class="record-user-username">{{ user.username }}</span>
+          <td style="text-align: center">{{ index + 1 + (current_page - 1) * 10 }}</td>
+          <!-- 这里添加排名 -->
+
+          <td class="user-info" @click="getId(user.id)" style="cursor: pointer">
+            <img :src="user.photo" alt="" class="record-user-photo" />
+            <span class="record-user-username" >{{ user.username }}</span>
           </td>
-          <td>签名</td> <!-- 这里添加排名 -->
+          <td> {{ user.signature }}</td>
+          <!-- 这里添加排名 -->
           <td>
             {{ user.rating }}
           </td>
-          <td>
-            最后一次游玩时间
-          </td>
+          <td>最后一次游玩时间</td>
         </tr>
       </tbody>
     </table>
@@ -59,7 +60,8 @@ import ContentField from "../../components/ContentField.vue";
 import { useStore } from "vuex";
 import { ref } from "vue";
 import $ from "jquery";
-import URL from "@/store/constants.js"
+import URL from "@/store/constants.js";
+import router from "../../router/index";
 
 export default {
   components: {
@@ -96,11 +98,10 @@ export default {
     };
 
     const pull_page = (page) => {
-      
       current_page.value = page;
       console.log("请求数据中" + current_page.value);
       console.log("开始请求数据");
-      
+
       $.ajax({
         url: URL + "/api/ranklist/getlist/",
         data: {
@@ -125,24 +126,47 @@ export default {
         },
       });
     };
+
+    const getId = (id) => {
+      router.push({
+        params: { userId: id },
+        name: "usercenter",
+      });
+    };
+
     pull_page(current_page.value);
 
     return {
       users,
       pages,
       click_page,
-      current_page
+      current_page,
+      getId,
     };
   },
 };
 </script>
 
 <style scoped>
-img.record-user-photo {
-  width: 5vh;
-  border-radius: 50%;
+/* 让图片靠左，文字紧随其后 */
+.user-info {
+  text-align: left; /* 确保整个单元格内容靠左对齐 */
 }
 
+/* 将图片设置为固定大小并靠左浮动 */
+img.record-user-photo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px; /* 给图片和用户名之间添加一些间距 */
+}
+
+/* 确保用户名和图片在同一行，且紧随图片显示 */
+.record-user-username {
+  display: inline-block;
+  vertical-align: middle;
+  color: rgb(0, 129, 255);
+}
 .word {
   border-top: 50px;
   border-bottom: 50px;

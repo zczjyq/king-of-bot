@@ -12,23 +12,15 @@
       </thead>
       <tbody>
         <tr v-for="record in records" :key="record.record.id">
-          <td>
+          <td @click="getId(record.a_username)" style="cursor: pointer">
             <img :src="record.a_photo" alt="" class="record-user-photo" />
             &nbsp;
-            <span
-              class="record-user-username"
-              @click="getId(record.a_username)"
-              >{{ record.a_username }}</span
-            >
+            <span class="record-user-username">{{ record.a_username }}</span>
           </td>
-          <td>
+          <td @click="getId(record.b_username)" style="cursor: pointer">
             <img :src="record.b_photo" alt="" class="record-user-photo" />
             &nbsp;
-            <span
-              class="record-user-username"
-              @click="getId(record.b_username)"
-              >{{ record.b_username }}</span
-            >
+            <span class="record-user-username">{{ record.b_username }}</span>
           </td>
           <td>{{ record.result }}</td>
           <td class="word">{{ record.record.createtime }}</td>
@@ -73,7 +65,7 @@ import { useStore } from "vuex";
 import { ref } from "vue";
 import $ from "jquery";
 import router from "../../router/index";
-import URL from "@/store/constants.js"
+import URL from "@/store/constants.js";
 
 export default {
   components: {
@@ -108,7 +100,7 @@ export default {
           // 在 AJAX 请求成功后执行后续代码
           router.push({
             params: { userId: id.value },
-            name: "userprofile",
+            name: "usercenter",
           });
         },
         error(resp) {
