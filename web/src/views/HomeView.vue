@@ -2,12 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-9">
-        <div
+        <CarouselComp
           class="card_zczjyq card"
           style="background-color: lightblue; height: 310px"
-        >
-          轮播图
-        </div>
+        />
         <div
           class="card_zczjyq card"
           style="background-color: white; height: 40px"
@@ -84,7 +82,11 @@
             <h6
               class="modal-title"
               id="signInRulesLabel"
-              style="font-weight: bold; color: rgb(80, 80, 80); cursor: pointer !important"
+              style="
+                font-weight: bold;
+                color: rgb(80, 80, 80);
+                cursor: pointer !important;
+              "
             >
               签到规则
             </h6>
@@ -123,7 +125,7 @@
 <script setup>
 // import { Modal } from "bootstrap";
 import SignIn from "@/components/home/SignIn.vue";
-
+import CarouselComp from "@/components/home/CarouselComp.vue";
 
 // 通过 Bootstrap API 显示模态框
 // const openSignInRulesModal = () => {
