@@ -64,6 +64,23 @@
     >
       发送邮件
     </button>
+    <br />
+    <button
+      type="button"
+      hover-class="button-hover"
+      class="btn btn-secondary btn-sm"
+      @click="testGetSignInInfo"
+    >
+      获取签到信息
+    </button>
+    <button
+      type="button"
+      hover-class="button-hover"
+      class="btn btn-secondary btn-sm"
+      @click="testPostSignIn"
+    >
+      获取签到
+    </button>
   </ContentField>
 </template>
       
@@ -158,8 +175,36 @@ export default {
           console.log(resp);
         },
       });
-    }
+    };
+    const testGetSignInInfo = () => {
+      $.ajax({
+        url: URL + "/api/user/signin/get/",
+        type: "get",
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+        success(resp) {
+          console.log(resp);
+        },
+      });
+    };
+
+    const testPostSignIn = () => {
+      $.ajax({
+        url: URL + "/api/user/signin/",
+        type: "post",
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+        success(resp) {
+          console.log(resp);
+        },
+      });
+    };
+
     return {
+      testPostSignIn,
+      testGetSignInInfo,
       testAddSignature,
       testgetSignature,
       testGetRaking,

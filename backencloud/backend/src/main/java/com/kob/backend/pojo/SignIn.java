@@ -23,4 +23,5 @@ public class SignIn {
     private Integer consecutiveDays; // 连续签到天数
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date lastSignInDate; // 上次签到日期
+    private Integer cumulativeDays; // 累计签到天数
 }

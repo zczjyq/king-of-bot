@@ -19,6 +19,7 @@ import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSli
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { useRouter } from "vue-router";
+
 // import MouseTrail from './components/MouseTrail.vue';
 // 粒子库初始化
 const particlesInit = async (engine) => {
