@@ -124,6 +124,7 @@
 // import { Modal } from "bootstrap";
 import SignIn from "@/components/home/SignIn.vue";
 
+
 // 通过 Bootstrap API 显示模态框
 // const openSignInRulesModal = () => {
 //   const modalElement = document.getElementById("signInRulesModal");
