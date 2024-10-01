@@ -4,14 +4,14 @@
       <div class="col-9">
         <CarouselComp
           class="card_zczjyq card"
-          style="background-color: lightblue; height: 310px"
+          style="background-color: lightblue; height: 270px"
         />
-        <div
+        <AnnouncementComp
           class="card_zczjyq card"
           style="background-color: white; height: 40px"
         >
           公告
-        </div>
+        </AnnouncementComp>
         <div
           class="row"
           style="display: flex; justify-content: center; /* 水平居中 */"
@@ -48,10 +48,39 @@
         </router-link>
         <div
           class="card_zczjyq card"
-          style="background-color: white; height: 200px"
+          style="
+            background-color: white;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          "
         >
-          投稿入口
+          <!-- "投稿入口"文字居中 -->
+          <div
+            style="font-weight: bold; font-size: 18px; color: rgb(80, 80, 80)"
+          >
+            发帖入口
+          </div>
+          <!-- "投稿"按钮 -->
+          <router-link
+            :to="{
+              name: 'userprofile',
+              params: { userId: parseInt($store.state.user.id) },
+            }"
+            class="btn btn-primary mt-2"
+            style="
+              width: 80%;
+              text-align: center;
+              font-weight: bold;
+              font-size: 15px;
+            "
+          >
+            去发帖
+          </router-link>
         </div>
+
         <div
           class="card_zczjyq card"
           style="background-color: white; height: 500px"
@@ -126,6 +155,7 @@
 // import { Modal } from "bootstrap";
 import SignIn from "@/components/home/SignIn.vue";
 import CarouselComp from "@/components/home/CarouselComp.vue";
+import AnnouncementComp from "@/components/home/AnnouncementComp.vue";
 
 // 通过 Bootstrap API 显示模态框
 // const openSignInRulesModal = () => {
