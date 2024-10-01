@@ -25,9 +25,9 @@ public class OtherUserInfoController {
         Integer follows = otherUserInfoService.getFollows(id);
         String signature = otherUserInfoService.getSignature(id);
         Date registerTime = otherUserInfoService.getRegisterTime(id);
-        Integer raking = otherUserInfoService.getRaking(id);
+        Integer ranking = otherUserInfoService.getRanking(id);
         String teams = otherUserInfoService.getTeams(id);
-        List<Map<Date, Integer>> ratingList = otherUserInfoService.getRatingList(id);
+        String ratingList = otherUserInfoService.getRatingList(id);
 
         JSONObject resp = new JSONObject();
         // 将数据放入 resp
@@ -38,7 +38,7 @@ public class OtherUserInfoController {
         resp.put("follows", follows);
         resp.put("signature", signature);
         resp.put("registerTime", registerTime);
-        resp.put("raking", raking);
+        resp.put("ranking", ranking);
         resp.put("teams", teams);
         resp.put("ratingList", ratingList); // 如果 ratingList 是可以直接放入 JSONObject 的
         return resp;

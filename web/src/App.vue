@@ -200,4 +200,10 @@ router-view {
 .feedback-button:hover {
   background-color: #0056b3; /* 悬停时的背景色 */
 }
+
+router-view {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 </style>

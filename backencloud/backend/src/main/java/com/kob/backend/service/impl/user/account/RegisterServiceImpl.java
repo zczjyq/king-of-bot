@@ -1,5 +1,7 @@
 package com.kob.backend.service.impl.user.account;
 
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONArray;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.kob.backend.mapper.UserMapper;
 import com.kob.backend.pojo.User;
@@ -66,9 +68,9 @@ public class RegisterServiceImpl implements RegisterService {
         }
 
         String encodedPassword = passwordEncoder.encode(password);
-        String photo = "https://www.acwing.com/user/profile/index/";
+        String photo = "https://gd-hbimg.huaban.com/7842c3e9b5c38401e94851097c0e29f0b48c5f884d66-x9BbFI_fw658";
 
-        List<Map<Date, Integer>> ratingList = new ArrayList<>();
+        String ratingList = "";
         User user = new User(null, username, encodedPassword, photo, 1500, 0, "0", "", new Date(), "", ratingList);
         userMapper.insert(user);
 

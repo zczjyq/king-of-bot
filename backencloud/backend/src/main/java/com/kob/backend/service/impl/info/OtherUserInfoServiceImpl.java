@@ -46,7 +46,7 @@ public class OtherUserInfoServiceImpl implements OtherUserInfoService {
     }
 
     @Override
-    public Integer getRaking(Integer id) {
+    public Integer getRanking(Integer id) {
         Integer rating = userMapper.selectById(id).getRating();
         List<Integer> ratings = userMapper.getAllRatings();
         // 假设 ratings 是一个 List<Integer>
@@ -63,7 +63,7 @@ public class OtherUserInfoServiceImpl implements OtherUserInfoService {
     }
 
     @Override
-    public List<Map<Date, Integer>> getRatingList(Integer id) {
+    public String getRatingList(Integer id) {
         return userMapper.selectById(id).getRatinglist();
     }
 }

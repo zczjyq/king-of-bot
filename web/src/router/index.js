@@ -13,13 +13,21 @@ import test from '../views/test.vue';
 import showImage from '../views/showImage.vue'
 import UserReviseView from '../views/user/revise/UserReviseView.vue'
 import UserCenterView from '@/views/user/center/UserCenterView.vue';
-
+import HomeView from '../views/HomeView.vue'
 const routes = [
   // PK界面
   {
     path: '/',
     name: 'home',
-    redirect: "/pk/",
+    redirect: "/home/",
+    meta: {
+      requestAuth: true,
+    }
+  },
+  {
+    path: "/home/",
+    name: "home_index",
+    component: HomeView,
     meta: {
       requestAuth: true,
     }
@@ -68,6 +76,12 @@ const routes = [
     meta: {
       requestAuth: true,
     }
+  },
+
+  {
+    path: "/recharge/",
+    name: "recharge",
+    component: () => import('@/views/recharge/rechargeView.vue'),
   },
 
   // 404界面
@@ -139,17 +153,17 @@ const routes = [
       requestAuth: false,
     }
   },
-  
 
-    // MYSQL课设演示
-    {
-      path: '/showImage/',
-      name: 'showImage',
-      component: showImage,
-      meta: {
-        requestAuth: false,
-      }
-    },
+
+  // MYSQL课设演示
+  {
+    path: '/showImage/',
+    name: 'showImage',
+    component: showImage,
+    meta: {
+      requestAuth: false,
+    }
+  },
   {
     path: "/:catchAll(.*)*",
     redirect: "/404/"
