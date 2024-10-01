@@ -11,7 +11,7 @@ public interface OtherUserInfoService {
     Integer getFollows(Integer id);
     String getSignature(Integer id);
     Date getRegisterTime(Integer id);
-    Integer getRaking(Integer id);
+    Integer getRanking(Integer id);
     String getTeams(Integer id);
-    List<Map<Date, Integer>> getRatingList(Integer id);
+    String getRatingList(Integer id);
 }

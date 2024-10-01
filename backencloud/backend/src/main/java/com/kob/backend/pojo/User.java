@@ -28,6 +28,6 @@ public class User {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/Shanghai")
     private Date registertime;
     private String teams;
-    private List<Map<Date, Integer>> ratinglist;  // 表示多个评分的列表
+    private String ratinglist;  // 表示多个评分的列表
 
 }
