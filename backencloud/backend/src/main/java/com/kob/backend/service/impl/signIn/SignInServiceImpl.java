@@ -104,7 +104,15 @@ public class SignInServiceImpl implements SignInService {
         Map<String, String> map = new HashMap<>();
         map.put("consecutiveDays", String.valueOf(signIn.getConsecutiveDays()));
         map.put("cumulativeDays", String.valueOf(signIn.getCumulativeDays()));
-        map.put("isSigned", String.valueOf(signIn.getIsSigned()));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        String today = sdf.format(new Date());
+        Date lastSignInDate = signIn.getLastSignInDate(); // 上次签到日期
+        if (today.equals(lastSignInDate) && signIn.getIsSigned()) {
+            map.put("isSigned", String.valueOf(true));
+        } else {
+            map.put("isSigned", String.valueOf(false));
+        }
         map.put("status", "success");
         return map;
     }

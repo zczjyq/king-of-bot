@@ -65,7 +65,7 @@ import { useStore } from "vuex";
 import { ref } from "vue";
 import $ from "jquery";
 import router from "../../router/index";
-import URL from "@/store/constants.js";
+import {URL} from "@/utils/constants.js";
 
 export default {
   components: {

@@ -154,7 +154,7 @@
 import { ref } from "vue";
 import $ from "jquery";
 import { useStore } from "vuex";
-import URL from "@/store/constants.js";
+import {URL} from "@/utils/constants.js";
 
 export default {
   setup() {

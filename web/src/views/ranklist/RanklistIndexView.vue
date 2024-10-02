@@ -16,14 +16,16 @@
       </thead>
       <tbody>
         <tr v-for="(user, index) in users" :key="user.id">
-          <td style="text-align: center">{{ index + 1 + (current_page - 1) * 10 }}</td>
+          <td style="text-align: center">
+            {{ index + 1 + (current_page - 1) * 10 }}
+          </td>
           <!-- 这里添加排名 -->
 
           <td class="user-info" @click="getId(user.id)" style="cursor: pointer">
             <img :src="user.photo" alt="" class="record-user-photo" />
-            <span class="record-user-username" >{{ user.username }}</span>
+            <span class="record-user-username">{{ user.username }}</span>
           </td>
-          <td> {{ user.signature }}</td>
+          <td>{{ user.signature }}</td>
           <!-- 这里添加排名 -->
           <td>
             {{ user.rating }}
@@ -60,7 +62,7 @@ import ContentField from "../../components/ContentField.vue";
 import { useStore } from "vuex";
 import { ref } from "vue";
 import $ from "jquery";
-import URL from "@/store/constants.js";
+import { URL } from "@/utils/constants.js";
 import router from "../../router/index";
 
 export default {

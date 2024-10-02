@@ -13,6 +13,7 @@
         <module>botrunningsystem</module>
         <module>test</module>
         <module>joptionpane</module>
+        <module>third-party</module>
     </modules>
     <packaging>pom</packaging>
 

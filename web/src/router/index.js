@@ -9,17 +9,18 @@ import UserAccountLoginView from '../views/user/account/UserAccountLoginView.vue
 import UserAccountRegisterView from '../views/user/account/UserAccountRegisterView.vue'
 import store from '../store/index'
 import UserProfileView from '../views/user/profile/UserProfileView.vue';
-import test from '../views/test.vue';
+import test from '../views/TestView.vue';
 import showImage from '../views/showImage.vue'
 import UserReviseView from '../views/user/revise/UserReviseView.vue'
 import UserCenterView from '@/views/user/center/UserCenterView.vue';
 import HomeView from '../views/HomeView.vue'
+import TeamView from '@/views/team/TeamView.vue';
 const routes = [
   // PK界面
   {
     path: '/',
     name: 'home',
-    redirect: "/home/",
+    redirect: "/team/",
     meta: {
       requestAuth: true,
     }
@@ -59,8 +60,24 @@ const routes = [
       requestAuth: true,
     }
   },
+  {
+    path: "/team/",
+    name: "team",
+    component: TeamView,
+    meta: {
+      requestAuth: true,
+    }
+  },
 
   // 排行榜界面
+  {
+    path: "/ranklist/",
+    name: "ranklist_index",
+    component: RanklistIndexView,
+    meta: {
+      requestAuth: true,
+    }
+  },
   {
     path: "/ranklist/",
     name: "ranklist_index",
