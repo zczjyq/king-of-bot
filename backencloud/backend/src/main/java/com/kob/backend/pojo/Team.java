@@ -25,6 +25,6 @@ public class Team {
     private Integer teamLeaderId;
     private Integer teamStatus;
     private String teamAchievements;
-    private Integer teamSignature;
+    private String teamSignature;
     private String teamHead;
 }

@@ -101,8 +101,6 @@ export default {
 
     const pull_page = (page) => {
       current_page.value = page;
-      console.log("请求数据中" + current_page.value);
-      console.log("开始请求数据");
 
       $.ajax({
         url: URL + "/api/ranklist/getlist/",
@@ -114,16 +112,9 @@ export default {
           Authorization: "Bearer " + store.state.user.token,
         },
         success(resp) {
-          console.log(resp);
           users.value = resp.users;
           total_users = resp.users_count;
-          // if (total_users % 10 !== 0) {
-          //   total_users = (parseInt(total_users / 10) + 1) * 10;
-          // }
-          // for (let i = 0; i < total_users; i++) {
-          //   store.state.record.id = i;
-          // }
-          console.log(total_users);
+
           update_pages();
         },
       });
