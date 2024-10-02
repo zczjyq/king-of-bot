@@ -88,7 +88,7 @@
 import ContentField from "../components/ContentField";
 import $ from "jquery";
 import { useStore } from "vuex";
-import {URL} from "@/store/constants.js";
+import {URL} from "@/utils/constants.js";
 import { ref } from "vue";
 
 export default {
