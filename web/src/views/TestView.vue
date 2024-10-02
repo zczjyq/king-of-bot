@@ -88,7 +88,7 @@
 import ContentField from "../components/ContentField";
 import $ from "jquery";
 import { useStore } from "vuex";
-import URL from "@/store/constants.js";
+import {URL} from "@/store/constants.js";
 import { ref } from "vue";
 
 export default {
@@ -218,3 +218,103 @@ export default {
       
   <style scoped>
 </style>
+
+<!-- <template>
+  <div>
+    <input type="file" @change="onFileChange" />
+    <button @click="uploadImage">上传图片</button>
+  </div>
+</template>
+
+<script>
+import { ref } from "vue";
+import $ from "jquery"; // 如果还没有安装 jQuery，请运行 npm install jquery
+import { useStore } from "vuex";
+
+export default {
+  setup() {
+    const selectedFile = ref(null); // 存储选中的文件
+    const ossData = ref(null); // 存储从后端获取的 OSS 上传凭证
+    const store = useStore();
+
+    // 当用户选择文件时，触发这个方法
+    const onFileChange = (event) => {
+      selectedFile.value = event.target.files[0];
+    };
+
+    // 获取 OSS 上传凭证
+    const getOssPolicy = () => {
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          url: "http://localhost:3001/oss/policy", // 替换为您后端的 OSS 签名接口
+          type: "GET",
+          headers: {
+            Authorization: "Bearer " + store.state.user.token, // 若后端需要 token 验证
+          },
+          success: function (response) {
+            resolve(response); // 返回 OSS 上传凭证
+          },
+          error: function (error) {
+            console.error("无法获取 OSS 签名", error);
+            reject(error);
+          },
+        });
+      });
+    };
+
+    // 上传图片到阿里云 OSS
+    const uploadImage = async () => {
+      if (!selectedFile.value) {
+        alert("请先选择文件");
+        return;
+      }
+
+      // 获取 OSS 上传凭证
+      try {
+        ossData.value = await getOssPolicy();
+        console.log("OSS 上传凭证:", ossData.value);
+      } catch (error) {
+        alert("无法获取 OSS 签名");
+        return;
+      }
+
+      if (!ossData.value) {
+        alert("无法获取 OSS 签名");
+        return;
+      }
+
+      // 构建 FormData，携带文件和 OSS 签名信息
+      const formData = new FormData();
+      formData.append("key", ossData.value.dir + selectedFile.value.name); // 上传路径
+      formData.append("OSSAccessKeyId", ossData.value.accessid); // Access Key ID
+      formData.append("policy", ossData.value.policy); // 上传策略
+      formData.append("Signature", ossData.value.signature); // 签名
+      formData.append("success_action_status", "200"); // 返回状态码
+      formData.append("file", selectedFile.value); // 上传的文件
+      console.log("开始上传图片");
+
+      // 使用 $.ajax 将图片上传到阿里云 OSS
+      $.ajax({
+        url: ossData.value.host, // 阿里云 OSS 的上传地址
+        type: "POST",
+        data: formData,
+        processData: false, // 告诉 jQuery 不要处理数据
+        contentType: false, // 告诉 jQuery 不要设置内容类型
+        success(resp) {
+          console.log("图片上传成功:", resp);
+          alert("图片上传成功");
+        },
+        error(resp) {
+console.log(resp);
+
+        },
+      });
+    };
+
+    return {
+      onFileChange,
+      uploadImage,
+    };
+  },
+};
+</script> -->

@@ -51,7 +51,7 @@ import { useRoute } from "vue-router";
 import $ from "jquery";
 import { useStore } from "vuex";
 import { ref } from "vue";
-import URL from "@/store/constants.js"
+import { URL } from "@/utils/constants.js";
 
 export default {
   name: "UserProfileInfo",
@@ -72,7 +72,6 @@ export default {
 
     // 获取个人信息
     $.ajax({
-      
       url: URL + "/api/user/getInfo/",
       data: {
         id: userId,

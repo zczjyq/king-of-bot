@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import URL from "@/store/constants.js"
+import { URL } from "@/utils/constants.js"
 
 export default {
     state: {

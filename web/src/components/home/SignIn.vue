@@ -35,7 +35,7 @@
 import { ref, onMounted } from "vue"; // 确保你引入了正确的 Vue 函数
 import $ from "jquery";
 import { useStore } from "vuex";
-import URL from "@/store/constants.js";
+import {URL} from "@/utils/constants.js";
 
 const store = useStore();
 let consecutiveDays = ref();

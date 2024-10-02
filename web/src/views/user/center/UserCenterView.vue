@@ -181,7 +181,7 @@ import { reactive, onMounted } from "vue";
 import { useStore } from "vuex";
 import { ref } from "vue";
 import $ from "jquery";
-import URL from "@/store/constants.js";
+import {URL} from "@/utils/constants.js";
 import LineChart from "@/components/userInfo/LineChart.vue"; // 引入 LineChart 组件
 import { useRoute } from "vue-router";
 import {
