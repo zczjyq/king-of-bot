@@ -81,6 +81,7 @@
     >
       获取签到
     </button>
+    <img src="https://kingofbotszczjyq.oss-cn-beijing.aliyuncs.com/2024-10-03/1wfga58w6_1727890218614.png" alt="">
   </ContentField>
 </template>
       

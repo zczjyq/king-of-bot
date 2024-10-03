@@ -63,7 +63,8 @@ export const uploadImage = async (selectedFile, store) => {
       contentType: false, // 告诉 jQuery 不要设置内容类型
       success(resp) {
         console.log("图片上传成功:", resp);
-        resolve(resp);
+        // 返回上传的响应以及所上传的文件
+        resolve({ response: resp, file: ossData.dir + randomFileName });
       },
       error(resp) {
         console.error("图片上传失败:", resp);
@@ -72,6 +73,7 @@ export const uploadImage = async (selectedFile, store) => {
     });
   });
 };
+
 
 // 生成随机文件名
 const generateRandomFileName = (file) => {

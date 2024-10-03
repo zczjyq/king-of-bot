@@ -108,7 +108,9 @@ public class SignInServiceImpl implements SignInService {
 
         String today = sdf.format(new Date());
         Date lastSignInDate = signIn.getLastSignInDate(); // 上次签到日期
-        if (today.equals(lastSignInDate) && signIn.getIsSigned()) {
+        // 格式化上次签到日期
+        String lastSignInDay = lastSignInDate != null ? sdf.format(lastSignInDate) : "";
+        if (today.equals(lastSignInDay) && signIn.getIsSigned()) {
             map.put("isSigned", String.valueOf(true));
         } else {
             map.put("isSigned", String.valueOf(false));
