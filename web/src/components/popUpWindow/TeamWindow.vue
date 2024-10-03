@@ -126,6 +126,7 @@ export default {
     let errorBool = ref(false);
     let errorMessage = ref("");
     let successBool = ref(false);
+    let file_src = ref("");
 
     const previewImage = (event) => {
       const file = event.target.files[0];
@@ -154,7 +155,7 @@ export default {
             },
             success(resp) {
               console.log(resp);
-              
+
               if (resp.error_message !== "success") {
                 errorMessage.value = resp.error_message;
                 console.log(errorMessage);
@@ -163,7 +164,7 @@ export default {
                 reject(resp.error_message); // 请求失败，返回错误
               } else {
                 console.log("没有重复的");
-                
+
                 resolve(resp); // 请求成功，返回响应数据
               }
             },
@@ -178,7 +179,7 @@ export default {
       try {
         const resp = await getTeamList();
         console.log("获取列表成功:", resp);
-        if (resp.error_message !== "success") return ;// 如果获取列表失败，则不执行后面的逻辑
+        if (resp.error_message !== "success") return; // 如果获取列表失败，则不执行后面的逻辑
       } catch (error) {
         console.error("获取列表失败:", error);
         return; // 请求失败时不执行后面的逻辑
@@ -186,7 +187,10 @@ export default {
 
       // 继续执行图片上传
       try {
-        await uploadImage(selectedFile.value, store);
+        const resp = await uploadImage(selectedFile.value, store);
+        console.log(resp.file);
+        file_src.value = resp.file;
+
         // alert("图片上传成功");
       } catch (error) {
         alert("图片上传失败");
@@ -200,6 +204,7 @@ export default {
           teamName: teamName.value,
           teamSignature: teamSignature.value,
           teamDescription: teamDescription.value,
+          src: file_src.value,
         },
         type: "post",
         headers: {

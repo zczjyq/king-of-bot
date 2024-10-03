@@ -11,7 +11,7 @@
         >累计 <strong>{{ cumulativeDays }}</strong> 天</span
       >
       <button
-        v-if="!isSigned"
+        v-if="isSigned === 'false'"
         class="btn btn-primary signed-button"
         type="button"
         @click="SignIn"

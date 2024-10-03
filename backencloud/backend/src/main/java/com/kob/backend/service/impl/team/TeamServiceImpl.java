@@ -4,25 +4,25 @@ import com.kob.backend.mapper.TeamMapper;
 import com.kob.backend.pojo.Team;
 import com.kob.backend.pojo.User;
 import com.kob.backend.service.impl.utils.UserDetailsImpl;
+import com.kob.backend.service.team.TeamMemberService;
 import com.kob.backend.service.team.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.handler.AbstractUrlHandlerMapping;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import static com.kob.backend.constant.TeamConstant.TEAM_STATUS_NORMAL;
+import static com.kob.backend.constant.TeamConstant.*;
 import static com.kob.backend.constant.UtilMessage.STATICRETURNMESSAGE;
 
 @Service
 public class TeamServiceImpl implements TeamService {
     @Autowired
     private TeamMapper teamMapper;
+
+    @Autowired
+    private TeamMemberService teamMemberService;
 
     // todo
     @Override
@@ -34,6 +34,15 @@ public class TeamServiceImpl implements TeamService {
             map.put(STATICRETURNMESSAGE, "战队名称不能为空");
             return map;
         }
+        UsernamePasswordAuthenticationToken authenticationToken =
+                (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl loginUser = (UserDetailsImpl) authenticationToken.getPrincipal();
+        User user = loginUser.getUser();
+        if (Objects.equals(teamMemberService.getTeamMemberStatus(user.getId()), TEAM_MEMBER_HAS_TEAM)) {
+            map.put(STATICRETURNMESSAGE, "您已经有战队了,不能再次创建");
+            return map;
+        }
+
         List<String> teamNames = teamMapper.selectTeamNames();
         System.out.println(teamNames.toString());
         for (String name : teamNames) {
@@ -66,6 +75,13 @@ public class TeamServiceImpl implements TeamService {
 
         );
         teamMapper.insert(team);
+        Long teamId = team.getId();
+        data.put("team_id", String.valueOf(teamId));
+        data.put("user_id", String.valueOf(user.getId()));
+        data.put("role", String.valueOf(TEAM_LEADER));
+        // 在teamMember中也加入一条创建者的信息
+        teamMemberService.addTeamMember(data);
+
         map.put("error_message", "success");
         return map;
     }
