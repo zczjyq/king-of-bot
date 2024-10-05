@@ -1,0 +1,283 @@
+[33mcommit 0d6f71d8ea823034aa88f3a2fe3aa1b79c057771[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Sat Oct 5 22:03:43 2024 +0800
+
+    优化跳转 改了几个bug
+
+[33mcommit 10bf5320516a700bf2f1efc6b21f74816d7c30df[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Sat Oct 5 21:31:23 2024 +0800
+
+    优化跳转 改了几个bug
+
+[33mcommit 2dbe1c3e082c2943a63b3ad6c3569b81a91494f9[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Sat Oct 5 17:10:26 2024 +0800
+
+    战队列表界面完成
+
+[33mcommit 618b920bd60b1ac3b3b612bf39bdcf68fa757feb[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Fri Oct 4 00:59:57 2024 +0800
+
+    检查是否有战队后端 teammember初步实现
+
+[33mcommit 087b9847e9d1aaaa66438490d6a91240c883fc3f[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Oct 3 01:40:32 2024 +0800
+
+    test
+
+[33mcommit 0e6f92d1f74edf80abcedd30c91dad9bac8867ce[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Oct 3 01:38:18 2024 +0800
+
+    创建战队初步完成
+
+[33mcommit e5098ecf73bcad19cec3fe87e1989a3dd4df9074[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Wed Oct 2 23:13:53 2024 +0800
+
+    图片上传服务前端 阿里云配置
+
+[33mcommit 1949f1704b1cb011b9fc866f3386cbb8952161da[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Wed Oct 2 02:07:21 2024 +0800
+
+    对局列表 排行榜的跳转功能优化
+
+[33mcommit fd9897cf29e0f861fa42a970219255716b9bca75[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Wed Oct 2 00:13:30 2024 +0800
+
+    首页的投稿按钮
+
+[33mcommit bb5ff9ee8959530d069e3ca2e63830417fa3694b[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Tue Oct 1 22:43:41 2024 +0800
+
+    轮播图
+
+[33mcommit d514ecf967f34cf4503f2ea18d1fd7060f4a0668[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Tue Oct 1 22:21:52 2024 +0800
+
+    签到系统完成
+
+[33mcommit fb03ca5a77e3c0ddb20fd798620f43a3fad974cb[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Tue Oct 1 20:11:39 2024 +0800
+
+    签到系统
+
+[33mcommit d22175f56e9eb07fd0f29d5184c9be879374210b[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Sun Sep 29 22:35:07 2024 +0800
+
+    问题反馈模块
+
+[33mcommit f10c954c21ade413dd7e8cf540942f86200d3b33[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Sun Sep 29 17:07:17 2024 +0800
+
+    改密码
+
+[33mcommit c48a30558f2a940a7debe01c3616b81bcc464d27[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Fri Sep 27 21:24:06 2024 +0800
+
+    获取别人的信息后端
+
+[33mcommit 3933d6559afeb55d244cf2581cecc69047041a8c[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Sep 26 13:47:49 2024 +0800
+
+    增加修改中心前端的框架
+
+[33mcommit 00ade1a4ed5031382c1c92ceb9b27202905e8e93[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Wed Sep 25 14:59:07 2024 +0800
+
+    更改上传文件
+
+[33mcommit dfe116ed85518c208c2ed262b69405d39a1c71b5[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Wed Sep 25 14:56:31 2024 +0800
+
+    增加签名的后端实现
+
+[33mcommit 636487c5b436835b261a744fadfcea7399fb3892[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Jun 13 11:41:57 2024 +0800
+
+    增加了对战时的显示功能，以及个人中心界面
+
+[33mcommit 5637188c6a07bb12e3dc1e016f4cd31520642c64[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Tue Jun 4 20:44:41 2024 +0800
+
+    合并分支
+
+[33mcommit ec1b7960bffa32a314b26ece4d449a7070a18dae[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Tue Jun 4 20:36:32 2024 +0800
+
+    改了一下细节
+
+[33mcommit 0bcd56e51f88f11b42588c166f1b5bece4d17c17[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Wed Mar 6 16:14:53 2024 +0800
+
+    修复了匹配的bug
+
+[33mcommit f6836b7cd73217d3eee8e36c4d72e20f1a5186d4[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Mon Mar 4 00:17:19 2024 +0800
+
+    项目上线 开始加自己的功能
+
+[33mcommit fbeafee05013e3eadc64f4521f2eaba2f575ff37[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Sat Mar 2 00:05:51 2024 +0800
+
+    创建对战列表与排行榜页面
+
+[33mcommit c6a999f657c3bba5079b24a253657cb3fd3bd5c3[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Fri Mar 1 01:42:58 2024 +0800
+
+    Bot代码的执行
+
+[33mcommit 7ad6c732ae64627c218ad7ea403f8c6b2be41722[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Feb 29 18:17:12 2024 +0800
+
+    readme忘记保存了
+
+[33mcommit 7d3b45c6639e542a7cd08f9bd463a1d40613db57[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Feb 29 18:15:16 2024 +0800
+
+    匹配系统完成
+
+[33mcommit 5f41b2c2036424ffb859542a8fb7f8d823acb2cf[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Feb 29 03:00:12 2024 +0800
+
+    实现微服务：匹配系统 同步了三个棋盘 在数据库中创建表record
+
+[33mcommit ce3670db580525c94007750103bd85f58381806b[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Wed Feb 28 22:44:32 2024 +0800
+
+    后端匹配系统(上)
+
+[33mcommit 73cb742237cb8d5515e79b0c059ea48161dca357[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Wed Feb 28 15:30:16 2024 +0800
+
+    前端 Bot页面
+
+[33mcommit 3b8b8716a8c95c0b31f3695dff01c3e126418997[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Wed Feb 28 00:49:33 2024 +0800
+
+    后端 Bot数据库的创建 Bot的增删改查
+
+[33mcommit a25d929469bfa3bc6c175a8b8912d207d4047c06[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Tue Feb 27 22:18:40 2024 +0800
+
+    登录注册over 注册页面前端 登录可持久化 优化界面
+
+[33mcommit 714c52cd5668bfd68878d5162527572df071dfd8[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Tue Feb 27 18:07:29 2024 +0800
+
+    实现了注册登录退出的部分微服务 与 登录界面的前端
+
+[33mcommit 78a1bd1c6cc51421e16e1a3a701c3399ff357021[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Tue Feb 27 00:43:50 2024 +0800
+
+    数据库配置完拉
+
+[33mcommit 8890a96322e579d59dec27e7e9ecb5552e3c239c[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Mon Feb 26 01:25:48 2024 +0800
+
+    前端写完啦
+
+[33mcommit 42ad748cac1484775849e13ce208d77432b2481c[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Sat Feb 24 23:32:46 2024 +0800
+
+    前端地图的创建
+
+[33mcommit 8d44a34048e8f3c4afbdff72c625398200de627c[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Sat Feb 24 01:06:07 2024 +0800
+
+    后端前端通信
+
+[33mcommit ef966575c4bae9f755625a38494adee681b1b699[m
+Merge: 05f0f09 e5b8d5f
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Fri Feb 23 00:57:17 2024 +0800
+
+    Merge branch 'master' of git.acwing.com:zczjyq/kob-review
+
+[33mcommit 05f0f09e7fe7f3dc7d1ef1e4fe22c4add3fa9d2f[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Fri Feb 23 00:55:19 2024 +0800
+
+    前端创建
+
+[33mcommit e5b8d5f5966cdaff6a900c874be1b57719c2ee1a[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Feb 22 23:26:15 2024 +0800
+
+    删除了test
+
+[33mcommit b4e80cbf1e8ab04c1701c7cb2bff5b607d7c1547[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Feb 22 23:24:03 2024 +0800
+
+    test
+
+[33mcommit d2afbd525f9659ff20e7fe84fb3c4e866e321962[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Feb 22 23:15:46 2024 +0800
+
+    test
+
+[33mcommit a1186abb39605045c7e27a22eb9e0c246c6e48be[m
+Merge: 4c89401 365e2c8
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Feb 22 23:14:35 2024 +0800
+
+    Merge branch 'master' of git.acwing.com:zczjyq/kob-review
+
+[33mcommit 4c8940197bfed6707a4d4d7c027359623be98d6f[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Feb 22 23:14:03 2024 +0800
+
+    test
+
+[33mcommit 556f7c294e2ab9a14fd5785b9536c2180e6bd271[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Feb 22 23:13:10 2024 +0800
+
+    test
+
+[33mcommit 365e2c8583304392621028385708fa1b46bcedb5[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Feb 22 23:07:19 2024 +0800
+
+    创建后端
+
+[33mcommit 2a0a3334059ac149e56bea0d39e844bc94999fe2[m
+Author: 嘉麒 蔡 <937473303@qq.com>
+Date:   Thu Feb 22 00:38:57 2024 +0800
+
+    创建项目
