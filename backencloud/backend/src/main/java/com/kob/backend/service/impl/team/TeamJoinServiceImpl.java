@@ -57,8 +57,10 @@ public class TeamJoinServiceImpl implements TeamJoinService {
 
         TeamMember teamMember = teamMemberMapper.selectByUserId(Integer.valueOf(userId));
         if (teamMember == null) {
+            teamMember = new TeamMember();
             teamMember.setMemberId(null);
             teamMember.setTeamId(Long.valueOf(teamId));
+            teamMemberMapper.insert(teamMember);
         }
         teamMember.setUserId(Long.valueOf(userId));
         teamMember.setRole(TeamRole.MEMBER.getCode());
