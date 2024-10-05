@@ -27,4 +27,9 @@ public class TeamController {
     public JSONObject getAllTeams(@RequestParam Map<String, String> data) {
         return teamService.getAllTeams(data);
     }
+
+    @GetMapping("/api/team/info/")
+    public JSONObject getTeamInfo(@RequestParam Map<String, String> data) {
+        return teamService.getTeamsInfo(data);
+    }
 }

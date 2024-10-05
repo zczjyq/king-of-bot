@@ -101,7 +101,9 @@
               <div style="text-align: left">
                 粉丝数&emsp;:&ensp; {{ user.follows }}
               </div>
-              <div style="text-align: left">所属战队:&ensp;暂无</div>
+              <div style="text-align: left" @click="toTeamCenter(user.teamId)">
+                所属战队:&ensp;{{ user.teams }}
+              </div>
               <div style="text-align: left">
                 注册时间:&ensp; {{ user.registerTime }}
               </div>
@@ -181,9 +183,10 @@ import { reactive, onMounted } from "vue";
 import { useStore } from "vuex";
 import { ref } from "vue";
 import $ from "jquery";
-import {URL} from "@/utils/constants.js";
+import { URL } from "@/utils/constants.js";
 import LineChart from "@/components/userInfo/LineChart.vue"; // 引入 LineChart 组件
 import { useRoute } from "vue-router";
+import router from "@/router";
 import {
   Chart,
   RadialLinearScale,
@@ -217,6 +220,13 @@ export default {
 
     const route = useRoute();
     const userId = route.params.userId; // 获取传递的用户ID
+
+    const toTeamCenter = (id) => {
+      router.push({
+        params: { teamId: id },
+        name: "teaminfo",
+      });
+    };
 
     onMounted(() => {
       $.ajax({
@@ -287,6 +297,7 @@ export default {
     });
 
     return {
+      toTeamCenter,
       labels,
       data,
       user,
