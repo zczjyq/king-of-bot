@@ -16,18 +16,7 @@ public class AddPostServiceImpl implements AddPostService {
 
     @Override
     public Map<String, String> add(Map<String, String> data) {
-        int id = Integer.parseInt(data.get("id"));
-        String post = data.get("post");
-        User user = userMapper.selectById(id);
-        String[] posts = user.getPosts().split(" ");
-        int len = Integer.parseInt(posts[0]);
-        len ++;
-        posts[0] = String.valueOf(len);
-        String new_posts = String.join(" ", posts);
-        new_posts += (" " + String.valueOf(len) + " " + post);
-        user.setPosts(new_posts);
-        userMapper.updateById(user);
-        Map<String, String> map = new HashMap<>();
+    Map<String, String> map = new HashMap<>();
         map.put("error_message", "sccuess");
         return map;
     }

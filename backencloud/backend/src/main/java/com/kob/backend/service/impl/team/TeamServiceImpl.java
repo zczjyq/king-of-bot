@@ -1,11 +1,20 @@
 package com.kob.backend.service.impl.team;
 
+import com.alibaba.fastjson2.JSONArray;
+import com.alibaba.fastjson2.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.kob.backend.enumClass.OrderByColumn;
 import com.kob.backend.mapper.TeamMapper;
+import com.kob.backend.mapper.UserMapper;
 import com.kob.backend.pojo.Team;
 import com.kob.backend.pojo.User;
 import com.kob.backend.service.impl.utils.UserDetailsImpl;
 import com.kob.backend.service.team.TeamMemberService;
 import com.kob.backend.service.team.TeamService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,10 +25,14 @@ import java.util.*;
 import static com.kob.backend.constant.TeamConstant.*;
 import static com.kob.backend.constant.UtilMessage.STATICRETURNMESSAGE;
 
+
 @Service
 public class TeamServiceImpl implements TeamService {
     @Autowired
     private TeamMapper teamMapper;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Autowired
     private TeamMemberService teamMemberService;
@@ -71,8 +84,10 @@ public class TeamServiceImpl implements TeamService {
                 TEAM_STATUS_NORMAL,
                 "",
                 "",
-                data.get("src")
-
+                data.get("src"),
+                TEAM_START_RATING,
+                "",
+                (int) (teamMapper.selectCount(null) + 1)
         );
         teamMapper.insert(team);
         Long teamId = team.getId();
@@ -85,4 +100,82 @@ public class TeamServiceImpl implements TeamService {
         map.put("error_message", "success");
         return map;
     }
+
+    @Override
+    public JSONObject getAllTeams(Map<String, String> data) {
+        // 获取分页参数
+        int page = Integer.parseInt(data.get("page"));
+        int pageSize = Integer.parseInt(data.get("pageSize"));
+
+        // 默认值处理
+        if (page < 1) {
+            page = 1;  // 默认当前页为第 1 页
+        }
+        if (pageSize < 1) {
+            pageSize = 10;  // 默认每页显示 10 条数据
+        }
+
+        JSONObject result = new JSONObject();
+
+        // 获取排序字段和排序方向
+        String orderByColumn = data.get("orderByColumn");
+        String orderDirection = data.get("orderDirection");
+
+        // 校验排序字段
+        if (!OrderByColumn.isValid(orderByColumn)) {
+            result.put("error", orderByColumn);
+            return result;  // 如果字段不合法，返回错误信息
+        }
+
+        // 校验排序方向
+        if (!("ASC".equalsIgnoreCase(orderDirection) || "DESC".equalsIgnoreCase(orderDirection))) {
+            result.put("error", orderDirection);
+            return result;  // 如果排序方向不合法，返回错误信息
+        }
+
+        // 使用分页查询
+        IPage<Team> teamPage = new Page<>(page, pageSize);
+        QueryWrapper<Team> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderBy(true, "ASC".equalsIgnoreCase(orderDirection), orderByColumn);
+
+        // 查询数据
+        IPage<Team> paginatedTeams = teamMapper.selectPage(teamPage, queryWrapper);
+        List<Team> teams = paginatedTeams.getRecords();
+
+        JSONArray teamArray = new JSONArray();
+        for (Team team : teams) {
+            JSONObject teamJson  = new JSONObject();
+            // 使用 BeanUtils 直接复制对象属性
+            teamJson.put("team", team);
+            // 获取 team_member 列表
+            String teamMembers = null;
+
+            teamMembers = team.getTeamMember();
+            String[] userIds = teamMembers.split(",");
+
+            // 查询用户 ID 和头像保存位置
+            JSONArray membersArray = new JSONArray();
+            if (!teamMembers.isEmpty()) {
+                for (String userID : userIds) {
+                    User user = userMapper.selectById(Integer.parseInt(userID));
+                    JSONObject userJson = new JSONObject();
+                    userJson.put("id", user.getId());
+                    userJson.put("photo", user.getPhoto());
+                    membersArray.add(userJson);
+                }
+            }
+            teamJson.put("team_members", membersArray);  // 添加用户信息
+            teamArray.add(teamJson);
+        }
+
+        // 返回分页结果
+        result.put("teams", teamArray);  // 查询的团队列表
+        result.put("currentPage", paginatedTeams.getCurrent());  // 当前页
+        result.put("totalPages", paginatedTeams.getPages());  // 总页数
+        result.put("totalCount", paginatedTeams.getTotal());  // 总记录数
+        result.put("pageSize", pageSize);  // 每页的记录数
+
+        return result;
+    }
+
 }

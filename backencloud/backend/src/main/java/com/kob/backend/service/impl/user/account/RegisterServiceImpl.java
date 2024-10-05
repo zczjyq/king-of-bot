@@ -71,7 +71,7 @@ public class RegisterServiceImpl implements RegisterService {
         String photo = "https://gd-hbimg.huaban.com/7842c3e9b5c38401e94851097c0e29f0b48c5f884d66-x9BbFI_fw658";
 
         String ratingList = "";
-        User user = new User(null, username, encodedPassword, photo, 1500, 0, "0", "", new Date(), "", ratingList);
+        User user = new User(null, username, encodedPassword, photo, 1500, 0, "", new Date(), ratingList, "", null);
         userMapper.insert(user);
 
         map.put("error_message", "success");

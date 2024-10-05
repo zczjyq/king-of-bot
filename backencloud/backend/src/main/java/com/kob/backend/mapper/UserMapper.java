@@ -11,4 +11,8 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
     @Select("SELECT rating FROM user")
     List<Integer> getAllRatings();
+
+    @Select("SELECT * FROM user ORDER BY rating DESC LIMIT 10")
+    List<User> getListLimit();
+
 }

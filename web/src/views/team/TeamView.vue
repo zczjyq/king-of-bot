@@ -1,229 +1,116 @@
 <template>
-  <div class="container">
-    <!-- 搜索框 -->
-    <div class="d-flex justify-content-between align-items-center my-4">
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-      创建战队
-      </button>
-      <div class="col-4">我的团队</div>
-      <div class="col-4 d-flex align-items-center">
-        <input
-          type="text"
-          v-model="searchQuery"
-          class="form-control w-75 me-2"
-          placeholder="请输入队伍名称"
-        />
-        <button class="btn btn-outline-success" type="submit">搜索</button>
-      </div>
-    </div>
-
-    <!-- 队伍卡片 -->
-    <div class="row row-cols-1 row-cols-md-4 g-5">
-      <div class="col" v-for="team in filteredTeams" :key="team.id">
-        <div class="card" style="height: 335px">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-2 text-end" style="padding-right: 0">
-                <img
-                  :src="team.logo"
-                  class="img-fluid"
-                  style="height: 32px; width: 32px; border-radius: 4px"
-                />
-              </div>
-
-              <div class="col-8 justify-content-start" style="padding-left: 10">
-                <div class="row">
-                  <div class="name">{{ team.name }}</div>
-                  <div class="raking">排名：{{ team.raking }}</div>
-                </div>
+    <div class="container mt-5">
+      <!-- 第一部分：战队信息 -->
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card p-4 mb-3">
+            <div class="d-flex align-items-center">
+              <img :src="teamInfo.photo" class="rounded-circle" alt="team-logo" width="100" height="100" />
+              <div class="ms-3">
+                <h3>战队: {{ teamInfo.name }}</h3>
+                <p class="text-muted">{{ teamInfo.slogan }}</p>
+                <a :href="teamInfo.website" target="_blank">{{ teamInfo.website }}</a>
               </div>
             </div>
-            <p class="raking" style="margin-top: 30px">
-              宣言: {{ team.slogan }}
-            </p>
-            <div
-              class="description"
-              style="margin-top: 10px; margin-bottom: 15px"
-            >
-              {{ team.description }}
+  
+            <div class="mt-4">
+              <p>队长: <strong>{{ teamInfo.leader }}</strong></p>
+              <p>积分: <strong>{{ teamInfo.score }}</strong></p>
+              <p>排位分数: <strong>{{ teamInfo.ranking }}</strong></p>
+              <p>创建时间: <strong>{{ formatDate(teamInfo.createdAt) }}</strong></p>
+              <p>战队状态: <span class="badge bg-success">{{ teamInfo.status }}</span></p>
             </div>
-            <div class="row">
-              <div class="col-6">
-                <div class="raking">成立</div>
-                <div class="description">{{ team.founded }}</div>
-              </div>
-              <div class="col-6">
-                <div class="raking">积分</div>
-                <div class="description">{{ team.points }}</div>
-              </div>
-            </div>
-          </div>
-          <hr style="border: 1px solid #ccc; margin: 0" />
-          <div class="card-body">
-            <div class="d-flex flex-column">
-              <div class="team-member">成员</div>
-
-              <div class="d-flex">
-                <div
-                  v-for="member in team.members"
-                  :key="member.id"
-                  class="card-member"
-                >
-                  <img :src="member.avatar" alt="member-avatar" />
-                </div>
+  
+            <!-- 战队成就 -->
+            <div class="mt-4 d-flex justify-content-between">
+              <div v-for="achievement in teamInfo.achievements" :key="achievement.name" class="text-center">
+                <img :src="achievement.icon" alt="achievement-icon" width="50" />
+                <p>{{ achievement.name }}</p>
               </div>
             </div>
           </div>
         </div>
+  
+        <!-- 第二部分：战队成员列表 -->
+        <div class="col-md-4">
+          <div class="card p-4 mb-3">
+            <h5>战队成员</h5>
+            <ul class="list-group">
+              <li v-for="member in teamMembers" :key="member.id" class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <img :src="member.photo" class="rounded-circle me-2" width="50" height="50" />
+                  <div>
+                    <strong>{{ member.name }}</strong>
+                    <p class="mb-0"><span class="badge bg-info">{{ member.role }}</span></p>
+                  </div>
+                </div>
+                <span class="badge bg-warning text-dark">{{ member.score }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <!-- 第三部分：解题动态 -->
+      <div class="card p-4 mt-3">
+        <h5>解题动态</h5>
+        <ul class="list-group">
+          <li v-for="activity in activities" :key="activity.id" class="list-group-item">
+            {{ activity.name }} 破译了 {{ activity.task }} - {{ activity.daysAgo }}天前
+          </li>
+        </ul>
       </div>
     </div>
-    <!-- Modal -->
-    <TeamWindow></TeamWindow>
-  </div>
-</template>
+  </template>
   
   <script>
-import TeamWindow from "@/components/popUpWindow/TeamWindow.vue";
-
-export default {
-  components: {
-    TeamWindow,
-  },
-  data() {
-    return {
-      searchQuery: "",
-      teams: [
-        {
-          id: 1,
-          name: "Team A",
-          logo: "https://th.bing.com/th/id/OIP.7kSGRwe_IJg61dyveatBvgHaE8?w=245&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-          slogan: "异世相遇，尽享壮丽",
-          description: "欢迎加入",
-          founded: "2021-11-08",
-          points: 8605,
-          raking: 1,
-          members: [
-            { id: 1, avatar: "https://via.placeholder.com/30" },
-            { id: 2, avatar: "https://via.placeholder.com/30" },
-            { id: 3, avatar: "https://via.placeholder.com/30" },
-          ],
+  export default {
+    data() {
+      return {
+        teamInfo: {
+          photo: 'https://via.placeholder.com/100',
+          name: 'WhiteHat',
+          slogan: '渗透人，万为上人',
+          website: 'https://www.whlhc.top/',
+          leader: 'dotast',
+          score: 7645,
+          ranking: '0.00',
+          createdAt: '2020-12-08 22:36:59',
+          status: '正常',
+          achievements: [
+            { name: 'AWD公测赛优秀奖', icon: 'https://via.placeholder.com/50' },
+            { name: 'AWD-S1耀辉钻石', icon: 'https://via.placeholder.com/50' },
+            { name: 'AWD-S2荣耀黄金', icon: 'https://via.placeholder.com/50' },
+          ]
         },
-        {
-          id: 2,
-          name: "Team B",
-          logo: "https://th.bing.com/th/id/OIP.7kSGRwe_IJg61dyveatBvgHaE8?w=245&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-          slogan: "Flag is not easy?",
-          description: "欢迎加入",
-          founded: "2020-12-10",
-          points: 8355,
-          raking: 2,
-          members: [
-            { id: 1, avatar: "https://via.placeholder.com/30" },
-            { id: 2, avatar: "https://via.placeholder.com/30" },
-          ],
-        },
-        {
-          id: 2,
-          name: "Team B",
-          logo: "https://th.bing.com/th/id/OIP.7kSGRwe_IJg61dyveatBvgHaE8?w=245&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-          slogan: "Flag is not easy?",
-          description: "欢迎加入",
-          founded: "2020-12-10",
-          points: 8355,
-          raking: 2,
-          members: [
-            { id: 1, avatar: "https://via.placeholder.com/30" },
-            { id: 2, avatar: "https://via.placeholder.com/30" },
-          ],
-        },
-        {
-          id: 2,
-          name: "Team B",
-          logo: "https://th.bing.com/th/id/OIP.7kSGRwe_IJg61dyveatBvgHaE8?w=245&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-          slogan: "Flag is not easy?",
-          description: "欢迎加入",
-          founded: "2020-12-10",
-          points: 8355,
-          raking: 2,
-          members: [
-            { id: 1, avatar: "https://via.placeholder.com/30" },
-            { id: 2, avatar: "https://via.placeholder.com/30" },
-          ],
-        },
-        {
-          id: 2,
-          name: "Team B",
-          logo: "https://th.bing.com/th/id/OIP.7kSGRwe_IJg61dyveatBvgHaE8?w=245&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-          slogan: "Flag is not easy?",
-          description: "欢迎加入",
-          founded: "2020-12-10",
-          points: 8355,
-          raking: 2,
-          members: [
-            { id: 1, avatar: "https://via.placeholder.com/30" },
-            { id: 2, avatar: "https://via.placeholder.com/30" },
-          ],
-        },
-        {
-          id: 2,
-          name: "Team B",
-          logo: "https://th.bing.com/th/id/OIP.7kSGRwe_IJg61dyveatBvgHaE8?w=245&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-          slogan: "Flag is not easy?",
-          description: "欢迎加入",
-          founded: "2020-12-10",
-          points: 8355,
-          raking: 2,
-          members: [
-            { id: 1, avatar: "https://via.placeholder.com/30" },
-            { id: 2, avatar: "https://via.placeholder.com/30" },
-          ],
-        },
-        // 继续添加更多队伍数据...
-      ],
-    };
-  },
-  computed: {
-    filteredTeams() {
-      return this.teams.filter((team) =>
-        team.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
+        teamMembers: [
+          { id: 1, name: 'xwhat', role: '成员', score: 305, photo: 'https://via.placeholder.com/50' },
+          { id: 2, name: 'dotast', role: '队长', score: 5000, photo: 'https://via.placeholder.com/50' },
+          { id: 3, name: 'cheyenne', role: '成员', score: 5035, photo: 'https://via.placeholder.com/50' },
+          { id: 4, name: 'wjhwjhn', role: '副队长', score: 3225, photo: 'https://via.placeholder.com/50' },
+          { id: 5, name: 'Y4tacker', role: '副队长', score: 640, photo: 'https://via.placeholder.com/50' },
+          { id: 6, name: 'atao', role: '成员', score: 0, photo: 'https://via.placeholder.com/50' },
+          { id: 7, name: 'spaceman', role: '成员', score: 360, photo: 'https://via.placeholder.com/50' },
+          { id: 8, name: 'bit', role: '成员', score: 2255, photo: 'https://via.placeholder.com/50' },
+          { id: 9, name: 'NN来了', role: '成员', score: 25, photo: 'https://via.placeholder.com/50' },
+        ],
+        activities: [
+          { id: 1, name: 'cheyenne', task: '奇奇怪怪的语言', daysAgo: 4 },
+          { id: 2, name: 'cheyenne', task: 'Find_password', daysAgo: 4 },
+        ]
+      };
     },
-  },
-};
-</script>
+    methods: {
+      formatDate(dateString) {
+        return dateString.split(' ')[0]; // 只显示日期部分
+      }
+    }
+  }
+  </script>
   
-  <style>
-.card-member img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin-right: 5px;
-}
-
-.name {
-  color: #0081ff;
-  font-size: 15px;
-}
-
-.raking {
-  color: #a7abc3;
-  font-size: 12px;
-}
-
-.description {
-  color: #505050;
-  font-size: 15px;
-}
-
-.team-member {
-  color: #505050;
-  font-size: 12px;
-  margin-bottom: 10px;
-}
-</style>
+  <style scoped>
+  img {
+    object-fit: cover;
+  }
+  </style>
   
