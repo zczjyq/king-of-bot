@@ -24,7 +24,7 @@
             </div>
             <button
               class="btn btn-outline-primary ms-auto"
-              @click="handleClick"
+              @click="joinIn"
             >
               加入
             </button>
@@ -142,6 +142,25 @@ export default {
     let team_members = ref({});
     const route = useRoute();
     const teamId = route.params.teamId; // 获取传递的用户ID
+
+    const joinIn = () => {
+      $.ajax({
+        url: URL + "/api/team/join/",
+        type: "post",
+        data: {
+          teamId: teamId,
+          userId: store.state.user.id,
+        },
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+        success (resp) {
+          console.log(resp);
+          
+        }
+      })
+    };
+
     onMounted(() => {
       $.ajax({
         url: URL + "/api/team/info/",
@@ -171,6 +190,7 @@ export default {
     };
     return {
       getId,
+      joinIn,
       teamInfo,
       leaderName,
       team_members,
