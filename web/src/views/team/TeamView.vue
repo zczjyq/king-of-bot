@@ -22,10 +22,7 @@
                 宣言：{{ teamInfo.teamSignature }}
               </p>
             </div>
-            <button
-              class="btn btn-outline-primary ms-auto"
-              @click="joinIn"
-            >
+            <button class="btn btn-outline-primary ms-auto" @click="joinIn">
               加入
             </button>
           </div>
@@ -93,15 +90,26 @@
                   class="rounded-circle me-2"
                   width="50"
                   height="50"
+                  @click="toUserCenter(member.id)"
+                  style="cursor: pointer"
                 />
                 <div>
-                  <strong>{{ member.name }}</strong>
+                  <h6 style="color: #505050;">{{ member.username }}</h6>
                   <p class="mb-0">
                     <span class="badge bg-info">{{ member.role }}</span>
                   </p>
                 </div>
               </div>
-              <span class="badge bg-warning text-dark">{{ member.score }}</span>
+              <span
+                style="
+                  font-size: 15px;
+                  font-family: sans-serif;
+                  color: #ff9f43;
+                  text-align: right;
+                  display: block;
+                "
+                >积分: &nbsp;{{ member.rating }}</span
+              >
             </li>
           </ul>
         </div>
@@ -122,6 +130,47 @@
         </li>
       </ul>
     </div> -->
+    <div
+      class="modal fade"
+      id="signInRulesModal"
+      tabindex="-1"
+      aria-labelledby="signInRulesLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3
+              class="modal-title"
+              id="signInRulesLabel"
+              style="
+                font-weight: bold;
+                color: rgb(80, 80, 80);
+                cursor: pointer !important;
+              "
+            >
+              加入成功！
+            </h3>
+
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              关闭
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
   
@@ -133,6 +182,7 @@ import { ref } from "vue";
 import $ from "jquery";
 import { URL, OSS } from "@/utils/constants.js";
 import { useRoute } from "vue-router";
+import { toUserCenter } from "@/assets/Utils/myRouter";
 
 export default {
   setup() {
@@ -154,11 +204,40 @@ export default {
         headers: {
           Authorization: "Bearer " + store.state.user.token,
         },
-        success (resp) {
+        success(resp) {
           console.log(resp);
-          
-        }
-      })
+
+          // 获取模态框的 HTML 元素
+          const modal = document.getElementById("signInRulesModal");
+
+          // 显示模态框（手动添加 Bootstrap 的显示类）
+          modal.classList.add("show");
+          modal.style.display = "block";
+          modal.setAttribute("aria-hidden", "false");
+          modal.setAttribute("role", "dialog");
+
+          // 防止页面背景可点击
+          document.body.classList.add("modal-open");
+          const backdrop = document.createElement("div");
+          backdrop.className = "modal-backdrop fade show";
+          document.body.appendChild(backdrop);
+
+          // 3 秒后关闭模态框并刷新页面
+          setTimeout(() => {
+            // 隐藏模态框
+            modal.classList.remove("show");
+            modal.style.display = "none";
+            modal.setAttribute("aria-hidden", "true");
+
+            // 移除模态框的遮罩层
+            document.body.classList.remove("modal-open");
+            document.querySelector(".modal-backdrop").remove();
+
+            // 刷新页面
+            window.location.reload();
+          }, 5000);
+        },
+      });
     };
 
     onMounted(() => {
@@ -176,8 +255,6 @@ export default {
           leaderName.value = resp.leaderName;
           team_members.value = resp.team_members;
           console.log(resp);
-
-          
         },
       });
     });
@@ -195,6 +272,7 @@ export default {
       leaderName,
       team_members,
       OSS,
+      toUserCenter,
     };
   },
 

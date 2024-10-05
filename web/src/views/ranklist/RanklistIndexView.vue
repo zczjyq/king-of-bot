@@ -2,7 +2,7 @@
   <ContentField>
     <h2 style="text-align: center; margin-bottom: 20px">个人排名表</h2>
     <!-- 添加标题 -->
-    <table class="table table-striped table-hover" style="text-align: left">
+    <table class="table table-hover" style="text-align: left">
       <thead>
         <tr>
           <th style="width: 8%">排名</th>

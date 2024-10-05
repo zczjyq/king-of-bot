@@ -210,6 +210,7 @@ public class TeamServiceImpl implements TeamService {
                 User user = userMapper.selectById(Integer.parseInt(userID));
                 JSONObject userJson = new JSONObject();
                 userJson.put("id", user.getId());
+                userJson.put("username", user.getUsername());
                 userJson.put("photo", user.getPhoto());
                 userJson.put("rating", user.getRating());
                 userJson.put("role", getrole(user.getId()));

@@ -6,6 +6,7 @@ package com.kob.backend.constant;
  * @date 2024/09/25
  */
 public class UserConstant {
+    public static final String INIT_HEAD = "https://kingofbotszczjyq.oss-cn-beijing.aliyuncs.com/static/teamAvatar.png";
     // 签名最大长度
     public static final Integer SIGNATURE_LENGTH_MAX = 30;
     // 签名的最小长度

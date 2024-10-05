@@ -80,11 +80,12 @@
 
               <div class="d-flex">
                 <div
+                  class="member-stack"
                   v-for="member in infos.team_members"
                   :key="member.id"
-                  class="card-member"
                 >
                   <img
+                    class="member-photo"
                     style="cursor: pointer"
                     @click="toUserCenter(member.id)"
                     :src="member.photo"
@@ -338,6 +339,23 @@ export default {
   color: #505050;
   font-size: 12px;
   margin-bottom: 10px;
+}
+
+.member-stack {
+  display: inline-block; /* 保持容器的水平排列 */
+  margin-left: -16px; /* 设置负的外边距使图片重叠，每个图片露出一半 */
+}
+
+.member-photo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid white; /* 设置白色边框 */
+  background-color: white; /* 背景为白色，确保边框清晰 */
+}
+
+.member-stack:nth-child(1) .member-photo {
+  margin-left: 15px; /* 确保第一个图片不被向左移动 */
 }
 </style>
   
