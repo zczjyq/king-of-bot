@@ -15,20 +15,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(user, index) in users" :key="user.id">
+        <tr v-for="(user, index) in users" :key="user.user.id">
           <td style="text-align: center">
             {{ index + 1 + (current_page - 1) * 10 }}
           </td>
           <!-- 这里添加排名 -->
 
-          <td class="user-info" @click="getId(user.id)" style="cursor: pointer">
-            <img :src="user.photo" alt="" class="record-user-photo" />
-            <span class="record-user-username">{{ user.username }}</span>
+          <td class="user-info" @click="getId(user.user.id)" style="cursor: pointer">
+            <img :src="user.user.photo" alt="" class="record-user-photo" />
+            <span class="record-user-username">{{ user.user.username }}</span>
           </td>
-          <td>{{ user.signature }}</td>
+          <td>{{ user.user.signature }}</td>
           <!-- 这里添加排名 -->
           <td>
-            {{ user.rating }}
+            {{ user.user.rating }}
           </td>
           <td>最后一次游玩时间</td>
         </tr>
@@ -112,6 +112,7 @@ export default {
           Authorization: "Bearer " + store.state.user.token,
         },
         success(resp) {
+          console.log(resp);
           users.value = resp.users;
           total_users = resp.users_count;
 

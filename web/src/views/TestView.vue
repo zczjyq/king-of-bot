@@ -82,6 +82,15 @@
       获取签到
     </button>
     <img src="https://kingofbotszczjyq.oss-cn-beijing.aliyuncs.com/2024-10-03/1wfga58w6_1727890218614.png" alt="">
+    <br>
+    <button
+      type="button"
+      hover-class="button-hover"
+      class="btn btn-secondary btn-sm"
+      @click="testGetTeamsList"
+    >
+      获取战队信息
+    </button>
   </ContentField>
 </template>
       
@@ -203,6 +212,25 @@ export default {
       });
     };
 
+    const testGetTeamsList = () => {
+      $.ajax({
+        url: URL + "/api/team/getallteam/",
+        type: "get",
+        data: {
+          page: 1,
+          pageSize: 20,
+          orderByColumn: "team_name",
+          orderDirection: "ASC",
+        },
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+        success(resp) {
+          console.log(resp);
+        },
+      });
+    };
+
     return {
       testPostSignIn,
       testGetSignInInfo,
@@ -212,6 +240,7 @@ export default {
       testGetOtherUser,
       testSendMail,
       signature,
+      testGetTeamsList
     };
   },
 };

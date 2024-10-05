@@ -1,6 +1,8 @@
 package com.kob.backend.service.impl.info;
 
+import com.kob.backend.mapper.TeamMapper;
 import com.kob.backend.mapper.UserMapper;
+import com.kob.backend.pojo.TeamMember;
 import com.kob.backend.service.user.info.OtherUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ import java.util.Map;
 public class OtherUserInfoServiceImpl implements OtherUserInfoService {
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private TeamMapper teamMapper;
 
     @Override
     public String getUsername(Integer id) {
@@ -59,7 +64,11 @@ public class OtherUserInfoServiceImpl implements OtherUserInfoService {
 
     @Override
     public String getTeams(Integer id) {
-        return userMapper.selectById(id).getTeams();
+        Integer teamId = userMapper.selectById(id).getTeamId();
+        if (teamId == 0) {
+            return "";
+        }
+        return teamMapper.selectById(teamId).getTeamName();
     }
 
     @Override

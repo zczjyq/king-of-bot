@@ -17,20 +17,14 @@
           style="display: flex; justify-content: center; /* 水平居中 */"
         >
           <div class="col-6" style="padding: 10px 20px">
-            <div
-              class="card_zczjyq_inner card"
-              style="background-color: white; height: 410px"
+            <PersonalRanklist
+              
             >
               个人榜
-            </div>
+            </PersonalRanklist>
           </div>
           <div class="col-6" style="padding: 10px 20px">
-            <div
-              class="card_zczjyq_inner card"
-              style="background-color: white; height: 410px"
-            >
-              战队榜
-            </div>
+            <TeamRanklist/>
           </div>
         </div>
 
@@ -156,6 +150,8 @@
 import SignIn from "@/components/home/SignIn.vue";
 import CarouselComp from "@/components/home/CarouselComp.vue";
 import AnnouncementComp from "@/components/home/AnnouncementComp.vue";
+import PersonalRanklist from "@/components/home/PersonalRanklist.vue";
+import TeamRanklist from "@/components/home/TeamRanklist.vue";
 
 // 通过 Bootstrap API 显示模态框
 // const openSignInRulesModal = () => {

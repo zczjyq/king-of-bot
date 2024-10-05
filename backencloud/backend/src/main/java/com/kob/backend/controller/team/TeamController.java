@@ -1,5 +1,6 @@
 package com.kob.backend.controller.team;
 
+import com.alibaba.fastjson2.JSONObject;
 import com.kob.backend.mapper.TeamMapper;
 import com.kob.backend.service.team.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,10 @@ public class TeamController {
     @PostMapping("/api/team/create/")
     public Map<String, String> createNewTeam(@RequestParam Map<String, String> data) {
         return teamService.createNewTeam(data);
+    }
+
+    @GetMapping("/api/team/getallteam/")
+    public JSONObject getAllTeams(@RequestParam Map<String, String> data) {
+        return teamService.getAllTeams(data);
     }
 }

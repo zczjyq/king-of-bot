@@ -14,6 +14,7 @@ import showImage from '../views/showImage.vue'
 import UserReviseView from '../views/user/revise/UserReviseView.vue'
 import UserCenterView from '@/views/user/center/UserCenterView.vue';
 import HomeView from '../views/HomeView.vue'
+import TeamListView from '@/views/team/TeamListView.vue';
 import TeamView from '@/views/team/TeamView.vue';
 const routes = [
   // PK界面
@@ -61,14 +62,21 @@ const routes = [
     }
   },
   {
-    path: "/team/",
-    name: "team",
+    path: "/teaminfo/:teamId/",
+    name: "teaminfo",
     component: TeamView,
     meta: {
       requestAuth: true,
     }
   },
-
+  {
+    path: "/team/",
+    name: "team",
+    component: TeamListView,
+    meta: {
+      requestAuth: true,
+    }
+  },
   // 排行榜界面
   {
     path: "/ranklist/",
