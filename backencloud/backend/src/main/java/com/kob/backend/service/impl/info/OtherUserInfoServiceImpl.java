@@ -65,7 +65,7 @@ public class OtherUserInfoServiceImpl implements OtherUserInfoService {
     @Override
     public String getTeams(Integer id) {
         Integer teamId = userMapper.selectById(id).getTeamId();
-        if (teamId == 0) {
+        if (teamId == null || teamId == 0) {
             return "";
         }
         return teamMapper.selectById(teamId).getTeamName();

@@ -1,6 +1,7 @@
 package com.kob.backend.controller.info;
 
 import com.alibaba.fastjson2.JSONObject;
+import com.kob.backend.mapper.UserMapper;
 import com.kob.backend.service.user.info.OtherUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,9 @@ import java.util.Map;
 public class OtherUserInfoController {
     @Autowired
     private OtherUserInfoService otherUserInfoService;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @GetMapping("/api/otheruserinfo/")
     public JSONObject getOtherUserInfo(@RequestParam Map<String, String> data) {
@@ -41,6 +45,7 @@ public class OtherUserInfoController {
         resp.put("ranking", ranking);
         resp.put("teams", teams);
         resp.put("ratingList", ratingList); // 如果 ratingList 是可以直接放入 JSONObject 的
+        resp.put("teamId", userMapper.selectById(id).getTeamId());
         return resp;
     }
 }

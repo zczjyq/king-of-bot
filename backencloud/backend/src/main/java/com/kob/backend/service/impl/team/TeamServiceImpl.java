@@ -6,10 +6,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
+
+import com.kob.backend.constant.TeamRole;
 import com.kob.backend.enumClass.OrderByColumn;
 import com.kob.backend.mapper.TeamMapper;
+import com.kob.backend.mapper.TeamMemberMapper;
 import com.kob.backend.mapper.UserMapper;
 import com.kob.backend.pojo.Team;
+import com.kob.backend.pojo.TeamMember;
 import com.kob.backend.pojo.User;
 import com.kob.backend.service.impl.utils.UserDetailsImpl;
 import com.kob.backend.service.team.TeamMemberService;
@@ -36,6 +40,9 @@ public class TeamServiceImpl implements TeamService {
 
     @Autowired
     private TeamMemberService teamMemberService;
+
+    @Autowired
+    private TeamMemberMapper teamMemberMapper;
 
     // todo
     @Override
@@ -178,4 +185,47 @@ public class TeamServiceImpl implements TeamService {
         return result;
     }
 
+    @Override
+    public JSONObject getTeamsInfo(Map<String, String> data) {
+        // 返回结果
+        JSONObject result = new JSONObject();
+        Integer teamId = Integer.valueOf(data.get("teamId"));
+        Team team = teamMapper.selectById(teamId);
+
+        String leaderName = userMapper.selectById(team.getTeamLeaderId()).getUsername();
+        result.put("team", team);
+        result.put("leaderName", leaderName);
+
+
+        // 获取 team_member 列表
+        String teamMembers = null;
+
+        teamMembers = team.getTeamMember();
+        String[] userIds = teamMembers.split(",");
+
+        // 查询用户 ID 和头像保存位置
+        JSONArray membersArray = new JSONArray();
+        if (!teamMembers.isEmpty()) {
+            for (String userID : userIds) {
+                User user = userMapper.selectById(Integer.parseInt(userID));
+                JSONObject userJson = new JSONObject();
+                userJson.put("id", user.getId());
+                userJson.put("photo", user.getPhoto());
+                userJson.put("rating", user.getRating());
+                userJson.put("role", getrole(user.getId()));
+                membersArray.add(userJson);
+            }
+        }
+        result.put("team_members", membersArray);  // 添加用户信息
+        return result;
+    }
+
+
+    private String getrole(Integer id) {
+        TeamMember teamMember = teamMemberMapper.selectByUserId(id);
+        if (teamMember == null) {
+            return "";
+        }
+        return TeamRole.fromCode(teamMember.getRole()).getRoleName();
+    }
 }

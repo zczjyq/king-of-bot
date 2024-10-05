@@ -38,7 +38,13 @@
 
               <div class="col-8 justify-content-start" style="padding-left: 10">
                 <div class="row">
-                  <div class="name">{{ infos.team.teamName }}</div>
+                  <div
+                    class="name"
+                    @click="getId(infos.team.id)"
+                    style="cursor: pointer"
+                  >
+                    {{ infos.team.teamName }}
+                  </div>
                   <div class="raking">排名：{{ infos.team.ranking }}</div>
                 </div>
               </div>
@@ -55,7 +61,11 @@
             <div class="row">
               <div class="col-6">
                 <div class="raking">成立</div>
-                <div class="description">{{ new Date(infos.team.createdAt).toISOString().split('T')[0] }}</div>
+                <div class="description">
+                  {{
+                    new Date(infos.team.createdAt).toISOString().split("T")[0]
+                  }}
+                </div>
               </div>
               <div class="col-6">
                 <div class="raking">积分</div>
@@ -70,11 +80,15 @@
 
               <div class="d-flex">
                 <div
-                  v-for="member in infos.team.members"
+                  v-for="member in infos.team_members"
                   :key="member.id"
                   class="card-member"
                 >
-                  <img :src="member.avatar" alt="member-avatar" />
+                  <img
+                    style="cursor: pointer"
+                    @click="toUserCenter(member.id)"
+                    :src="member.photo"
+                  />
                 </div>
               </div>
             </div>
@@ -111,6 +125,7 @@ import { useStore } from "vuex";
 import $ from "jquery";
 import { URL, OSS } from "@/utils/constants.js";
 import { ref } from "vue";
+import router from "../../router/index";
 
 export default {
   components: {
@@ -163,21 +178,34 @@ export default {
         },
         success(resp) {
           console.log(resp);
-          
+
           console.log(resp.teams);
           teams.value = resp.teams;
           update_pages();
         },
       });
-      
     };
     pull_page(current_page.value);
+    const getId = (id) => {
+      router.push({
+        params: { teamId: id },
+        name: "teaminfo",
+      });
+    };
+    const toUserCenter = (id) => {
+      router.push({
+        params: { userId: id },
+        name: "usercenter",
+      });
+    };
     return {
       teams,
       pages,
       click_page,
       current_page,
-      OSS
+      OSS,
+      getId,
+      toUserCenter,
     };
   },
   // data() {

@@ -89,6 +89,14 @@
       class="btn btn-secondary btn-sm"
       @click="testGetTeamsList"
     >
+      获取战队列表信息
+    </button>
+    <button
+      type="button"
+      hover-class="button-hover"
+      class="btn btn-secondary btn-sm"
+      @click="testGetTeam"
+    >
       获取战队信息
     </button>
   </ContentField>
@@ -231,6 +239,23 @@ export default {
       });
     };
 
+    const testGetTeam = () => {
+      $.ajax({
+        url: URL + "/api/team/info/",
+        type: "get",
+        data: {
+          teamId: 16,
+        },
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+        success(resp) {
+          console.log(resp);
+        },
+      });
+    };
+
+
     return {
       testPostSignIn,
       testGetSignInInfo,
@@ -240,7 +265,8 @@ export default {
       testGetOtherUser,
       testSendMail,
       signature,
-      testGetTeamsList
+      testGetTeamsList,
+      testGetTeam
     };
   },
 };
