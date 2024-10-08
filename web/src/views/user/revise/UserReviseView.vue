@@ -1,16 +1,15 @@
 <template>
-  <div class="container content-filed" >
-      <div class="card-body"></div>
-      <div class="row">
-        <div class="col-3" style="margin-top: 40px;">
-          <userReviseNavbar @item-selected="updateContent" />
-        </div>
-        <div class="col-9">
-					<ContentField><component :is="currentComponent" /></ContentField>
-          
-        </div>
+  <div class="container content-filed">
+    <div class="card-body"></div>
+    <div class="row">
+      <div class="col-3" style="margin-top: 40px; border: none">
+        <userReviseNavbar @item-selected="updateContent" />
       </div>
- </div>
+      <div class="col-9">
+        <ContentField><component :is="currentComponent" /></ContentField>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -23,6 +22,7 @@ import MessageCenter from "@/components/userRevise/MessageCenter.vue";
 import MyOrder from "@/components/userRevise/MyOrder.vue";
 import RechargeCenter from "@/components/userRevise/RechargeCenter.vue";
 import PasswordRevise from "@/components/userRevise/PasswordRevise.vue";
+import TeamCenter from "@/components/userRevise/TeamCenter.vue";
 
 export default {
   name: "UserReviseView",
@@ -36,6 +36,7 @@ export default {
     MyOrder,
     RechargeCenter,
     PasswordRevise,
+    TeamCenter,
   },
   data() {
     return {
@@ -52,6 +53,7 @@ export default {
         "MyOrder",
         "RechargeCenter",
         "PasswordRevise",
+        "TeamCenter",
       ];
       this.currentComponent = components[index]; // 根据选中的索引更新当前组件
     },

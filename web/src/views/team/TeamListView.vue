@@ -10,7 +10,9 @@
       >
         创建战队
       </button>
-      <div class="col-4">我的团队</div>
+      <div class="col-4">
+        <button class="btn btn-outline-primary ml-2" @click="goToTeamCenter(user_id)">我的团队</button>
+      </div>
       <div class="col-4 d-flex align-items-center">
         <input
           type="text"
@@ -139,6 +141,9 @@ export default {
     let current_page = ref(1);
     let total_users = 0;
     let pages = ref([]);
+    let user_id = store.state.user.id;
+    console.log(store);
+    
     const click_page = (page) => {
       if (page === -2) page = current_page.value - 1;
       else if (page === -1) page = current_page.value + 1;
@@ -199,6 +204,14 @@ export default {
         name: "usercenter",
       });
     };
+
+    const goToTeamCenter = (id) => {
+      // 跳转到 userrevise 页面并传递参数，告诉它要显示 TeamCenter 组件
+      router.push({ 
+        params: { userId: id },
+        name: "teammanage",
+      });
+    };
     return {
       teams,
       pages,
@@ -207,6 +220,8 @@ export default {
       OSS,
       getId,
       toUserCenter,
+      goToTeamCenter,
+      user_id
     };
   },
   // data() {

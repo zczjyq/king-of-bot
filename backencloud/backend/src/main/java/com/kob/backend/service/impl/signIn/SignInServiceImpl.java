@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -92,32 +93,53 @@ public class SignInServiceImpl implements SignInService {
     // 获取签到信息
     @Override
     public Map<String, String> getSignInInfo(Map<String, String> data) {
+        // 从当前上下文中获取认证信息
         UsernamePasswordAuthenticationToken authenticationToken =
                 (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        // 从认证信息中获取当前登录用户
         UserDetailsImpl loginUser = (UserDetailsImpl) authenticationToken.getPrincipal();
-        User user = loginUser.getUser();
+        User user = loginUser.getUser(); // 获取用户信息
+        // 根据用户ID查询用户的签到信息
         SignIn signIn = signInMapper.selectByUserId(String.valueOf(user.getId()));
+
+        // 如果签到信息为空，初始化签到信息并重新查询
         if (signIn == null) {
             init();
             signIn = signInMapper.selectByUserId(String.valueOf(user.getId()));
         }
-        Map<String, String> map = new HashMap<>();
-        map.put("consecutiveDays", String.valueOf(signIn.getConsecutiveDays()));
-        map.put("cumulativeDays", String.valueOf(signIn.getCumulativeDays()));
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        String today = sdf.format(new Date());
-        Date lastSignInDate = signIn.getLastSignInDate(); // 上次签到日期
-        // 格式化上次签到日期
-        String lastSignInDay = lastSignInDate != null ? sdf.format(lastSignInDate) : "";
-        if (today.equals(lastSignInDay) && signIn.getIsSigned()) {
-            map.put("isSigned", String.valueOf(true));
-        } else {
-            map.put("isSigned", String.valueOf(false));
+        // 初始化返回的map对象，用于存储签到信息
+        Map<String, String> map = new HashMap<>();
+        if (!(isYesterday(signIn.getLastSignInDate()) || isToday(signIn.getLastSignInDate()))) {
+            signIn.setConsecutiveDays(0);
+            signInMapper.updateById(signIn);
         }
+        map.put("consecutiveDays", String.valueOf(signIn.getConsecutiveDays())); // 连续签到天数
+        map.put("cumulativeDays", String.valueOf(signIn.getCumulativeDays())); // 累计签到天数
+
+        // 格式化当前日期为 yyyy-MM-dd
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String today = sdf.format(new Date()); // 获取今天的日期
+
+        // 获取上次签到的日期
+        Date lastSignInDate = signIn.getLastSignInDate();
+        // 如果上次签到日期不为空，则将其格式化为 yyyy-MM-dd
+        String lastSignInDay = lastSignInDate != null ? sdf.format(lastSignInDate) : "";
+
+        // 检查用户今天是否已经签到
+        if (today.equals(lastSignInDay) && signIn.getIsSigned()) {
+            map.put("isSigned", String.valueOf(true)); // 如果今天已经签到，设置为true
+        } else {
+            map.put("isSigned", String.valueOf(false)); // 如果今天没有签到，设置为false
+        }
+
+        // 设置操作状态为成功
         map.put("status", "success");
+
+        // 返回签到信息
         return map;
     }
+
 
     // 判断上次签到日期是否是昨天
     private boolean isYesterday(Date lastSignInDate) {
@@ -126,4 +148,20 @@ public class SignInServiceImpl implements SignInService {
         long oneDayInMillis = 24 * 60 * 60 * 1000; // 一天的毫秒数
         return difference >= oneDayInMillis && difference < 2 * oneDayInMillis;
     }
+
+    // 判断上次签到日期是否是今天
+    private boolean isToday(Date lastSignInDate) {
+        // 获取当前日期的Calendar实例
+        Calendar today = Calendar.getInstance();
+        today.setTime(new Date());
+
+        // 获取签到日期的Calendar实例
+        Calendar signInDay = Calendar.getInstance();
+        signInDay.setTime(lastSignInDate);
+
+        // 比较年、月、日是否相同
+        return today.get(Calendar.YEAR) == signInDay.get(Calendar.YEAR) &&
+                today.get(Calendar.DAY_OF_YEAR) == signInDay.get(Calendar.DAY_OF_YEAR);
+    }
+
 }

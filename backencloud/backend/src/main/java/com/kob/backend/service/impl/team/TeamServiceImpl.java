@@ -93,7 +93,7 @@ public class TeamServiceImpl implements TeamService {
                 "",
                 data.get("src"),
                 TEAM_START_RATING,
-                "",
+                String.valueOf(user.getId()),
                 (int) (teamMapper.selectCount(null) + 1)
         );
         teamMapper.insert(team);
@@ -107,6 +107,7 @@ public class TeamServiceImpl implements TeamService {
         map.put("error_message", "success");
         return map;
     }
+
 
     @Override
     public JSONObject getAllTeams(Map<String, String> data) {

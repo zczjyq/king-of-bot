@@ -16,6 +16,7 @@ import UserCenterView from '@/views/user/center/UserCenterView.vue';
 import HomeView from '../views/HomeView.vue'
 import TeamListView from '@/views/team/TeamListView.vue';
 import TeamView from '@/views/team/TeamView.vue';
+import TeamManageView from '@/views/user/revise/TeamManageView.vue';
 const routes = [
   // PK界面
   {
@@ -78,14 +79,6 @@ const routes = [
     }
   },
   // 排行榜界面
-  {
-    path: "/ranklist/",
-    name: "ranklist_index",
-    component: RanklistIndexView,
-    meta: {
-      requestAuth: true,
-    }
-  },
   {
     path: "/ranklist/",
     name: "ranklist_index",
@@ -160,6 +153,14 @@ const routes = [
     path: '/userrevise/:userId/',
     name: 'userrevise',
     component: UserReviseView,
+    meta: {
+      requestAuth: true,
+    }
+  },
+  {
+    path: '/teammanage/:userId/',
+    name: 'teammanage',
+    component: TeamManageView,
     meta: {
       requestAuth: true,
     }

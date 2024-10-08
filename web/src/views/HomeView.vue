@@ -17,17 +17,12 @@
           style="display: flex; justify-content: center; /* 水平居中 */"
         >
           <div class="col-6" style="padding: 10px 20px">
-            <PersonalRanklist
-              
-            >
-              个人榜
-            </PersonalRanklist>
+            <PersonalRanklist> 个人榜 </PersonalRanklist>
           </div>
           <div class="col-6" style="padding: 10px 20px">
-            <TeamRanklist/>
+            <TeamRanklist />
           </div>
         </div>
-
         <div
           class="card_zczjyq card"
           style="background-color: white; height: 600px"
@@ -152,6 +147,28 @@ import CarouselComp from "@/components/home/CarouselComp.vue";
 import AnnouncementComp from "@/components/home/AnnouncementComp.vue";
 import PersonalRanklist from "@/components/home/PersonalRanklist.vue";
 import TeamRanklist from "@/components/home/TeamRanklist.vue";
+import { ref, onMounted } from "vue";
+import $ from "jquery";
+import { useStore } from "vuex";
+import { URL } from "@/utils/constants";
+const store = useStore();
+const role = ref("");
+onMounted(() => {
+  $.ajax({
+    url: URL + "/api/team/getreviseinfo/",
+    type: "post",
+    headers: {
+      Authorization: "Bearer " + store.state.user.token,
+    },
+    success(resp) {
+      role.value = resp.role;
+
+      store.commit("updateTeamInfo", role.value);
+      console.log("更新成功");
+      
+    },
+  });
+});
 
 // 通过 Bootstrap API 显示模态框
 // const openSignInRulesModal = () => {

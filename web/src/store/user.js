@@ -12,10 +12,16 @@ export default {
         followerCount: "",
         signature: "",
         rating: "",
+        teamId: "",
+        teamRole: "",
     },
     getters: {
     },
     mutations: {
+        updateTeamInfo(state, teamRole) {
+            state.teamRole = teamRole;
+        }, 
+
         // 更新关注者数量
         updatefollowerCount(state, followerCount) {
             state.followerCount = followerCount;
