@@ -23,7 +23,7 @@ public class OssController {
     OSS ossClient;
     private String endpoint = "oss-cn-beijing.aliyuncs.com";
     private String bucket = "kingofbotszczjyq";
-    private String accessId = "LTAI5tJ5KK7m1MqGWsoKvW4d";
+    private String accessId = "LTAI5tAkQx6tgF8n8BCTjuBn";
     @RequestMapping("/oss/policy")
     public Map<String, String> policy() {
         String host = "https://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
@@ -34,7 +34,8 @@ public class OssController {
         Map<String, String> respMap = null;
         // 创建OSSClient实例。
         try {
-            long expireTime = 30;
+            // 5分钟
+            long expireTime = 300;
             long expireEndTime = System.currentTimeMillis() + expireTime * 1000;
             Date expiration = new Date(expireEndTime);
             // PostObject请求最大可支持的文件大小为5 GB，即CONTENT_LENGTH_RANGE为5*1024*1024*1024。

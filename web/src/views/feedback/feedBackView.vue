@@ -137,7 +137,9 @@
       </div>
     </div>
     <br />
+    <MailSendLoading v-if="loading"></MailSendLoading>
     <div class="d-flex justify-content-center">
+      <SendButton></SendButton>
       <button
         @click="submitFeedback"
         type="submit"
@@ -151,17 +153,23 @@
 </template>
   
   <script>
+  import MailSendLoading from "@/components/other/loading/MailSendLoading.vue";
 import { ref } from "vue";
 import $ from "jquery";
 import { useStore } from "vuex";
-import {URL} from "@/utils/constants.js";
+import { URL } from "@/utils/constants.js";
+import SendButton from "@/components/other/buttton/SendButton.vue";
 
 export default {
+  components: {
+    MailSendLoading,
+  },
   setup() {
     let username = ref("");
     let feedbackType = ref("");
     let description = ref("");
     let contact = ref("");
+    let loading = ref(false); // 用于控制加载动画的显示与隐藏
     const store = useStore();
     const showAlertYellow = ref(false);
     const showAlertGreen = ref(false);
@@ -198,6 +206,7 @@ export default {
         return;
       }
       // 发送请求
+      loading.value = true;
       $.ajax({
         url: URL + "/api/feedback/",
         type: "get",
@@ -211,6 +220,7 @@ export default {
           Authorization: "Bearer " + store.state.user.token,
         },
         success(resp) {
+          loading.value = false;
           // 正确返回
           if (resp.error_message === "success") {
             alertMessage.value = "反馈提交成功！";
@@ -221,7 +231,8 @@ export default {
             feedbackType.value = "";
             description.value = "";
             contact.value = "";
-          } else { // 邮箱填写错误
+          } else {
+            // 邮箱填写错误
             alertMessage.value = resp.error_message;
             showAlertRed.value = false; // 隐藏错误框
             showAlertYellow.value = true; // 隐藏警告框
@@ -229,6 +240,7 @@ export default {
           }
         },
         error() {
+          loading.value = false;
           alertMessage.value = "请求失败，请重试！";
           showAlertRed.value = true; // 隐藏错误框
           showAlertYellow.value = false; // 隐藏警告框
@@ -244,10 +256,12 @@ export default {
     };
 
     return {
+      SendButton,
       username,
       feedbackType,
       description,
       contact,
+      loading,
       submitFeedback,
       showAlertYellow,
       showAlertGreen,

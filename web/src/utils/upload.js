@@ -45,6 +45,10 @@ export const uploadImage = async (selectedFile, store) => {
   // 构建 FormData，携带文件和 OSS 签名信息
   const randomFileName = generateRandomFileName(selectedFile);
   const formData = new FormData();
+ console.log("ossData");
+ 
+  console.log(ossData);
+  
   formData.append("key", ossData.dir + randomFileName); // 上传路径
   formData.append("OSSAccessKeyId", ossData.accessid); // Access Key ID
   formData.append("policy", ossData.policy); // 上传策略
@@ -68,6 +72,8 @@ export const uploadImage = async (selectedFile, store) => {
       },
       error(resp) {
         console.error("图片上传失败:", resp);
+        console.error("状态码:", resp.status);
+        console.error("响应文本:", resp.responseText);
         reject(resp);
       },
     });

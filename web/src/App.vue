@@ -9,7 +9,22 @@
     />
     <NavBar></NavBar>
     <router-view></router-view>
-    <button class="feedback-button" @click="goToFeedback">问题反馈</button>
+    <button class="feedback-button ui-btn" @click="goToFeedback">
+      <span> 问题反馈 </span>
+    </button>
+
+    <div
+      ref="draggable"
+      @mousedown="startDragging"
+      style="
+        position: fixed; /* 固定定位 */
+        bottom: 50px; /* 距离底部 50px */
+        left: 50px; /* 距离左侧 50px */
+        padding: 10px; /* 内边距 */
+      "
+    >
+      <SmallNav></SmallNav>
+    </div>
   </div>
 </template>
 
@@ -19,6 +34,8 @@ import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSli
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { useRouter } from "vue-router";
+import SmallNav from "./components/other/SmallNav.vue";
+import { ref } from "vue";
 
 // import MouseTrail from './components/MouseTrail.vue';
 // 粒子库初始化
@@ -152,6 +169,31 @@ const options = {
   // 启用高分辨率显示支持
   detectRetina: true,
 };
+
+// 拖动操作
+const draggable = ref(null);
+let offsetX = 0;
+let offsetY = 0;
+
+const startDragging = (e) => {
+  offsetX = e.clientX - draggable.value.getBoundingClientRect().left;
+  offsetY = e.clientY - draggable.value.getBoundingClientRect().top;
+
+  document.addEventListener("mousemove", mouseMoveHandler);
+  document.addEventListener("mouseup", mouseUpHandler);
+  draggable.value.style.cursor = "grabbing"; // 更新鼠标样式
+};
+
+const mouseMoveHandler = (e) => {
+  draggable.value.style.left = e.clientX - offsetX + "px";
+  draggable.value.style.top = e.clientY - offsetY + "px";
+};
+
+const mouseUpHandler = () => {
+  document.removeEventListener("mousemove", mouseMoveHandler);
+  document.removeEventListener("mouseup", mouseUpHandler);
+  draggable.value.style.cursor = "grab"; // 重置鼠标样式
+};
 </script>
 <style>
 /* 设置背景为渐变 */
@@ -206,5 +248,162 @@ router-view {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+}
+/* From Uiverse.io by Galahhad */
+.ui-btn {
+  --btn-default-bg: rgb(41, 41, 41);
+  --btn-padding: 15px 20px;
+  --btn-hover-bg: rgb(51, 51, 51);
+  --btn-transition: 0.3s;
+  --btn-letter-spacing: 0.1rem;
+  --btn-animation-duration: 1.2s;
+  --btn-shadow-color: rgba(0, 0, 0, 0.137);
+  --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
+  --hover-btn-color: #fac921;
+  --default-btn-color: #fff;
+  --font-size: 16px;
+  /* 👆 this field should not be empty */
+  --font-weight: 600;
+  --font-family: Menlo, Roboto Mono, monospace;
+  /* 👆 this field should not be empty */
+}
+
+/* button settings 👆 */
+
+.ui-btn {
+  box-sizing: border-box;
+  padding: var(--btn-padding);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--default-btn-color);
+  font: var(--font-weight) var(--font-size) var(--font-family);
+  background: var(--btn-default-bg);
+  border: none;
+  cursor: pointer;
+  transition: var(--btn-transition);
+  overflow: hidden;
+  box-shadow: var(--btn-shadow);
+}
+
+.ui-btn span {
+  letter-spacing: var(--btn-letter-spacing);
+  transition: var(--btn-transition);
+  box-sizing: border-box;
+  position: relative;
+  background: inherit;
+}
+
+.ui-btn span::before {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  background: inherit;
+}
+
+.ui-btn:hover,
+.ui-btn:focus {
+  background: var(--btn-hover-bg);
+}
+
+.ui-btn:hover span,
+.ui-btn:focus span {
+  color: var(--hover-btn-color);
+}
+
+.ui-btn:hover span::before,
+.ui-btn:focus span::before {
+  animation: chitchat linear both var(--btn-animation-duration);
+}
+
+@keyframes chitchat {
+  0% {
+    content: "#";
+  }
+
+  5% {
+    content: ".";
+  }
+
+  10% {
+    content: "^{";
+  }
+
+  15% {
+    content: "-!";
+  }
+
+  20% {
+    content: "#$_";
+  }
+
+  25% {
+    content: "№:0";
+  }
+
+  30% {
+    content: "#{+.";}35%{content: "@}-?";
+  }
+
+  40% {
+    content: "?{4@%";
+  }
+
+  45% {
+    content: "=.,^!";
+  }
+
+  50% {
+    content: "?2@%";
+  }
+
+  55% {
+    content: "\;1}]";
+  }
+
+  60% {
+    content: "?{%:%";
+    right: 0;
+  }
+
+  65% {
+    content: "|{f[4";
+    right: 0;
+  }
+
+  70% {
+    content: "{4%0%";
+    right: 0;
+  }
+
+  75% {
+    content: "'1_0<";
+    right: 0;
+  }
+
+  80% {
+    content: "{0%";
+    right: 0;
+  }
+
+  85% {
+    content: "]>'";
+    right: 0;
+  }
+
+  90% {
+    content: "4";
+    right: 0;
+  }
+
+  95% {
+    content: "2";
+    right: 0;
+  }
+
+  100% {
+    content: "";
+    right: 0;
+  }
 }
 </style>

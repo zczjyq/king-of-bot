@@ -23,15 +23,33 @@
             <TeamRanklist />
           </div>
         </div>
-        <div
-          class="card_zczjyq card"
-          style="background-color: white; height: 600px"
-        >
-          游戏列表
+        <div style="padding: 20px; /* 外部边距 */">
+          <div
+            class="game-list"
+            style="
+              padding: 40px;
+              display: grid;
+              grid-template-columns: repeat(
+                3,
+                1fr
+              ); /* 创建3列，每列占1/3宽度 */
+              gap: 27px; /* 卡片之间的间距 */
+              background-color: white;
+              height: 600px;
+            "
+          >
+            <GameCard></GameCard>
+            <GameCard></GameCard>
+            <GameCard></GameCard>
+            <GameCard></GameCard>
+            <GameCard></GameCard>
+            <GameCard></GameCard>
+          </div>
         </div>
       </div>
       <div class="col-3">
         <SignIn @show-modal="openSignInRulesModal"> 签到 </SignIn>
+        <BankCard style="margin-left: 11px"></BankCard>
         <router-link to="/recharge" class="card_zczjyq card pay">
           金币充值
         </router-link>
@@ -151,6 +169,8 @@ import { ref, onMounted } from "vue";
 import $ from "jquery";
 import { useStore } from "vuex";
 import { URL } from "@/utils/constants";
+import BankCard from "@/components/other/BankCard.vue";
+import GameCard from "@/components/other/card/GameCard.vue";
 const store = useStore();
 const role = ref("");
 onMounted(() => {
@@ -165,7 +185,6 @@ onMounted(() => {
 
       store.commit("updateTeamInfo", role.value);
       console.log("更新成功");
-      
     },
   });
 });

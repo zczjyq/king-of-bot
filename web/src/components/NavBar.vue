@@ -52,6 +52,7 @@
           class="navbar-nav"
           v-if="$store.state.user.is_login || !$store.state.user.show_content"
         >
+        <LightDarkSwitch></LightDarkSwitch>
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -137,8 +138,11 @@
 import { useRoute } from "vue-router";
 import { computed } from "vue";
 import { useStore } from "vuex";
+import LightDarkSwitch from "./other/switch/lightDarkSwitch.vue";
+import LogOut from "./other/buttton/LogOutButton.vue";
 
 export default {
+  components: { LightDarkSwitch },
   setup() {
     const store = useStore();
     const route = useRoute();
@@ -152,7 +156,9 @@ export default {
     return {
       route_name,
       logout,
+      LogOut,
       show_navbar,
+      
     };
   },
 };
