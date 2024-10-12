@@ -184,6 +184,7 @@ onMounted(() => {
       role.value = resp.role;
 
       store.commit("updateTeamInfo", role.value);
+      store.commit("updateTeamId", resp.teamId);
       console.log("更新成功");
     },
   });

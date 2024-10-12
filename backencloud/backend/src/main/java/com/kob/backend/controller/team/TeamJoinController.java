@@ -1,5 +1,7 @@
 package com.kob.backend.controller.team;
 
+import com.kob.backend.mapper.TeamMemberMapper;
+import com.kob.backend.pojo.TeamMember;
 import com.kob.backend.service.team.TeamJoinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +18,18 @@ import static com.kob.backend.constant.UtilMessage.STATICRETURNMESSAGE;
 public class TeamJoinController {
     @Autowired
     private TeamJoinService teamJoinService;
+
+    @Autowired
+    private TeamMemberMapper teamMemberMapper;
+    @PostMapping("/api/team/checkHasTeam/")
+    Integer checkHasTeam(@RequestParam Map<String, String> data) {
+        String userId = data.get("userId");
+        TeamMember teamMember = teamMemberMapper.selectByUserId(Integer.valueOf(userId));
+        if (teamMember == null) {
+            return TEAM_JOIN_NO_TEAM;
+        }
+        return 1;
+    }
     @PostMapping("/api/team/join/")
     Map<String, String> join(@RequestParam Map<String, String> data) {
         String userId = data.get("userId");

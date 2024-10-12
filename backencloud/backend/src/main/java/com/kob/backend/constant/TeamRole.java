@@ -34,5 +34,15 @@ public enum TeamRole {
         }
         throw new IllegalArgumentException("No role found with code: " + code);
     }
+
+    // 根据角色名称获取对应的枚举
+    public static TeamRole fromRoleName(String roleName) {
+        for (TeamRole role : TeamRole.values()) {
+            if (role.getRoleName().equals(roleName)) {
+                return role;
+            }
+        }
+        throw new IllegalArgumentException("No role found with name: " + roleName);
+    }
 }
 

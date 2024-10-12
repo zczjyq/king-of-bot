@@ -15,4 +15,6 @@ public interface UserMapper extends BaseMapper<User> {
     @Select("SELECT * FROM user ORDER BY rating DESC LIMIT 10")
     List<User> getListLimit();
 
+    @Select("SELECT * FROM user WHERE team_id = #{teamId}")
+    List<User> selectByTeamId(Integer teamId);
 }

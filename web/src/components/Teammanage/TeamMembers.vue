@@ -57,7 +57,6 @@
               <li>
                 <a class="dropdown-item" href="#">
                   <div
-       
                     data-bs-toggle="modal"
                     data-bs-target="#roleModal"
                     @click="openRoleModal(member.id, member.role)"
@@ -148,6 +147,10 @@ export default {
     const selectedMemberId = ref(null); // 用于存储选中的用户 ID
 
     onMounted(() => {
+      refreshData();
+    });
+
+    const refreshData = () => {
       $.ajax({
         url: URL + "/api/user/getTeamId/",
         type: "get",
@@ -177,7 +180,7 @@ export default {
           });
         },
       });
-    });
+    };
 
     const openRoleModal = (memberId, currentRole) => {
       selectedMemberId.value = memberId; // 存储用户 ID
@@ -185,8 +188,6 @@ export default {
     };
 
     const saveRole = () => {
-      console.log(selectedMemberId.value, selectedRole.value);
-      
       $.ajax({
         url: URL + "/api/user/updateRole/", // 假设这是你的后端接口
         type: "post",
@@ -199,11 +200,14 @@ export default {
         },
         success(response) {
           // 处理成功逻辑，比如刷新成员列表
+          refreshData();
+          console.log("成功修改");
+
           console.log(response);
         },
-        error(error) {
-          console.error("Error updating role:", error);
-        },
+        error() {
+          refreshData();
+        }
       });
     };
     return {
@@ -343,7 +347,7 @@ button:hover::before {
 }
 
 button::before {
-  content: '';
+  content: "";
   display: block;
   width: 0px;
   height: 86%;
@@ -382,6 +386,4 @@ button:active {
   -moz-transition: box-shadow 0.2s ease-in;
   transition: box-shadow 0.2s ease-in;
 }
-
-
 </style>

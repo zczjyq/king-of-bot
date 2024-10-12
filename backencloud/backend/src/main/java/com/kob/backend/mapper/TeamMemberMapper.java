@@ -12,4 +12,7 @@ import java.util.List;
 public interface TeamMemberMapper extends BaseMapper<TeamMember> {
     @Select("SELECT * FROM team_member WHERE user_id = #{userId}")
     TeamMember selectByUserId(Integer userId);
+
+    @Select("SELECT * FROM team_member WHERE team_id = #{teamId}")
+    List<TeamMember> selectByTeamId(Integer teamId);
 }

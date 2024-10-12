@@ -11,7 +11,13 @@
         创建战队
       </button>
       <div class="col-4">
-        <button class="btn btn-outline-primary ml-2" @click="goToTeamCenter(user_id)">我的团队</button>
+        <button
+          v-if="my_team_show === 1"
+          class="btn btn-outline-primary ml-2"
+          @click="goToTeamCenter(user_id)"
+        >
+          我的团队
+        </button>
       </div>
       <div class="col-4 d-flex align-items-center">
         <input
@@ -127,7 +133,7 @@ import TeamWindow from "@/components/popUpWindow/TeamWindow.vue";
 import { useStore } from "vuex";
 import $ from "jquery";
 import { URL, OSS } from "@/utils/constants.js";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import router from "../../router/index";
 
 export default {
@@ -136,14 +142,32 @@ export default {
   },
 
   setup() {
+
     const store = useStore();
     let teams = ref([]);
     let current_page = ref(1);
     let total_users = 0;
     let pages = ref([]);
     let user_id = store.state.user.id;
-    console.log(store);
-    
+    let my_team_show = ref(0);
+
+    onMounted(() => {
+      $.ajax({
+        url: URL + "/api/team/checkHasTeam/",
+        type: "post",
+        data: {
+          userId: store.state.user.id,
+        },
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+        success(resp) {
+          console.log("myteamshow" + resp);
+          my_team_show.value = resp;
+        }
+      });
+    });
+
     const click_page = (page) => {
       if (page === -2) page = current_page.value - 1;
       else if (page === -1) page = current_page.value + 1;
@@ -207,7 +231,7 @@ export default {
 
     const goToTeamCenter = (id) => {
       // 跳转到 userrevise 页面并传递参数，告诉它要显示 TeamCenter 组件
-      router.push({ 
+      router.push({
         params: { userId: id },
         name: "teammanage",
       });
@@ -221,7 +245,8 @@ export default {
       getId,
       toUserCenter,
       goToTeamCenter,
-      user_id
+      user_id,
+      my_team_show
     };
   },
   // data() {

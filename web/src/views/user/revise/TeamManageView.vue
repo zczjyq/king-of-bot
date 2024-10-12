@@ -9,7 +9,14 @@
         <div class="card p-4 mb-3">
           <div class="d-flex justify-content-between">
             <h5>我的战队</h5>
-            <button v-if="role == '队长'" class="btn btn-danger">解散战队</button>
+            <button
+              v-if="role == '队长'"
+              class="btn btn-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#teamDisslove"
+            >
+              解散战队
+            </button>
           </div>
           <ul class="nav nav-tabs mt-3 justify-content-center">
             <li class="nav-item">
@@ -48,6 +55,17 @@
       </div>
     </div>
   </div>
+  <!-- Button trigger modal -->
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#teamDissloveComfirm"
+  >
+    Launch static backdrop modal
+  </button>
+  <TeamDelete></TeamDelete>
+  <TeamConfirm></TeamConfirm>
 </template>
   
   <script>
@@ -57,15 +75,17 @@ import TeamInfo from "@/components/Teammanage/TeamInfo.vue";
 import TeamMembers from "@/components/Teammanage/TeamMembers.vue";
 import ReviewRequests from "@/components/Teammanage/ReviewRequests.vue";
 import { useStore } from "vuex";
+import TeamDelete from "@/components/popUpWindow/team/TeamDelete.vue";
+import TeamConfirm from "@/components/popUpWindow/team/TeamConfirm.vue";
 
 export default {
   setup() {
     const store = useStore();
     const role = store.state.user.teamRole;
-    
+
     return {
-      role
-    }
+      role,
+    };
   },
   name: "UserReviseView",
   components: {
@@ -74,6 +94,8 @@ export default {
     TeamInfo,
     TeamMembers,
     ReviewRequests,
+    TeamDelete,
+    TeamConfirm,
   },
   data() {
     return {
@@ -111,7 +133,6 @@ export default {
 };
 </script>
 <style scoped>
-
 .nav-tabs .nav-link {
   color: #6c757d; /* 未选中的浅色 */
   padding: 10px 20px;
@@ -123,5 +144,4 @@ export default {
   color: white;
   border-radius: 10px;
 }
-
 </style>

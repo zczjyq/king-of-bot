@@ -75,6 +75,7 @@ public class TeamReviseServiceImpl implements TeamReviseService {
         String leaderName = userMapper.selectById(team.getTeamLeaderId()).getUsername();
         map.put("leaderName", leaderName);
         map.put("teamInfo", team);
+        map.put("teamId", teamId);
 
         return map;
     }

@@ -142,6 +142,9 @@
     <HandsomeCard></HandsomeCard>
     <br />
     <MailSendLoading></MailSendLoading>
+    <br />
+    <WeatherCard></WeatherCard>
+    
   </ContentField>
 </template>
       
@@ -150,6 +153,7 @@ import MailSendLoading from "@/components/other/loading/MailSendLoading.vue";
 import BankCard from "@/components/other/BankCard.vue";
 import ContentField from "../components/ContentField";
 import HandsomeCard from "@/components/other/card/HandsomeCard.vue";
+import WeatherCard from "@/components/other/card/WeatherCard.vue";
 import $ from "jquery";
 import { useStore } from "vuex";
 import { URL } from "@/utils/constants.js";
@@ -159,6 +163,7 @@ export default {
   name: "UserProfileView",
   components: {
     ContentField,
+    WeatherCard,
     HandsomeCard,
     BankCard,
     MailSendLoading,

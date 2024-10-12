@@ -103,7 +103,9 @@ public class TeamServiceImpl implements TeamService {
         data.put("role", String.valueOf(TEAM_LEADER));
         // 在teamMember中也加入一条创建者的信息
         teamMemberService.addTeamMember(data);
-
+        User user1 = userMapper.selectById(user.getId());
+        user1.setTeamId(team.getId().intValue());
+        userMapper.updateById(user1);
         map.put("error_message", "success");
         return map;
     }

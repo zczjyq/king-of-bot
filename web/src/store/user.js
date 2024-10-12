@@ -18,6 +18,10 @@ export default {
     getters: {
     },
     mutations: {
+        updateTeamId(state, teamId) {
+            state.teamId = teamId;
+        },
+
         updateTeamInfo(state, teamRole) {
             state.teamRole = teamRole;
         }, 
