@@ -39,6 +39,8 @@ export default {
             state.is_login = user.is_login;
             state.signature = user.signature;
             state.rating = user.rating;
+            state.teamRole = user.teamRole;
+            state.teamId = user.teamId;
         },
 
         updateSignature(state, signature) {
@@ -89,15 +91,12 @@ export default {
                         "Bearer " + context.state.token,
                 },
                 success(resp) {
-                    console.log(resp.error_message);
                     context.commit("updateSignature", resp.error_message);
                 }
 
             })
         },
         getinfo(context, data) {
-
-
             $.ajax({
                 url: URL + "/api/user/account/info/",
                 type: "get",
@@ -106,6 +105,10 @@ export default {
                         "Bearer " + context.state.token,
                 },
                 success(resp) {
+                    console.log("getinfo");
+                    
+                    console.log(resp);
+                    
                     if (resp.error_message === "success") {
                         context.commit("updateUser", {
                             ...resp,

@@ -55,15 +55,6 @@
       </div>
     </div>
   </div>
-  <!-- Button trigger modal -->
-  <button
-    type="button"
-    class="btn btn-primary"
-    data-bs-toggle="modal"
-    data-bs-target="#teamDissloveComfirm"
-  >
-    Launch static backdrop modal
-  </button>
   <TeamDelete></TeamDelete>
   <TeamConfirm></TeamConfirm>
 </template>
