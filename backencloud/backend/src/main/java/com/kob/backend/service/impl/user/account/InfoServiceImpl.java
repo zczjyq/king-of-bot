@@ -28,26 +28,37 @@ public class InfoServiceImpl implements InfoService {
         // 从 Spring Security 上下文中获取认证信息
         UsernamePasswordAuthenticationToken authentication =
                 (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-
+        Map<String, String> map = new HashMap<>();
         // 从认证信息中获取当前登录用户的详细信息
         UserDetailsImpl loginUser = (UserDetailsImpl) authentication.getPrincipal();
         User user  = loginUser.getUser();
 
         Team team = teamMapper.selectById(user.getTeamId());
-        String teamName = team.getTeamName();
+        if (team != null) {
+            String teamName = team.getTeamName();
+            map.put("teamName", teamName);
+            map.put("teamId", String.valueOf(team.getId()));
+        } else {
+            map.put("teamName", "");
+            map.put("teamId", "");
+        }
 
         TeamMember teamMember = teamMemberMapper.selectByUserId(user.getId());
-        String roleName = TeamRole.fromCode(teamMember.getRole()).getRoleName();
-        Map<String, String> map = new HashMap<>();
+        if (teamMember != null) {
+            String roleName = TeamRole.fromCode(teamMember.getRole()).getRoleName();
+            map.put("teamRole", roleName);
+        } else {
+            map.put("teamRole", "");
+        }
+
         map.put("error_message", "success");
         map.put("id", user.getId().toString());
         map.put("username", user.getUsername());
         map.put("photo", user.getPhoto());
         map.put("signature", user.getSignature());
         map.put("rating", user.getRating().toString());
-        map.put("teamName", teamName);
-        map.put("teamId", String.valueOf(team.getId()));
-        map.put("teamRole", roleName);
+
+
         return map;
     }
 }

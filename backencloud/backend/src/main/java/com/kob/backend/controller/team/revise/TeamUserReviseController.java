@@ -18,4 +18,9 @@ public class TeamUserReviseController {
         System.out.println("开始更新");
         return teamUserReviseServise.reviseUserRole(data);
     }
+
+    @PostMapping("/api/team/remove/")
+    public Map<String, String> remove(@RequestParam Map<String, String> data) {
+        return teamUserReviseServise.removeUser(data);
+    }
 }

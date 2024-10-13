@@ -1,4 +1,4 @@
-# Spring Boot 复习
+# Spring Boot
 
 - 配置 Git 环境与项目创建 ☑️
 - 创建菜单与游戏页面 ☑️
@@ -21,3 +21,7 @@
 <div> <span style="color: lightblue;font-size:large">"创建个人中心":</span> <span>实现了个人中心，实现了关注系统</span><br/><span><span style="font-size:large">--时间: </span>2024 3/2 00:03</span>   4779</div>
 
 <div> <span style="color: lightblue;font-size:large">"修改bug":</span> <span>改了几个bug</span><br/><span><span style="font-size:large">--时间: </span>2024 6/3 8:53</span>   4779</div>
+
+...省略
+
+<div> <span style="color: lightblue;font-size:large">"修改bug":</span> <span>优化</span><br/><span><span style="font-size:large">--时间: </span>2024 10/13 13:48</span>   20332</div>

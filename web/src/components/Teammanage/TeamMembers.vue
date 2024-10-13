@@ -68,7 +68,11 @@
               <li><a class="dropdown-item" href="#">转让</a></li>
               <li><hr class="dropdown-divider" /></li>
               <li>
-                <a class="dropdown-item" href="#" style="color: #ea5455"
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  style="color: #ea5455"
+                  @click="removeUser(member.id)"
                   >移除</a
                 >
               </li>
@@ -126,15 +130,20 @@
       </div>
     </div>
   </div>
+  <TeamUserRemove></TeamUserRemove>
 </template>
 
 <script>
 import { onMounted } from "vue";
+import TeamUserRemove from "../popUpWindow/team/TeamUserRemove.vue";
 import { URL } from "@/utils/constants";
 import $ from "jquery";
 import { useStore } from "vuex";
 import { ref } from "vue";
 export default {
+  components: {
+    TeamUserRemove,
+  },
   setup() {
     const store = useStore();
     const teamId = ref(0); // 获取传递的用户ID
@@ -207,14 +216,33 @@ export default {
         },
         error() {
           refreshData();
-        }
+        },
       });
     };
+
+    const removeUser = (memberId) => {
+      $.ajax({
+        url: URL + "/api/team/remove/",
+        type: "post",
+        data: {
+          teamId: teamId.value,
+          userId: memberId,
+        },
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+        success() {
+          refreshData();
+        },
+      });
+    };
+
     return {
       team_members,
       role,
       openRoleModal,
       saveRole,
+      removeUser,
       selectedRole, // 返回 selectedRole 以便在模态框中使用
     };
   },

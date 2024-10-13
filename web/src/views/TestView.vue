@@ -136,6 +136,15 @@
     >
       获取战队信息
     </button>
+    <br>
+    <button
+      type="button"
+      hover-class="button-hover"
+      class="btn btn-secondary btn-sm"
+      @click="testRemoveUser"
+    >
+      测试移除
+    </button>
     <br />
     <BankCard></BankCard>
     <br />
@@ -309,6 +318,23 @@ export default {
       });
     };
 
+    const testRemoveUser = () => {
+      $.ajax({
+        url: URL + "/api/team/remove/",
+        type: "post",
+        data: {
+          teamId: 15,
+          userId: 5,
+        },
+        headers: {
+          Authorization: "Bearer " + store.state.user.token,
+        },
+        success(resp) {
+          console.log(resp);
+        },
+      });
+    }
+
     return {
       testPostSignIn,
       testGetSignInInfo,
@@ -320,6 +346,7 @@ export default {
       signature,
       testGetTeamsList,
       testGetTeam,
+      testRemoveUser
     };
   },
 };
