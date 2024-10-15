@@ -125,6 +125,7 @@ export default {
     let successBool = ref(false);
     let file_src = ref("");
     let teamInfo = ref("");
+    let src = ref("");
 
     onMounted(() => {
       $.ajax({
@@ -163,7 +164,8 @@ export default {
       try {
         const resp = await uploadImage(selectedFile.value, store);
         console.log(resp.file);
-        file_src.value = resp.file;
+        file_src.value = OSS + resp.file;
+        src.value = resp.file;
 
         // alert("图片上传成功");
       } catch (error) {
@@ -181,7 +183,7 @@ export default {
           teamName: teamName.value,
           teamSignature: teamSignature.value,
           teamDescription: teamDescription.value,
-          src: file_src.value,
+          src: src.value,
         },
         type: "post",
         headers: {
