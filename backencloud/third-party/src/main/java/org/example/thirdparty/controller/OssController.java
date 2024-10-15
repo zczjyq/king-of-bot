@@ -21,9 +21,12 @@ import java.util.Map;
 public class OssController {
     @Autowired
     OSS ossClient;
-    private String endpoint = "oss-cn-beijing.aliyuncs.com";
-    private String bucket = "kingofbotszczjyq";
-    private String accessId = "LTAI5tAkQx6tgF8n8BCTjuBn";
+    @Value("${alibaba.cloud.oss.endpoint}")
+    private String endpoint;
+    @Value("${alibaba.cloud.oss.bucket}")
+    private String bucket;
+    @Value(("${alibaba.cloud.access-key}"))
+    private String accessId;
     @RequestMapping("/oss/policy")
     public Map<String, String> policy() {
         String host = "https://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint

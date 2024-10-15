@@ -2,6 +2,7 @@
 node_modules
 /dist
 /springboot
+/backencloud/third-party/src/main/resources/application.properties
 
 
 # local env files
